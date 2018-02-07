@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # frontend
 gem 'slim'
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
 
 # users
 gem 'devise'
