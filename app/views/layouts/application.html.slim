@@ -6,7 +6,14 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body
-    p.notice = notice
-    p.alert  = alert
+  body class="#{controller.controller_name}-#{controller.action_name}"
+    - if notice
+      .alert.alert-success = notice
+    - if alert
+      .alert.alert-danger  = alert
+    - if current_user
+      nav.navbar.navbar-light.bg-light
+        a.navbar-brand href="#" September
+        = current_user.email
+        = link_to "SIGN OUT", destroy_user_session_path, method: :delete
     = yield
