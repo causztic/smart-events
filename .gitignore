@@ -24,4 +24,8 @@
 
 
 # Ignore database configuration file
-database.yml
+database.yml/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
