@@ -1,4 +1,4 @@
 import WebpackerReact from 'webpacker-react'
-// import Calendar from 'components/calendar'
+import Calendar from 'components/calendar'
 
-// WebpackerReact.setup({Calendar})
+WebpackerReact.setup({Calendar})
