@@ -12,7 +12,8 @@ html
     - if alert
       .alert.alert-danger  = alert
     - if current_user
-      nav.navbar.navbar-light.bg-light
+      nav.navbar.navbar-yellow
         a.navbar-brand href="#" September
-        = link_to "SIGN OUT", destroy_user_session_path, method: :delete
+        = link_to destroy_user_session_path, method: :delete do
+          = icon 'fas', 'sign-out-alt'
     = yield
