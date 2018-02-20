@@ -25,7 +25,7 @@ Subject.destroy_all
 Subject.create!([{
     code: 50.003,
     name: "ELEMENTS OF SOFTWARE CONSTRUCTION",
-    description: "Introduction to fundamental principles and techniques of software construction",
+    description: "Introduction to fundamental principles and techniques of software construction.",
     hours_per_week: 5,
     required_facilities: "Classroom",
     required_hours: 0,
@@ -34,12 +34,66 @@ Subject.create!([{
 {
     code: 50.005,
     name: "COMPUTER SYSTEM ENGINEERING",
-    description: "Topics on the engineering of computing and networking systems",
+    description: "Topics on the engineering of computing and networking systems.",
     hours_per_week: 5,
     required_facilities: "Classroom",
     required_hours: 0,
     minimum_hours_per_lesson: 1.5
 },
+{
+    code: 50.034,
+    name: "INTRODUCTION TO PROBABILITY & STATISTICS",
+    description: "Key concepts of probability and different statistical distributions.",
+    hours_per_week: 5,
+    required_facilities: "Lecture_Theatre",
+    required_hours: 0,
+    minimum_hours_per_lesson: 1.5,
+},
+{
+    code: 02.001,
+    name: "WORLD TEXTS AND INTERPRETATION",
+    description: "Connections between various texts and the conversations that develop between thinkers throughout history.",
+    hours_per_week: 3,
+    required_facilities: "Think_Tank",
+    required_hours: 0,
+    minimum_hours_per_lesson: 1,
+},
+{
+    code: 02.003,
+    name: "THEORISING SOCIETY, THE SELF, AND CULTURE",
+    description: "Introduction to the social sciences and conceptual tools to understand complex world problems.",
+    hours_per_week: 3,
+    required_facilities: "Think_Tank",
+    required_hours: 0,
+    minimum_hours_per_lesson: 1,
+},
+{
+    code: 40.002 ,
+    name: "OPTIMISATION",
+    description: "Introduction to a broad range of optimisation algorithms and models.",
+    hours_per_week: 5,
+    required_facilities: "Lecture_Theatre",
+    required_hours: 0,
+    minimum_hours_per_lesson: 1.5,
+},
+{
+    code: 01.400,
+    name: "CAPSTONE 1",
+    description: "To develop an understanding of a multidisciplinary design process and experience through working in teams across pillars to design and construct models or prototypes.",
+    hours_per_week: 5,
+    required_facilities: "Capstone",
+    required_hours: 0,
+    minimum_hours_per_lesson: 2,
+},
+{
+    code: 20.101,
+    name: "ARCHITECTURE CORE STUDIO 1",
+    description: "To establish foundations for architectural design through three projects that build in scope and complexity",
+    hours_per_week: 5,
+    required_facilities: "Studio",
+    required_hours: 0,
+    minimum_hours_per_lesson: 2,
+}
     ])
 
-p "Created 2 subject"
+p "Created 8 subject"
