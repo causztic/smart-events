@@ -13,7 +13,7 @@ export class Calendar extends Component {
     }
   }
   render() {
-    return  (<div style={{minHeight: "300px"}}>
+    return  (<div style={{height: "400px"}}>
       <BigCalendar
       events={events}
       views={this.state.allViews}
