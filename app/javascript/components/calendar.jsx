@@ -4,20 +4,23 @@ import moment from 'moment'
 
 import events from './demo-events'
 
-// Setup the localizer by providing the moment (or globalize) Object
-// to the correct localizer.
-BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
-
-let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
-
-let Basic = () => (
-  <BigCalendar
-    events={events}
-    views={allViews}
-    step={60}
-    showMultiDayTimes
-    defaultDate={new Date(2015, 3, 1)}
-  />
-)
-
-export default Basic
+export class Calendar extends Component {
+  constructor(props){
+    super(props)
+    BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
+    this.state = {
+      allViews: Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
+    }
+  }
+  render() {
+    return  (<div style={{minHeight: "300px"}}>
+      <BigCalendar
+      events={events}
+      views={this.state.allViews}
+      step={60}
+      showMultiDayTimes
+      defaultDate={new Date(2015, 3, 1)}
+      />
+    </div>)
+  }
+}
