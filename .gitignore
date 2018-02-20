@@ -31,3 +31,7 @@ database.yml
 public/packs/*
 
 .DS_Store
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
