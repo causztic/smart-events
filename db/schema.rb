@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180219173323) do
   enable_extension "plpgsql"
 
   create_table "subjects", force: :cascade do |t|
-    t.float "code"
+    t.string "code"
     t.string "name"
     t.string "description"
     t.float "hours_per_week"
