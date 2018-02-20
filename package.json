@@ -3,7 +3,10 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.2.2",
-    "react-big-calendar": "^0.18.0"
+    "react-big-calendar": "^0.18.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.2.0",
+    "webpacker-react": "^0.3.2"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.11.1"
