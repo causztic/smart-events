@@ -1,8 +1,8 @@
 class CreateSubjects < ActiveRecord::Migration[5.1]
 
   def change
-    create_table :subjects, id: false, force: true do |t|
-    # create_table :subjects do |t|
+    # create_table :subjects, id: false, force: true do |t|
+    create_table :subjects do |t|
       t.string :code, null: false
       t.string :name
       t.string :description
@@ -14,6 +14,5 @@ class CreateSubjects < ActiveRecord::Migration[5.1]
       t.index :code, unique: true
       t.timestamps
     end
-    # change_column :subjects, :code
   end
 end

@@ -19,44 +19,70 @@
 #     required_facilities: required_facilities, required_hours: required_hours, minimum_hours_per_lesson: minimum_hours_per_lesson)
 # end
 
-subject_list = [
-    ["01.101", "Global Health Technology", "Global Health Technologies provides a multi-disciplinary approach to global health technology design using real world projects and partners.
-        The course explores the current state of global health challenges (with special focus on Singapore and her neighbours), and teaches students how to design medical technologies
-        (e.g. products, systems) that address these problems. The same technology that is applicable in developing countries will be tested in Singapore as a pilot run, before being
-        introduced to the neighboring countries. In their respective project groups, students will work closely with their mentors to identify and solve issues faced by elderly in Singapore. 
-        Guest speakers and organized field trips will allow students to have a first-hand experience to global health issues and help them come up with better solutions.",
-        2, [{"Classroom":2}], 2],
+# subject_list = [
+#
+#     # JAN TERM
+#     ["01.101", "Global Health Technology", "Global Health Technologies provides a multi-disciplinary approach to global health technology design using real world projects and partners.
+#         The course explores the current state of global health challenges (with special focus on Singapore and her neighbours), and teaches students how to design medical technologies
+#         (e.g. products, systems) that address these problems. The same technology that is applicable in developing countries will be tested in Singapore as a pilot run, before being
+#         introduced to the neighboring countries. In their respective project groups, students will work closely with their mentors to identify and solve issues faced by elderly in Singapore. 
+#         Guest speakers and organized field trips will allow students to have a first-hand experience to global health issues and help them come up with better solutions.",
+#         2, [{"Classroom":2}], 2],
+#     ["01.104", "Networked Life", "_____",
+#         4, [{"Think_Tank":4}], 2]
+# ]
+#
+# subject_list.each do |code, name, description, hours_per_week, facility_hours, minimum_hours_per_lesson|
+#     Subject.create( code: code, name: name, description: description, hours_per_week: hours_per_week, facility_hours: facility_hours, minimum_hours_per_lesson: minimum_hours_per_lesson )
+# end
+#
+# p "Created #{Subject.count} subjects"
 
-    ["01.104", "Networked Life", "_____",
-        4, [{"Think_Tank":4}], 2]
-]
 
-subject_list.each do |code, name, description, hours_per_week, facility_hours, minimum_hours_per_lesson|
-    Subject.create( code: code, name: name, description: description, hours_per_week: hours_per_week, facility_hours: facility_hours, minimum_hours_per_lesson: minimum_hours_per_lesson )
+require 'csv'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'subject_test_list_copy.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+puts csv_text
+
+csv.each do |row|
+    p row
+  t = Subject.new
+  # t.code = row['code']
+  # t.name = row['name']
+  # t.description = row['description']
+  # t.hours_per_week = row['hours_per_week']
+  # t.facility_hours = row['facility_hours']
+  # t.minimum_hours_per_lesson = row['minimum_hours_per_lesson']
+  t.code = row[0]
+  t.name = row[1]
+  t.description = row[2]
+  t.hours_per_week = row[3]
+  t.facility_hours = row[4]
+  t.minimum_hours_per_lesson = row[5]
+
+  # sentence.gsub! 'Robert', 'Joe'
+
+  # t.description.gsub! '$', ','
+
+  t.description.gsub("$", ",")
+
+  # t.name.gsub("$",",")
+  # t.description.gsub("$",",")
+  # t.facility_hours.gsub("$",",")
+
+  t.save
+
+  puts "#{t.code}, #{t.name} saved"
 end
 
-p "Created #{Subject.count} subjects"
-
+puts "There are now #{Subject.count} rows in the transactions table"
 
 # require 'csv'
 #
-# csv_text = File.read(Rails.root.join('lib', 'seeds', 'subject_list_1.csv'))
-# csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-# puts csv_text
-#
-# csv.each do |row|
-#   t = Subject.new
-#   t.code = row['code']
-#   t.name = row['name']
-#   t.description = row['description']
-#   t.hours_per_week = row['hours_per_week']
-#   t.facility_hours = row['facility_hours']
-#   t.minimum_hours_per_lesson = row['minimum_hours_per_lesson']
-#   t.save
-#   puts "#{t.code}, #{t.name} saved"
+# CSV.foreach('subject_list_test_copy') do |row|
+#   Place.create({code: row[0], name: row[1], description: row[2], hours_per_week: row[3], facility_hours: row[4], minimum_hours_per_lesson: row[5]})
 # end
-#
-# puts "There are now #{Subject.count} rows in the transactions table"
 
 
 # create a list of subjects
