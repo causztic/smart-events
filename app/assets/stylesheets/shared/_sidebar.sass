@@ -1,6 +1,5 @@
 .sidebar
   background-color: $dark-gray
-  color: $gray-200
   text-align: center
   padding: 0
   display: flex
@@ -10,6 +9,8 @@
     min-height: calc(100vh - 56px)
 
   .sidebar-item
+    text-decoration: none
+    color: $gray-200
     font-size: 0.75rem
     padding: 10px
     svg
@@ -18,3 +19,11 @@
       margin-top: 0.75em
       margin-bottom: 0.5rem
   
+  a.sidebar-item
+    &.active
+      background-color: ligten($dark-gray, 15%)
+      &:hover
+        transition: none
+    &:hover
+      transition: background-color 0.2s ease
+      background-color: lighten($dark-gray, 15%)
