@@ -22,6 +22,10 @@
 
 .byebug_history
 
+.vs/*
 
 # Ignore database configuration file
 database.yml
+
+# ignore packs
+public/packs/*

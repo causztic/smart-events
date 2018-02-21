@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'csv'
 Location.delete_all
 csv_text = File.read(Rails.root.join('lib','seeds','location.csv'))
@@ -22,5 +23,28 @@ csv.each do |row|
 end
 puts "There are now #{Location.count} rows in the Location table"
 
+User.delete_all
 
+u = User.new
 
+u.email = "student@hotmail.com"
+u.password = "password"
+u.password_confirmation = "password"
+u.save!
+u.add_role :student
+
+u = User.new
+
+u.email = "instructor@hotmail.com"
+u.password = "password"
+u.password_confirmation = "password"
+u.save!
+u.add_role :instructor
+
+u = User.new
+
+u.email = "coordinator@hotmail.com"
+u.password = "password"
+u.password_confirmation = "password"
+u.save!
+u.add_role :coordinator

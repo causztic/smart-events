@@ -1,2 +1,10 @@
-h1 Welcome
-= link_to "SIGN OUT", destroy_user_session_path, method: :delete
+.container-fluid
+  .row
+    = render "shared/sidebar"
+    .col-md-11.col-12.no-padding
+      .jumbotron.jumbotron-fluid
+        .container
+          h1.display-4
+            = "Welcome back, #{current_user.email}."
+          p.lead-4
+            | lorem ipsum sit dolor amet.
