@@ -1,0 +1,8 @@
+.container-fluid
+  .row
+    = render "shared/sidebar"
+    .col-md-11.col-12
+      .row
+        - @locations.each do |location|
+          .col-4
+            = location
