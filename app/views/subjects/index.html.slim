@@ -1,4 +1,6 @@
 .row
-  - @locations.each do |location|
-    .col-4
-      = location
+  - @subjects.each do |subject|
+    .col-12.col-md-4
+      h1= subject.name
+      br
+      p = subject.description.truncate 100
