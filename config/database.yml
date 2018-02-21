@@ -14,3 +14,7 @@ development:
   database: smart_events
   host: localhost
   encoding: UTF8
+
+test:
+  <<: *default
+  database: smart_events_test

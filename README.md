@@ -14,7 +14,11 @@ cp config/database.yml.sample config/database.yml
 yarn install
 ```
 
-# Having problems installing pg gem?
+# Testing
+- Create a database **smart_events_dev**
+- Update database.yml
+
+Run tests with
 ```
-sudo apt-get install libpq-dev 
+rspec
 ```
