@@ -8,4 +8,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     root "devise/sessions#new"
   end
+
+  resources :locations, only: [:index]
+  resources :subjects, only: [:index]
+
+  namespace :schedules do 
+    get :show
+  end
 end
