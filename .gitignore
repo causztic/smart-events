@@ -26,3 +26,6 @@
 
 # Ignore database configuration file
 database.yml
+
+# ignore packs
+public/packs/*
