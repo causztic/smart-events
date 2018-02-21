@@ -1,7 +1,23 @@
 .sidebar.col-md-1.col-12
-  .sidebar-item 
-    i.fas.fa-alt.fa-book.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
-    p Subjects
-  .sidebar-item
-    i.fas.fa-alt.fa-calendar-alt.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
-    p Download Schedule
+  - if current_user.has_role? :coordinator
+    .sidebar-item
+      i.fas.fa-alt.fa-wrench.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Schedules
+    .sidebar-item
+      i.fas.fa-alt.fa-fax.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Events
+    .sidebar-item
+      i.fas.fa-alt.fa-comments.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Contact Instructors
+  - if current_user.has_role? :student
+    .sidebar-item 
+      i.fas.fa-alt.fa-book.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Subjects
+  - if current_user.has_role? :instructor
+    .sidebar-item
+      i.fas.fa-alt.fa-book.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Schedule Preferences
+  - if current_user.has_any_role? :student, :instructor
+    .sidebar-item
+      i.fas.fa-alt.fa-calendar-alt.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Download Schedule
