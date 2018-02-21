@@ -15,6 +15,18 @@ ActiveRecord::Schema.define(version: 20180220040012) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "subjects", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name"
+    t.string "description"
+    t.float "hours_per_week"
+    t.json "facility_hours"
+    t.float "minimum_hours_per_lesson"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_subjects_on_code", unique: true
+  end
+  
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "roomname"
