@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
 
   resources :locations, only: [:index]
+  resources :subjects, only: [:index]
 end

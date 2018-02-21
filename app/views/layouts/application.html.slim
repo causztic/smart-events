@@ -20,4 +20,10 @@ html
         a.navbar-brand href="#" = current_user.roles.first.name.upcase
         = link_to destroy_user_session_path, method: :delete do
           i.fas.fa-sign-out-alt
-    = yield
+      .container-fluid
+        .row
+          = render "shared/sidebar"
+          .col-md-11.col-12
+            = yield
+    - else
+      = yield

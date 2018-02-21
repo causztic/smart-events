@@ -1,10 +1,6 @@
-.container-fluid
-  .row
-    = render "shared/sidebar"
-    .col-md-11.col-12
-      .jumbotron.jumbotron-fluid
-        .container
-          h1.display-4
-            = "Welcome back, #{current_user.email}."
-          p.lead-4
-            | lorem ipsum sit dolor amet.
+.jumbotron.jumbotron-fluid
+  .container
+    h1.display-4
+      = "Welcome back, #{current_user.email}."
+    p.lead-4
+      | lorem ipsum sit dolor amet.
