@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: 1.5
+  name: MyString
+  description: MyString
+  hours_per_week: 1
+  required_facilities: MyString
+  required_hours: 1
+  minimum_hours_per_lesson: 1
+
+two:
+  code: 1.5
+  name: MyString
+  description: MyString
+  hours_per_week: 1
+  required_facilities: MyString
+  required_hours: 1
+  minimum_hours_per_lesson: 1
