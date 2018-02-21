@@ -1,2 +1,0 @@
-class CourseCoordinator < ApplicationRecord
-end
