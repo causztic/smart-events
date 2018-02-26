@@ -39,6 +39,8 @@ gem 'webpacker-react', "~> 0.3.2"
 # users
 gem 'devise'
 
+gem 'simplecov', require: false, group: :test
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -64,3 +66,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'nokogiri', "~> 1.8.1"
 gem 'rolify'
+
