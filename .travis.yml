@@ -1,3 +1,13 @@
 language: ruby
 rvm: 
   - 2.4.2
+
+script:
+  - bundle exec rake db:setup
+  - bundle exec rake spec
+
+cache: bundler
+services:
+  - postgresql
+addons:
+  postgresql: "9.4"
