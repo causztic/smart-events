@@ -6,4 +6,25 @@ class User < ApplicationRecord
   
   ROLES = [:coordinator, :student, :instructor]
 
+  def send_message
+
+	if user.has_role? :instructor, :coordinator
+
+	end
+  
+  end
+
+  def review_message
+
+	if user.has_role? :instructor
+		//review own message history
+	end
+  
+	if user.has_role? :coordinator
+		//review all message history
+	end
+  end
+
+
+
 end
