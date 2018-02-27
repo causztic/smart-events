@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   if user.has_role? :student, :instructor
 	has_and_belong_to_many :subjects
+   end
 
   def send_message
 
