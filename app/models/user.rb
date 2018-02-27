@@ -6,6 +6,9 @@ class User < ApplicationRecord
   
   ROLES = [:coordinator, :student, :instructor]
 
+  if user.has_role? :student, :instructor
+	has_and_belong_to_many :subjects
+
   def send_message
 
 	if user.has_role? :instructor, :coordinator
