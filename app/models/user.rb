@@ -20,11 +20,11 @@ class User < ApplicationRecord
   def review_message
 
 	if user.has_role? :instructor
-		//review own message history
+		#review own message history
 	end
   
 	if user.has_role? :coordinator
-		//review all message history
+		#review all message history
 	end
   end
 
