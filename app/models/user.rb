@@ -27,7 +27,4 @@ class User < ApplicationRecord
 		#review all message history
 	end
   end
-
-
-
 end
