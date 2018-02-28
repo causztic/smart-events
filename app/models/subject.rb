@@ -1,5 +1,4 @@
 class Subject < ApplicationRecord
     self.primary_key = :code
+    has_and_belongs_to_many :users
 end
-
-has_and_belongs_to_many :users, :join_table => :users_roles
