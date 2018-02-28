@@ -5,7 +5,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
   
   ROLES = [:coordinator, :student, :instructor]
-  has_and_belongs_to_many :subjects, if: Proc.new {|s| s.has_any_role? :student, :instructor }
+
+  # an instructor teaches many subjects,
+  # a student is enrolled to many subjects.
+  has_and_belongs_to_many :subjects
 
   def send_message
     if has_role? :instructor, :coordinator
