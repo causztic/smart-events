@@ -8,5 +8,5 @@ feature "Signing in" do
   it "signs me in" do
     login_as(@user, scope: :user)
   end
-
+  
 end
