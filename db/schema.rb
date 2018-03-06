@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20180220040012) do
     t.float "hours_per_week"
     t.json "facility_hours"
     t.float "minimum_hours_per_lesson"
+    t.integer "term_available"
+    t.integer "pillar", default: 5
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_subjects_on_code", unique: true
