@@ -10,6 +10,6 @@ class Subject < ApplicationRecord
     validates :minimum_hours_per_lesson, presence: true
     validates :term_available, presence: true
 
-    enum pillar: [ :Freshmore, :EPD, :ESD, :ISTD, :ASD, :Everyone ]
+    enum pillar: [ :Freshmore, :EPD, :ESD, :ISTD, :ASD, :PillarYear ]
     # enum pillar: [ 0: freshmore, 1: epd, 2: esd, 3: istd, 4: asd, 5: unspecified ]
 end
