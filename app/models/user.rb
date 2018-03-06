@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  rolify
+  rolify :before_add => :before_add_method
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
@@ -9,6 +9,12 @@ class User < ApplicationRecord
   # an instructor teaches many subjects,
   # a student is enrolled to many subjects.
   has_and_belongs_to_many :subjects
+
+  def before_add_method(role)
+    if has_role? :coordinator
+		#remove subjects
+	end
+  end
 
   def send_message
     if has_role? :instructor, :coordinator
