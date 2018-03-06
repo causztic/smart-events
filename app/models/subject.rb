@@ -1,5 +1,6 @@
 class Subject < ApplicationRecord
     self.primary_key = :code
+    has_many :lessons, dependent: :destroy
 
     validates :code, presence: true
     validates :name, presence: true
