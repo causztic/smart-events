@@ -16,4 +16,8 @@ class User < ApplicationRecord
     type == Student
   end
 
+  def display_name
+    name.present? ? name : email
+  end
+
 end
