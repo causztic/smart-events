@@ -8,11 +8,13 @@ namespace :scrape do
     (1..14).each do |t|
       p "Page #{t}.."
       body = Nokogiri::HTML(open("https://sutd.edu.sg/About-Us/People/Faculty?jobtype=1&page=#{t}", "Accept-Encoding" => "plain"))
-      body.css("ul.faculty-listing li .snippet").each do |item|
-        instructor_name = item.at_css("a").xpath('text()').text
-        designation = item.at_css(".designation").xpath('text()').text
-        faculty = item.at_css(".faculty").xpath('text()').text
-        research_area = item.at_css(".research-area").xpath('text()').text
+      body.css("ul.faculty-listing li").each do |item|
+        instructor_name = item.at_css(".snippet a").xpath('text()').text
+        designation = item.at_css(".snippet .designation").xpath('text()').text
+        faculty = item.at_css(".snippet .faculty").xpath('text()').text
+        research_area = item.at_css(".snippet .research-area").xpath('text()').text
+        avatar = item.at_css(".img-holder img")["src"]
+
         p "Adding #{instructor_name.squish}"
         instructors << {
           name: instructor_name.squish,
@@ -21,6 +23,7 @@ namespace :scrape do
           research_area: research_area.strip,
           password: 'password',
           password_confirmation: 'password',
+          avatar: avatar,
           email: instructor_name.parameterize.underscore + "@sutd.edu.sg"
         }
       end
