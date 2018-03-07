@@ -5,8 +5,4 @@ feature "Signing in" do
     @user = create(:user) # this creates a default user using factory_bot
   end
 
-  it "signs me in" do
-    login_as(@user, scope: :user)
-  end
-  
 end
