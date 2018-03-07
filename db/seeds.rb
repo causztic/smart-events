@@ -47,7 +47,5 @@ end
 puts "There are now #{Location.count} rows in the Location table"
 
 User.delete_all
-User.create!([
-    { email: "student@hotmail.com", password: "password", password_confirmation: "password", type: Student},
-    { email: "coordinator@hotmail.com", password: "password", password_confirmation: "password", type: Coordinator},
-])
+Student.create!({ email: "student@hotmail.com", password: "password", password_confirmation: "password"})
+Coordinator.create!({ email: "coordinator@hotmail.com", password: "password", password_confirmation: "password"})
