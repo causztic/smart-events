@@ -1,5 +1,5 @@
 .landing-form
-  = form_for @user, url: "/login" do |f|
+  = form_for @user, url: login_path do |f|
     .form-group
       = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control"
     .form-group
