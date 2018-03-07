@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228085128) do
-
+ActiveRecord::Schema.define(version: 20180306121241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "subject"
+    t.float "duration"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "location"
+    t.integer "location_type"
+    t.integer "students"
+    t.bigint "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_lessons_on_subject_id"
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
@@ -42,6 +55,8 @@ ActiveRecord::Schema.define(version: 20180228085128) do
     t.float "hours_per_week"
     t.json "facility_hours"
     t.float "minimum_hours_per_lesson"
+    t.integer "term_available"
+    t.integer "pillar", default: 5
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_subjects_on_code", unique: true

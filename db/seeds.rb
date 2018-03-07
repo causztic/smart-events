@@ -13,15 +13,19 @@ Subject.delete_all
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'subject.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
-  t = Subject.new
-  t.code = row[0]
-  t.name = row[1].gsub("$",",")
-  t.description = row[2].gsub("$",",")
-  t.hours_per_week = row[3]
-  t.facility_hours = row[4].gsub("$",",")
-  t.minimum_hours_per_lesson = row[5]
-  t.save
-  # puts "#{t.code}, #{t.name} saved"
+    next if row.empty?
+    t = Subject.new
+    t.code = row[0]
+    t.name = row[1].gsub("$",",")
+    t.description = row[2].gsub("$",",")
+    t.hours_per_week = row[3]
+    t.facility_hours = row[4].gsub("$",",")
+    t.minimum_hours_per_lesson = row[5]
+    t.term_available = row[6]
+    t.pillar = row[7]
+    t.save!
+    puts row.to_hash
+
 end
 puts "There are now #{Subject.count} rows in the transactions table"
 
