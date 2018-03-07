@@ -27,7 +27,7 @@ csv.each do |row|
     puts row.to_hash
 
 end
-puts "There are now #{Subject.count} rows in the transactions table"
+puts "There are now #{Subject.count} rows in the Subject table"
 
 # table for locations
 Location.delete_all
