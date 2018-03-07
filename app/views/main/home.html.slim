@@ -1,7 +1,1 @@
-.jumbotron.jumbotron-fluid
-  .container
-    h1.display-4
-      = "Welcome back, #{current_user.display_name}."
-    p.lead-4
-      | lorem ipsum sit dolor amet.
-= render partial: user_partial
+= render partial: user_partial, locals: @params

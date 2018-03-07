@@ -5,15 +5,15 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? }
 
   def coordinator?
-    type == Coordinator
+    self.class == Coordinator
   end
 
   def instructor?
-    type == Instructor
+    self.class == Instructor
   end
 
   def student?
-    type == Student
+    self.class == Student
   end
 
   def display_name
