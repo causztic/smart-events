@@ -1,0 +1,1 @@
+PILLARS = [ :Freshmore, :EPD, :ESD, :ISTD, :ASD, :PillarYear, :HASS ].freeze
