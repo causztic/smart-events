@@ -18,8 +18,15 @@ yarn install
 ```
 
 # Testing
-- Create a database **smart_events_dev**
+- Create a database **smart_events_test**
 - Update database.yml
+
+
+# Populating Data
+```
+rake db:seed
+rake scrape:faculty
+```
 
 Run tests with
 ```
