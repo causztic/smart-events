@@ -105,13 +105,4 @@ ActiveRecord::Schema.define(version: 20180307144658) do
     t.string "research_area"
     t.string "avatar"
   end
-
-  create_table "users_roles", id: false, force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "role_id"
-    t.index ["role_id"], name: "index_users_roles_on_role_id"
-    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
-    t.index ["user_id"], name: "index_users_roles_on_user_id"
-  end
-
 end
