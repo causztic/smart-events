@@ -4,6 +4,8 @@ RSpec.describe Subject, type: :model do
   it { should validate_presence_of(:code) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:description) }
+  it { should have_and_belong_to_many(:instructors) }
+  it { should have_many(:lessons) }
 
   describe "base subject" do
     let(:subject) { build(:subject) }

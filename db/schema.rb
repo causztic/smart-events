@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307134430) do
+ActiveRecord::Schema.define(version: 20180307145250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,24 +25,12 @@ ActiveRecord::Schema.define(version: 20180307134430) do
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.string "subject"
     t.float "duration"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.string "location"
     t.integer "location_type"
-    t.integer "students"
     t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
-  end
-
-  create_table "lessons_users", id: false, force: :cascade do |t|
-    t.bigint "lesson_id"
-    t.bigint "instructor_id"
-    t.index ["instructor_id"], name: "index_lessons_users_on_instructor_id"
-    t.index ["lesson_id"], name: "index_lessons_users_on_lesson_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -53,6 +41,33 @@ ActiveRecord::Schema.define(version: 20180307134430) do
     t.string "locate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.time "start_time"
+    t.time "end_time"
+    t.bigint "lesson_id"
+    t.bigint "instructor_id"
+    t.bigint "location_id"
+    t.index ["instructor_id"], name: "index_sessions_on_instructor_id"
+    t.index ["lesson_id"], name: "index_sessions_on_lesson_id"
+  end
+
+  create_table "sessions_users", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "session_id"
+    t.index ["session_id"], name: "index_sessions_users_on_session_id"
+    t.index ["student_id"], name: "index_sessions_users_on_student_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -87,6 +102,14 @@ ActiveRecord::Schema.define(version: 20180307134430) do
     t.string "faculty"
     t.string "research_area"
     t.string "avatar"
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
 end
