@@ -3,8 +3,8 @@ class MainController < ApplicationController
   def home
     @params = {}
     if current_user.coordinator?
-      @empty_subjects = Subject.left_outer_joins(:lessons).where( lessons: { id: nil } )
-      @params = { empty_subjects: @empty_subjects }
+      unassigned_subjects = Subject.left_outer_joins(:instructors).where(users: { id: nil })
+      @params = { unassigned_subjects: unassigned_subjects }
     end
   end
 end
