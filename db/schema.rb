@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307031235) do
+ActiveRecord::Schema.define(version: 20180307073028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lesson_assignments", force: :cascade do |t|
+    t.bigint "lesson_id"
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["lesson_id"], name: "index_lesson_assignments_on_lesson_id"
+    t.index ["role_id"], name: "index_lesson_assignments_on_role_id"
+    t.index ["user_id"], name: "index_lesson_assignments_on_user_id"
+  end
 
   create_table "lessons", force: :cascade do |t|
     t.string "subject"
@@ -29,6 +38,13 @@ ActiveRecord::Schema.define(version: 20180307031235) do
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
   end
 
+  create_table "lessons_users", id: false, force: :cascade do |t|
+    t.bigint "lesson_id"
+    t.bigint "instructor_id"
+    t.index ["instructor_id"], name: "index_lessons_users_on_instructor_id"
+    t.index ["lesson_id"], name: "index_lessons_users_on_lesson_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "roomname"
@@ -37,16 +53,6 @@ ActiveRecord::Schema.define(version: 20180307031235) do
     t.string "locate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.string "resource_type"
-    t.bigint "resource_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -65,34 +71,17 @@ ActiveRecord::Schema.define(version: 20180307031235) do
 
   create_table "subjects_users", id: false, force: :cascade do |t|
     t.bigint "subject_id"
-    t.bigint "user_id"
+    t.bigint "instructor_id"
+    t.bigint "student_id"
+    t.index ["instructor_id"], name: "index_subjects_users_on_instructor_id"
+    t.index ["student_id"], name: "index_subjects_users_on_student_id"
     t.index ["subject_id"], name: "index_subjects_users_on_subject_id"
-    t.index ["user_id"], name: "index_subjects_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "users_roles", id: false, force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "role_id"
-    t.index ["role_id"], name: "index_users_roles_on_role_id"
-    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
-    t.index ["user_id"], name: "index_users_roles_on_user_id"
+    t.string "type"
+    t.string "email"
+    t.string "password_digest"
   end
 
 end

@@ -61,12 +61,6 @@ RSpec.configure do |config|
 
   # use factory_bot
   config.include FactoryBot::Syntax::Methods
-  # use Warden for devise testing
-  config.include Warden::Test::Helpers
-  
-  config.after :each do
-    Warden.test_reset!
-  end
 
 end
 

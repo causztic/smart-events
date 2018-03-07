@@ -47,27 +47,8 @@ end
 puts "There are now #{Location.count} rows in the Location table"
 
 User.delete_all
-
-u = User.new
-
-u.email = "student@hotmail.com"
-u.password = "password"
-u.password_confirmation = "password"
-u.save!
-u.add_role :student
-
-u = User.new
-
-u.email = "instructor@hotmail.com"
-u.password = "password"
-u.password_confirmation = "password"
-u.save!
-u.add_role :instructor
-
-u = User.new
-
-u.email = "coordinator@hotmail.com"
-u.password = "password"
-u.password_confirmation = "password"
-u.save!
-u.add_role :coordinator
+User.create!([
+    { email: "student@hotmail.com", password: "password", password_confirmation: "password", type: Student},
+    { email: "instructor@hotmail.com", password: "password", password_confirmation: "password", type: Instructor},
+    { email: "coordinator@hotmail.com", password: "password", password_confirmation: "password", type: Coordinator},
+])

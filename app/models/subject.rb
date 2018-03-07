@@ -7,7 +7,8 @@ class Subject < ApplicationRecord
 
     enum pillar: [ :Freshmore, :EPD, :ESD, :ISTD, :ASD, :PillarYear ]
 
-    has_and_belongs_to_many :users
+    has_and_belongs_to_many :students
+    has_and_belongs_to_many :instructors
 
     def hours_per_week_must_be_bigger
         if hours_per_week.present? && minimum_hours_per_lesson.present?
