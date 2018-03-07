@@ -1,4 +1,7 @@
 .sidebar.col-md-1.col-12
+  = link_to instructors_path, class: sidebar_item_class(instructors_path) do
+    i.fas.fa-alt.fa-user.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+    p Instructors
   = link_to schedules_show_path, class: sidebar_item_class(schedules_show_path) do 
     i.fas.fa-alt.fa-calendar-alt.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
     p Class Schedule

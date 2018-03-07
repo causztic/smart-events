@@ -3,6 +3,11 @@ class InstructorsController < ApplicationController
   
   def show
     @instructor = Instructor.friendly.find(params[:id])
-    @subjects = @instructor.subjects
   end
+
+  def index
+    @instructors = Instructor.all.select(:name, :avatar, :faculty, :research_area, :slug)
+                   .order(:faculty, :name).chunk &:faculty
+  end
+
 end

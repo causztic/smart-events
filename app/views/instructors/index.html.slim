@@ -1,0 +1,10 @@
+.container
+  .row
+    - @instructors.each do |group, instructors|
+      .col-12
+        h1 = group
+      - instructors.each do |i|
+        .col-md-2.col-4
+          = link_to instructor_path(i), class: "mini-card" do
+            .img-container style="background-image: url(#{i.avatar})"
+            div = i.name

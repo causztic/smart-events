@@ -2,11 +2,11 @@
   .row
     .col-12
       h1= @instructor.name
-      img src=@instructor.avatar
+      img src= @instructor.avatar
       h2= @instructor.faculty
       h3= @instructor.research_area
-      - if @subjects.length > 0
+      - if @instructor.subjects.length > 0
         hr
         h4 Subjects
-        - @subjects.each do |subject|
+        - @instructor.subjects.each do |subject|
           = subject.name
