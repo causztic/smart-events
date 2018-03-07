@@ -5,7 +5,7 @@ class Subject < ApplicationRecord
     validates :hours_per_week, numericality: { less_than: 10 }
     validate :hours_per_week_must_be_bigger
 
-    enum pillar: [ :Freshmore, :EPD, :ESD, :ISTD, :ASD, :PillarYear ]
+    enum pillar: ::PILLARS
 
     has_and_belongs_to_many :students
     has_and_belongs_to_many :instructors
