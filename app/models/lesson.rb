@@ -5,6 +5,6 @@ class Lesson < ApplicationRecord
     
     validates :subject, :duration, :start_time, :end_time, :location, presence: true
 
-    enum location_type: [ :think_tank, :classroom, :lecture_theatre, :lab ]
+    enum location_type: ::LOCATION_TYPES
 
 end
