@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-12
+      h1= @instructor.name
+      img src=@instructor.avatar
+      h2= @instructor.faculty
+      h3= @instructor.research_area
+      hr
+      h4 Subjects
+      - @subjects.each do |subject|
+        = subject.name
