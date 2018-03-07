@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :subject do
     code "1"
     name "1"
-    description "1"
+    description { Faker::Simpsons.quote }
     hours_per_week 9
     facility_hours 10
     minimum_hours_per_lesson 5
