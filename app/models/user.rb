@@ -3,4 +3,17 @@ class User < ApplicationRecord
   validates :type, :email, presence: true
   validates :password, confirmation: true
   validates :password_confirmation, presence: true, if: -> { new_record? }
+
+  def coordinator?
+    type == Coordinator
+  end
+
+  def instructor?
+    type == Instructor
+  end
+
+  def student?
+    type == Student
+  end
+
 end

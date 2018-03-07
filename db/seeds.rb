@@ -45,3 +45,10 @@ csv.each do |row|
     t.save!
 end
 puts "There are now #{Location.count} rows in the Location table"
+
+User.delete_all
+User.create!([
+    { email: "student@hotmail.com", password: "password", password_confirmation: "password", type: Student},
+    { email: "instructor@hotmail.com", password: "password", password_confirmation: "password", type: Instructor},
+    { email: "coordinator@hotmail.com", password: "password", password_confirmation: "password", type: Coordinator},
+])
