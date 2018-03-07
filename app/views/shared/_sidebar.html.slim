@@ -1,7 +1,31 @@
 .sidebar.col-md-1.col-12
-  .sidebar-item 
+  - if current_user.has_role? :coordinator
+    .sidebar-item
+      i.fas.fa-alt.fa-wrench.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Schedules
+    .sidebar-item
+      i.fas.fa-alt.fa-fax.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Events
+    = link_to locations_path, class: sidebar_item_class(locations_path) do
+      i.fas.fa-alt.fa-building.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Locations
+    .sidebar-item
+      i.fas.fa-alt.fa-comments.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Contact Instructors
+
+  = link_to subjects_path, class: sidebar_item_class(subjects_path) do 
     i.fas.fa-alt.fa-book.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
     p Subjects
-  .sidebar-item
-    i.fas.fa-alt.fa-calendar-alt.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
-    p Download Schedule
+
+  - if current_user.has_role? :instructor
+    .sidebar-item
+      i.fas.fa-alt.fa-book.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Schedule Preferences
+    .sidebar-item
+      i.fas.fa-alt.fa-comments.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Contact Coordinator
+
+  - if current_user.has_any_role? :student, :instructor
+    = link_to schedules_show_path, class: sidebar_item_class(schedules_show_path) do 
+      i.fas.fa-alt.fa-calendar-alt.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+      p Class Schedule

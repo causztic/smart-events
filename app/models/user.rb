@@ -6,4 +6,22 @@ class User < ApplicationRecord
   
   ROLES = [:coordinator, :student, :instructor]
 
+  # an instructor teaches many subjects,
+  # a student is enrolled to many subjects.
+  has_and_belongs_to_many :subjects
+
+  def send_message
+    if has_role? :instructor, :coordinator
+
+    end
+  end
+
+  def review_message
+    if has_role? :instructor
+      #review own message history
+    end
+    if has_role? :coordinator
+      #review all message history
+    end
+  end
 end
