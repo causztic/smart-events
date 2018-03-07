@@ -1,6 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'simplecov'
+
 SimpleCov.start
 
 ENV['RAILS_ENV'] ||= 'test'
@@ -60,6 +61,13 @@ RSpec.configure do |config|
 
   # use factory_bot
   config.include FactoryBot::Syntax::Methods
+  # use Warden for devise testing
+  config.include Warden::Test::Helpers
+  
+  config.after :each do
+    Warden.test_reset!
+  end
+
 end
 
 Shoulda::Matchers.configure do |config|
