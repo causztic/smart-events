@@ -1,7 +1,7 @@
 class Location < ApplicationRecord
 
     has_and_belongs_to_many :lessons
-    validates :name, presence: true
+    validates :name, :roomname, presence: true
 
 
 end
