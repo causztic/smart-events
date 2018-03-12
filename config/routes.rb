@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #post   '/users' => 'users#create'
 
   resources :locations, only: [:index]
-  resources :subjects, only: [:index]
+  resources :subjects, only: [:index, :show]
 
   namespace :schedules do 
     get :show

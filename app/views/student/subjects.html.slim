@@ -7,3 +7,4 @@
       h2= subject.name
       h3= subject.description
       .instructor
+        b = subject.instructors.map(&:name).join(",")
