@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307154407) do
+ActiveRecord::Schema.define(version: 20180312033438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20180307154407) do
     t.string "research_area"
     t.string "avatar"
     t.string "slug"
+    t.integer "pillar", default: 0
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|

@@ -25,7 +25,9 @@ yarn install
 # Populating Data
 ```
 rake db:seed
-rake scrape:faculty
+rake scrape:faculty  # this scrapes SUTD's page for faculty email
+rake assign:subjects # assign subjects randomly to students based on their pillar
+rake assign:faculty  # assign faculty to the subjects assigned
 ```
 
 Run tests with
