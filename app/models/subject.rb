@@ -34,4 +34,9 @@ class Subject < ApplicationRecord
       end
     end
   end
+
+  def to_param
+    code
+  end
+
 end

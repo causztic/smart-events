@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #post   '/users' => 'users#create'
 
   resources :locations, only: [:index]
-  resources :subjects, only: [:index, :show]
+  resources :subjects, only: [:index, :show], constraints: { id: /[^\/]+/ }
 
   namespace :schedules do 
     get :show

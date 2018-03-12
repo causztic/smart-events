@@ -5,6 +5,6 @@ class SubjectsController < ApplicationController
   end
 
   def show
-    @subject = Subject.find(params[:id])
+    @subject = Subject.find_by(code: params[:id])
   end
 end
