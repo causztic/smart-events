@@ -30,10 +30,10 @@ class SessionsController < ApplicationController
   def redirect_to_path
     
     if current_user.student?
-      path = students_dashboard_path 
+      path = student_dashboard_path 
     end
 
-    redirect_to path, notice: ::NOTICE.LOG_IN_SUCCESS
+    redirect_to path, notice: ::NOTICE::LOG_IN_SUCCESS
   end
 
   def user_params
