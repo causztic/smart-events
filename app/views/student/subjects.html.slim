@@ -5,7 +5,7 @@
   - @subjects.each do |subject|
     .col-12.subject-card
       = link_to subject_path(subject) do
-        h2= subject.name
+        h2= subject.full_name
       h3= subject.description
       .instructor
         b = subject.instructors.map(&:name).join(",")
