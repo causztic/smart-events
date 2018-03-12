@@ -1,8 +1,8 @@
 .row
   .col-12.col-md-6
     h2 Notice Board
-    - if unassigned_subjects.count > 0
+    - if @unassigned_subjects.count > 0
       .card.notice-card
         .card-body.alert-danger
-          div= "There are currently #{unassigned_subjects.count} subjects without any instructors assigned."
+          div= "There are currently #{@unassigned_subjects.count} subjects without any instructors assigned."
           .btn.btn-info Assign Instructors

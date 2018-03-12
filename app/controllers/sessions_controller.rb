@@ -31,6 +31,11 @@ class SessionsController < ApplicationController
     
     if current_user.student?
       path = student_dashboard_path 
+    elsif current_user.instructor?
+      path = instructor_dashboard_path
+    else
+      # coordinator
+      path = coordinator_dashboard_path
     end
 
     redirect_to path, notice: ::NOTICE::LOG_IN_SUCCESS
