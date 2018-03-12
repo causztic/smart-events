@@ -1,0 +1,9 @@
+.row
+  .col-12
+    h1 My Subjects
+    br
+  - @subjects.each do |subject|
+    .col-12.subject-card
+      h2= subject.name
+      h3= subject.description
+      .instructor

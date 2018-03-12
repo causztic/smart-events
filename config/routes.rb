@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :student do
     get :dashboard
+    get :subjects
   end
 
   namespace :instructor do

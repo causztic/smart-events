@@ -24,7 +24,7 @@ class Subject < ApplicationRecord
   end
 
   def self.random_with_students
-    joins(:students).where("student_id IS NOT NULL").order("RANDOM()")
+    joins(:students).where("student_id IS NOT NULL").order("RANDOM()").distinct
   end
 
   def hours_per_week_must_be_bigger
