@@ -8,8 +8,11 @@
 
 require 'csv'
 
-# table for subjects
 Subject.delete_all
+Location.delete_all
+User.delete_all
+
+# table for subjects
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'subject.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
@@ -27,10 +30,7 @@ csv.each do |row|
     puts row.to_hash
 
 end
-puts "There are now #{Subject.count} rows in the transactions table"
-
 # table for locations
-Location.delete_all
 csv_text = File.read(Rails.root.join('lib','seeds','location.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
@@ -44,8 +44,19 @@ csv.each do |row|
     t.locate = row['locate']
     t.save!
 end
-puts "There are now #{Location.count} rows in the Location table"
 
-User.delete_all
-Student.create!({ email: "student@hotmail.com", password: "password", password_confirmation: "password"})
-Coordinator.create!({ email: "coordinator@hotmail.com", password: "password", password_confirmation: "password"})
+# create a root coordinator
+Coordinator.create!({ email: "coordinator@sutd.edu.sg", password: "password", password_confirmation: "password" })
+
+# create a series of students
+Student.create!({ email: "freshmore@sutd.edu.sg", password: "password", password_confirmation: "password" })
+
+Student.create!({ email: "istd@sutd.edu.sg", password: "password", password_confirmation: "password" })
+Student.create!({ email: "epd@sutd.edu.sg", password: "password", password_confirmation: "password" })
+Student.create!({ email: "asd@sutd.edu.sg", password: "password", password_confirmation: "password" })
+Student.create!({ email: "esd@sutd.edu.sg", password: "password", password_confirmation: "password" })
+
+puts "#{Subject.count} subjects created."
+puts "#{Location.count} locations created."
+puts "Run 'rake scrape:faculty' to add in faculty accounts."
+puts "Afterwards, run 'rake assign:subjects' to assign demo subjects for the various students."
