@@ -12,8 +12,6 @@
 10.009 ,The Digital World,nil,0,nil:0,0,0,Freshmore
 10.011 ,Introduction to Physical Chemistry​,nil,0,nil:0,0,0,Freshmore
 10.012 ,Introduction to Biology,nil,0,nil:0,0,0,Freshmore
-01.400,Capstone 1,nil,0,nil:0,0,0,PillarYear
-01.401,Capstone 2,nil,0,nil:0,0,0,PillarYear
 30.001,Structures and Materials,nil,0,nil:0,0,0,EPD
 30.002,Circuits and Electronics,nil,0,nil:0,0,0,EPD
 30.003,Introduction to Probability and Statistics,nil,0,nil:0,0,0,EPD
@@ -108,50 +106,50 @@
 XXXXX,Computational Data Science,nil,0,nil:0,0,0,ISTD
 01.110,Computational Fabrication,nil,0,nil:0,0,0,ISTD
 01.112,Machine Learning,nil,0,nil:0,0,0,ISTD
-02.102,The World Since 1400,nil,0,nil:0,0,0,PillarYear
-02.103,Film Studies: History$ Theory and Practice,nil,0,nil:0,0,0,PillarYear
-02.105,Sages Through The Ages: Readings in Early Indian and Chinese Religion and Philosophy,nil,0,nil:0,0,0,PillarYear
-02.107,History of Chinese Urban Development,nil,0,nil:0,0,0,PillarYear
-02.108,Modern China: Pluralism$ and Beyond Territoriality,nil,0,nil:0,0,0,PillarYear
-02.109 ,Ethics of Leadership,nil,0,nil:0,0,0,PillarYear
-02.110,The Chinese Lyrical Tradition: Arts$ Literature and Landscape Design,nil,0,nil:0,0,0,PillarYear
-02.112,Space and Power,nil,0,nil:0,0,0,PillarYear
-02.113,The Laboratory of the Mind,nil,0,nil:0,0,0,PillarYear
-02.114,The Multicultural Archipelago in History and Story,nil,0,nil:0,0,0,PillarYear
-02.115 ,Global Shakespeares,nil,0,nil:0,0,0,PillarYear
-02.116,The Word and the World: Introducing Literary Theory,nil,0,nil:0,0,0,PillarYear
-02.118 ,Film Studies II: Production,nil,0,nil:0,0,0,PillarYear
-02.119,Introduction to Political Philosophy,nil,0,nil:0,0,0,PillarYear
-02.120,History of Traditional Chinese Short Fiction,nil,0,nil:0,0,0,PillarYear
-02.121,The Question of Being,nil,0,nil:0,0,0,PillarYear
-02.122,The Day After Tomorrow: Environmental Apocalypse and Political Mobilization,nil,0,nil:0,0,0,PillarYear
-02.123,Questioning Modernity in Europe and Asia,nil,0,nil:0,0,0,PillarYear
-02.125,Normalcy and Deviance: Philosophical Approaches to Sexuality,nil,0,nil:0,0,0,PillarYear
-02.126,Southeast Asia Under Japan: Motives$ Memoirs$ and Media,nil,0,nil:0,0,0,PillarYear
-02.127 ,Satan and His Afterlives in Literature and Film,nil,0,nil:0,0,0,PillarYear
-02.130 ,Slums$ Squatters$ and Smart Cities: History and Theory of Urban Planning,nil,0,nil:0,0,0,PillarYear
-02.201 ,Digital Sociology,nil,0,nil:0,0,0,PillarYear
-02.202 ,Organizational Processes,nil,0,nil:0,0,0,PillarYear
-02.203,Psychological Approaches to Bilingualism,nil,0,nil:0,0,0,PillarYear
-02.204,Technology and the Self,nil,0,nil:0,0,0,PillarYear
-02.205,Human Development: Theory and Practice,nil,0,nil:0,0,0,PillarYear
-02.206 ,Ethics and Social Responsibility,nil,0,nil:0,0,0,PillarYear
-02.207 ,Organizations and People,nil,0,nil:0,0,0,PillarYear
-02.208 ,Microeconomics,nil,0,nil:0,0,0,PillarYear
-02.209,Social Theories of Urban Life,nil,0,nil:0,0,0,PillarYear
-02.210,Who Gets Ahead? Sociology of Social Networks and Social Capital,nil,0,nil:0,0,0,PillarYear
-02.211,Critical Management Studies,nil,0,nil:0,0,0,PillarYear
-02.212,The Visual Culture of Science and Technology,nil,0,nil:0,0,0,PillarYear
-02.213,How Culture Works,nil,0,nil:0,0,0,PillarYear
-02.214,Magic$ Science and Religion,nil,0,nil:0,0,0,PillarYear
-02.217 ,Gender Sexuality and Society,nil,0,nil:0,0,0,PillarYear
-02.218 ,Introduction to Psychology,nil,0,nil:0,0,0,PillarYear
-02.219 ,Rice Cultures: Technology$ Society and Environment in Asia,nil,0,nil:0,0,0,PillarYear
-02.220 ,“How the Things People Make$ Make People”: Material Things in Social Life,nil,0,nil:0,0,0,PillarYear
-02.221 ,Making Maps I: Introduction to Spatial Analysis$ Data Visualization and Map Design,nil,0,nil:0,0,0,PillarYear
-02.222 ,Unnatural Disasters,nil,0,nil:0,0,0,PillarYear
-02.223,Morals and Markets,nil,0,nil:0,0,0,PillarYear
-02.224,Sociology of Deviance and Social Control,nil,0,nil:0,0,0,PillarYear
-02.227,Maps and Politics,nil,0,nil:0,0,0,PillarYear
-02.302,Business Culture and Entrepreneurship in China,nil,0,nil:0,0,0,PillarYear
-02.303,The Role of Technology and Design on Growth in China,nil,0,nil:0,0,0,PillarYear
+02.102,The World Since 1400,nil,0,nil:0,0,0,HASS
+02.103,Film Studies: History$ Theory and Practice,nil,0,nil:0,0,0,HASS
+02.105,Sages Through The Ages: Readings in Early Indian and Chinese Religion and Philosophy,nil,0,nil:0,0,0,HASS
+02.107,History of Chinese Urban Development,nil,0,nil:0,0,0,HASS
+02.108,Modern China: Pluralism$ and Beyond Territoriality,nil,0,nil:0,0,0,HASS
+02.109 ,Ethics of Leadership,nil,0,nil:0,0,0,HASS
+02.110,The Chinese Lyrical Tradition: Arts$ Literature and Landscape Design,nil,0,nil:0,0,0,HASS
+02.112,Space and Power,nil,0,nil:0,0,0,HASS
+02.113,The Laboratory of the Mind,nil,0,nil:0,0,0,HASS
+02.114,The Multicultural Archipelago in History and Story,nil,0,nil:0,0,0,HASS
+02.115 ,Global Shakespeares,nil,0,nil:0,0,0,HASS
+02.116,The Word and the World: Introducing Literary Theory,nil,0,nil:0,0,0,HASS
+02.118 ,Film Studies II: Production,nil,0,nil:0,0,0,HASS
+02.119,Introduction to Political Philosophy,nil,0,nil:0,0,0,HASS
+02.120,History of Traditional Chinese Short Fiction,nil,0,nil:0,0,0,HASS
+02.121,The Question of Being,nil,0,nil:0,0,0,HASS
+02.122,The Day After Tomorrow: Environmental Apocalypse and Political Mobilization,nil,0,nil:0,0,0,HASS
+02.123,Questioning Modernity in Europe and Asia,nil,0,nil:0,0,0,HASS
+02.125,Normalcy and Deviance: Philosophical Approaches to Sexuality,nil,0,nil:0,0,0,HASS
+02.126,Southeast Asia Under Japan: Motives$ Memoirs$ and Media,nil,0,nil:0,0,0,HASS
+02.127 ,Satan and His Afterlives in Literature and Film,nil,0,nil:0,0,0,HASS
+02.130 ,Slums$ Squatters$ and Smart Cities: History and Theory of Urban Planning,nil,0,nil:0,0,0,HASS
+02.201 ,Digital Sociology,nil,0,nil:0,0,0,HASS
+02.202 ,Organizational Processes,nil,0,nil:0,0,0,HASS
+02.203,Psychological Approaches to Bilingualism,nil,0,nil:0,0,0,HASS
+02.204,Technology and the Self,nil,0,nil:0,0,0,HASS
+02.205,Human Development: Theory and Practice,nil,0,nil:0,0,0,HASS
+02.206 ,Ethics and Social Responsibility,nil,0,nil:0,0,0,HASS
+02.207 ,Organizations and People,nil,0,nil:0,0,0,HASS
+02.208 ,Microeconomics,nil,0,nil:0,0,0,HASS
+02.209,Social Theories of Urban Life,nil,0,nil:0,0,0,HASS
+02.210,Who Gets Ahead? Sociology of Social Networks and Social Capital,nil,0,nil:0,0,0,HASS
+02.211,Critical Management Studies,nil,0,nil:0,0,0,HASS
+02.212,The Visual Culture of Science and Technology,nil,0,nil:0,0,0,HASS
+02.213,How Culture Works,nil,0,nil:0,0,0,HASS
+02.214,Magic$ Science and Religion,nil,0,nil:0,0,0,HASS
+02.217 ,Gender Sexuality and Society,nil,0,nil:0,0,0,HASS
+02.218 ,Introduction to Psychology,nil,0,nil:0,0,0,HASS
+02.219 ,Rice Cultures: Technology$ Society and Environment in Asia,nil,0,nil:0,0,0,HASS
+02.220 ,“How the Things People Make$ Make People”: Material Things in Social Life,nil,0,nil:0,0,0,HASS
+02.221 ,Making Maps I: Introduction to Spatial Analysis$ Data Visualization and Map Design,nil,0,nil:0,0,0,HASS
+02.222 ,Unnatural Disasters,nil,0,nil:0,0,0,HASS
+02.223,Morals and Markets,nil,0,nil:0,0,0,HASS
+02.224,Sociology of Deviance and Social Control,nil,0,nil:0,0,0,HASS
+02.227,Maps and Politics,nil,0,nil:0,0,0,HASS
+02.302,Business Culture and Entrepreneurship in China,nil,0,nil:0,0,0,HASS
+02.303,The Role of Technology and Design on Growth in China,nil,0,nil:0,0,0,HASS

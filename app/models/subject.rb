@@ -10,8 +10,12 @@ class Subject < ApplicationRecord
   has_and_belongs_to_many :students
   has_and_belongs_to_many :instructors
   
-  def self.random_sample size, pillar
-    where(pillar: pillar).limit(size).order("RANDOM()")
+  def self.subjects_this_term pillar, term=0
+    where("pillar = ? AND term = ?", pillar, term).order("RANDOM()").limit(3)
+  end
+
+  def self.freshmore_hass term=0
+    where("pillar = ? AND term = ?", :FreshmoreHASS, term).limit(1).first
   end
 
   # convenience method for random_sample with HASS
