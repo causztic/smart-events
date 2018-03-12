@@ -44,5 +44,3 @@ coverage/*
 /public/packs-test
 yarn-debug.log*
 .yarn-integrity
-
-!/node_modules/.bin
