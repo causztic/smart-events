@@ -14,4 +14,15 @@ feature "Signing in" do
     expect(page).to have_content(::NOTICE::LOG_IN_SUCCESS)
     expect(page).to have_current_path(coordinator_dashboard_path)
   end
+
+  it "should not allow me to access any instructors pages" do
+    visit instructor_dashboard_path
+    expect(page).to have_http_status(401)
+  end
+
+  it "should not allow me to access any students page" do
+    visit student_dashboard_path
+    expect(page).to have_http_status(401)
+  end
+
 end

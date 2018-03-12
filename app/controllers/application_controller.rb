@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_role! role
     authenticate_user!
-    fail ActiveRecord::RecordNotFound unless current_user.class == role
+    head :unauthorized unless current_user.class == role
   end
 
 end
