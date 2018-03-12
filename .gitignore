@@ -28,7 +28,7 @@
 
 /public/packs-test
 /node_modules
-!/node_modules/.bin/
+!/node_modules/.bin/*
 yarn-debug.log*
 .yarn-integrity
 database.yml
