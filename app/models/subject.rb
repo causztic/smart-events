@@ -23,8 +23,8 @@ class Subject < ApplicationRecord
     where(pillar: :HASS).order("RANDOM()").limit(1)
   end
 
-  def self.random_with_students
-    joins(:students).where("student_id IS NOT NULL").order("RANDOM()").distinct
+  def self.with_students
+    joins(:students).where("student_id IS NOT NULL").distinct
   end
 
   def hours_per_week_must_be_bigger
