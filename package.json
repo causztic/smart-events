@@ -2,7 +2,7 @@
   "name": "smart-events",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.2.2",
+    "@rails/webpacker": "^3.3.0",
     "babel-preset-react": "^6.24.1",
     "moment": "^2.20.1",
     "prop-types": "^15.6.0",
@@ -12,6 +12,6 @@
     "webpacker-react": "^0.3.2"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^3.1.1"
   }
 }
