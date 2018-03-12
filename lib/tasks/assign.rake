@@ -7,6 +7,5 @@ namespace :assign do
     subjects = Subject.random_sample(3, :Freshmore) + Subject.random_hass
     student.subjects = subjects
     student.save!
-  
   end
 end

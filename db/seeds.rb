@@ -52,10 +52,10 @@ students = []
 end
 
 100.times do |t|
-    students << { email: "istd#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
-    students << { email: "epd#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
-    students << { email: "asd#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
-    students << { email: "esd#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
+    students << { email: "istd#{t}@sutd.edu.sg", pillar: :ISTD, password: "password", password_confirmation: "password" }
+    students << { email: "epd#{t}@sutd.edu.sg", pillar: :EPD, password: "password", password_confirmation: "password" }
+    students << { email: "asd#{t}@sutd.edu.sg", pillar: :ASD, password: "password", password_confirmation: "password" }
+    students << { email: "esd#{t}@sutd.edu.sg", pillar: :ESD, password: "password", password_confirmation: "password" }
 end
 
 puts "Creating students, please wait warmly."
