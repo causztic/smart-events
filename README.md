@@ -27,6 +27,7 @@ yarn install
 rake db:seed
 rake scrape:faculty
 rake assign:subjects
+rake assign:faculty
 ```
 
 Run tests with

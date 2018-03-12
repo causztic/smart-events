@@ -6,4 +6,7 @@ class Instructor < User
   
   validates :name, :designation, :faculty, presence: true
 
+  def self.randomized
+    all.order("RANDOM()")
+  end
 end
