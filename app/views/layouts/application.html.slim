@@ -22,7 +22,7 @@ html
           i.fas.fa-sign-out-alt
       .container-fluid
         .row
-          = render "shared/#{user_partial}_sidebar"
+          = render "#{user_partial}/sidebar"
           .col-md-11.col-12.main-content
             = yield
     - else

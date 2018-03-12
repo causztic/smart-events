@@ -1,0 +1,9 @@
+.row
+  .col-12
+    h1= @subject.full_name
+    br
+    p = @subject.description
+    br
+    h2 Taught by
+    - @subject.instructors.each do |instructor|
+      = render partial: "shared/instructor_card", locals: { instructor: instructor }

@@ -68,3 +68,4 @@ Student.create!(students)
 puts "#{Student.count} students created.\n"
 puts "Run 'rake scrape:faculty' to add in faculty accounts."
 puts "Afterwards, run 'rake assign:subjects' to assign demo subjects for the various students."
+puts "Finally, do 'rake assign:faculty' to assign random instructors for the subjects"

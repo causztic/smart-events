@@ -10,6 +10,10 @@ class Subject < ApplicationRecord
   has_and_belongs_to_many :students
   has_and_belongs_to_many :instructors
   
+  def full_name
+    "#{code} - #{name}"
+  end
+
   def self.subjects_this_term pillar, term=0
     where(pillar: pillar,term_available: term).order("RANDOM()").limit(3)
   end
@@ -23,10 +27,11 @@ class Subject < ApplicationRecord
     where(pillar: :HASS).order("RANDOM()").limit(1)
   end
 
-  def self.random_with_students
-    joins(:students).where("student_id IS NOT NULL").order("RANDOM()")
+  def self.with_students
+    joins(:students).where("student_id IS NOT NULL").distinct
   end
 
+  # validations
   def hours_per_week_must_be_bigger
     if hours_per_week.present? && minimum_hours_per_lesson.present?
       if hours_per_week < minimum_hours_per_lesson
@@ -34,4 +39,10 @@ class Subject < ApplicationRecord
       end
     end
   end
+
+  # to use code as the params
+  def to_param
+    code
+  end
+
 end
