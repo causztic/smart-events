@@ -20,7 +20,9 @@ csv.each do |row|
     t = Subject.new
     t.code = row[0]
     t.name = row[1].gsub("$",",")
-    t.description = row[2].gsub("$",",")
+    if row[2].present?
+        t.description = row[2].gsub("$",",")
+    end
     t.hours_per_week = row[3]
     t.facility_hours = row[4].gsub("$",",")
     t.minimum_hours_per_lesson = row[5]
@@ -28,6 +30,7 @@ csv.each do |row|
     t.pillar = row[7]
     t.save!
 end
+puts "#{Subject.count} subjects created."
 # table for locations
 csv_text = File.read(Rails.root.join('lib','seeds','location.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
@@ -41,7 +44,7 @@ csv.each do |row|
     t.locate = row['locate']
     t.save!
 end
-
+puts "#{Location.count} locations created."
 # create a root coordinator
 Coordinator.create!({ email: "coordinator@sutd.edu.sg", password: "password", password_confirmation: "password" })
 
@@ -62,8 +65,6 @@ puts "Creating students, please wait warmly."
 
 Student.create!(students)
 
-puts "#{Student.count} students created."
-puts "#{Subject.count} subjects created."
-puts "#{Location.count} locations created."
+puts "#{Student.count} students created.\n"
 puts "Run 'rake scrape:faculty' to add in faculty accounts."
 puts "Afterwards, run 'rake assign:subjects' to assign demo subjects for the various students."
