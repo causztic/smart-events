@@ -14,6 +14,11 @@ class Subject < ApplicationRecord
     where(pillar: pillar).limit(size).order("RANDOM()")
   end
 
+  # convenience method for random_sample with HASS
+  def self.random_hass
+    random_sample(1, :HASS)
+  end
+
   def hours_per_week_must_be_bigger
     if hours_per_week.present? && minimum_hours_per_lesson.present?
       if hours_per_week < minimum_hours_per_lesson

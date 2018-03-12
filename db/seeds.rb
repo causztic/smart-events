@@ -27,15 +27,12 @@ csv.each do |row|
     t.term_available = row[6]
     t.pillar = row[7]
     t.save!
-    puts row.to_hash
-
 end
 # table for locations
 csv_text = File.read(Rails.root.join('lib','seeds','location.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
     next if row.empty?
-    puts row.to_hash
     t = Location.new
     t.name = row['name']
     t.roomname = row['roomname']
@@ -49,13 +46,23 @@ end
 Coordinator.create!({ email: "coordinator@sutd.edu.sg", password: "password", password_confirmation: "password" })
 
 # create a series of students
-Student.create!({ email: "freshmore@sutd.edu.sg", password: "password", password_confirmation: "password" })
+students = []
+400.times do |t|
+    students << { email: "freshmore#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
+end
 
-Student.create!({ email: "istd@sutd.edu.sg", password: "password", password_confirmation: "password" })
-Student.create!({ email: "epd@sutd.edu.sg", password: "password", password_confirmation: "password" })
-Student.create!({ email: "asd@sutd.edu.sg", password: "password", password_confirmation: "password" })
-Student.create!({ email: "esd@sutd.edu.sg", password: "password", password_confirmation: "password" })
+100.times do |t|
+    students << { email: "istd#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
+    students << { email: "epd#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
+    students << { email: "asd#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
+    students << { email: "esd#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
+end
 
+puts "Creating students, please wait warmly."
+
+Student.create!(students)
+
+puts "#{Student.count} students created."
 puts "#{Subject.count} subjects created."
 puts "#{Location.count} locations created."
 puts "Run 'rake scrape:faculty' to add in faculty accounts."
