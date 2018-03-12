@@ -5,8 +5,5 @@ class Instructor < User
   has_and_belongs_to_many :subjects
   
   validates :name, :designation, :faculty, presence: true
-
-  def self.randomized
-    all.order("RANDOM()")
-  end
+  
 end
