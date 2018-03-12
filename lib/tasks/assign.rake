@@ -22,13 +22,12 @@ namespace :assign do
     
     p "Assigning faculty to subjects"
     # we assign 3 subjects for each instructor.
-    subjects = Subject.randomized_with_students
+    subjects = Subject.random_with_students
     Instructor.randomized.each do |instructor|
-      s = subjects.take(3)
-      subjects.subtract(subjects)
+      s = subjects.to_a.shift(3)
       instructor.subjects = s
       instructor.save!
-      break if s.empty?
+      break if s.nil?
     end
     
   end
