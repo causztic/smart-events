@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless current_user
   end
 
+  def authenticate_role! role
+    authenticate_user!
+    fail ActiveRecord::RecordNotFound unless current_user.class == role
+  end
+
 end
