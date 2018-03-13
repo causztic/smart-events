@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   namespace :instructor do
     get :dashboard
+    get :subjects
   end
 
   namespace :coordinator do
