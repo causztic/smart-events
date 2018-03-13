@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-require 'rails_helper'
-=======
 require "rails_helper"
->>>>>>> origin/master
 
 RSpec.describe Subject, type: :model do
   it { should validate_presence_of(:code) }
   it { should validate_presence_of(:name) }
-<<<<<<< HEAD
-  it { should validate_presence_of(:description) }
-=======
   it { should have_and_belong_to_many(:instructors) }
   it { should have_many(:lessons) }
 
@@ -26,5 +19,4 @@ RSpec.describe Subject, type: :model do
       expect(subject).to_not be_valid
     end
   end
->>>>>>> origin/master
 end

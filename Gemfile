@@ -30,20 +30,12 @@ gem "bcrypt", "~> 3.1.7"
 # gem 'capistrano-rails', group: :development
 
 # frontend
-<<<<<<< HEAD
-gem 'slim'
-gem 'bootstrap', '~> 4.0.0'
-gem 'jquery-rails'
-gem 'webpacker', '~> 3.2'
-gem 'webpacker-react', "~> 0.3.2"
-=======
 gem "bootstrap", "~> 4.0.0"
 gem "friendly_id", "~> 5.1.0"
 gem "jquery-rails"
 gem "slim"
 gem "webpacker", "~> 3.3"
 gem "webpacker-react", "~> 0.3.2"
->>>>>>> origin/master
 
 # misc
 gem "bulk_insert"
@@ -51,20 +43,10 @@ gem "reek"
 gem "rubocop", require: false
 gem "simplecov", require: false, group: :test
 
-gem 'simplecov', require: false, group: :test
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-<<<<<<< HEAD
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-  
-  gem 'rspec-rails', '~> 3.7'
-  gem 'factory_bot_rails'
-  gem 'shoulda-matchers', '~> 3.1'
-=======
   gem "capybara", "~> 2.13"
   gem "selenium-webdriver"
 
@@ -72,7 +54,6 @@ group :development, :test do
   gem "faker"
   gem "rspec-rails", "~> 3.7"
   gem "shoulda-matchers", "~> 3.1"
->>>>>>> origin/master
 end
 
 group :development do
@@ -85,12 +66,5 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-<<<<<<< HEAD
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'nokogiri', "~> 1.8.1"
-gem 'rolify'
-
-=======
 gem "nokogiri", "~> 1.8.1"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
->>>>>>> origin/master

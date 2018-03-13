@@ -31,10 +31,6 @@ csv.each do |row|
     t[:pillar] = row[7]
     subjects << t
 end
-<<<<<<< HEAD
-puts "There are now #{Subject.count} rows in the Subject table"
-=======
->>>>>>> origin/master
 
 Subject.bulk_insert(values: subjects)
 

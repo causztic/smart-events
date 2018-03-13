@@ -10,12 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180306121241) do
-=======
 ActiveRecord::Schema.define(version: 20180312143805) do
 
->>>>>>> origin/master
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,34 +88,11 @@ ActiveRecord::Schema.define(version: 20180312143805) do
 
   create_table "subjects_users", id: false, force: :cascade do |t|
     t.bigint "subject_id"
-<<<<<<< HEAD
-    t.bigint "user_id"
-    t.index ["subject_id"], name: "index_subjects_users_on_subject_id"
-    t.index ["user_id"], name: "index_subjects_users_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-=======
     t.bigint "instructor_id"
     t.bigint "student_id"
     t.index ["instructor_id"], name: "index_subjects_users_on_instructor_id"
     t.index ["student_id"], name: "index_subjects_users_on_student_id"
     t.index ["subject_id"], name: "index_subjects_users_on_subject_id"
->>>>>>> origin/master
   end
 
   create_table "users", force: :cascade do |t|

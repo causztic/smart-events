@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-require 'rails_helper'
-
-RSpec.describe User, type: :model do
-  it { should have_many(:subjects) }
-  it { should validate_presence_of(:email) }
-=======
 require "rails_helper"
 
 RSpec.describe User, type: :model do
@@ -21,5 +14,4 @@ RSpec.describe User, type: :model do
       expect(coordinator).to be_valid
     end
   end
->>>>>>> origin/master
 end
