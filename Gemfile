@@ -39,6 +39,7 @@ gem "webpacker-react", "~> 0.3.2"
 
 # misc
 gem "bulk_insert"
+gem "reek"
 gem "rubocop", require: false
 gem "simplecov", require: false, group: :test
 
