@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
-  
+
   has_secure_password
 
   validates :type, :email, presence: true
@@ -23,5 +23,4 @@ class User < ApplicationRecord
   def display_name
     name.present? ? name : email
   end
-
 end

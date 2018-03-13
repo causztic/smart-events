@@ -1,0 +1,36 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - node_modules/**/*
+    - db/**/*
+    - bin/*
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Severity: refactor
+
+Metrics/AbcSize:
+  Severity: refactor
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Severity: refactor
