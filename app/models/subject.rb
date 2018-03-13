@@ -1,3 +1,4 @@
+# Subject has many lessons, and is taught by multiple instructors.
 class Subject < ApplicationRecord
   has_many :lessons, dependent: :destroy
 

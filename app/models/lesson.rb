@@ -1,3 +1,4 @@
+# A lesson. Has multiple Sessions for multiple classes.
 class Lesson < ApplicationRecord
   belongs_to :subject
   belongs_to :location
