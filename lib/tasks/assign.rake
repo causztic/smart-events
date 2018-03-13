@@ -1,7 +1,6 @@
 desc "Assigns Subjects and Modules to demo Students and Instructors"
 namespace :assign do
   task subjects: :environment do
-
     p "Generating a random term for freshmores."
 
     Student.freshmores.each do |student|
@@ -19,7 +18,6 @@ namespace :assign do
   end
 
   task faculty: :environment do
-
     p "Assigning faculty to subjects"
     # we assign 3 subjects for each instructor.
     subjects = Subject.with_students.to_a
@@ -28,6 +26,5 @@ namespace :assign do
       instructor.subjects = s
       instructor.save!
     end
-
   end
 end

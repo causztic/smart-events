@@ -3,11 +3,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :user_partial
 
   def current_user
-    begin
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    rescue ActiveRecord::RecordNotFound
-      reset_session
-    end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  rescue ActiveRecord::RecordNotFound
+    reset_session
   end
 
   def user_partial
@@ -18,9 +16,8 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless current_user
   end
 
-  def authenticate_role! role
+  def authenticate_role!(role)
     authenticate_user!
     head :unauthorized unless current_user.class == role
   end
-
 end

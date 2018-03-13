@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
+  root "sessions#new"
 
-  root 'sessions#new'
-
-  get    '/login' => 'sessions#new'
-  post   '/login' => 'sessions#create'
-  delete '/logout'=> 'sessions#destroy'
-  #post   '/users' => 'users#create'
+  get    "/login" => "sessions#new"
+  post   "/login" => "sessions#create"
+  delete "/logout" => "sessions#destroy"
+  # post   '/users' => 'users#create'
 
   resources :locations, only: [:index]
-  resources :subjects, only: [:index, :show], constraints: { id: %r{[^/]+} }
+  resources :subjects, only: %i[index show], constraints: { id: %r{[^/]+} }
 
   namespace :schedules do
     get :show
@@ -26,5 +25,4 @@ Rails.application.routes.draw do
   namespace :coordinator do
     get :dashboard
   end
-
 end

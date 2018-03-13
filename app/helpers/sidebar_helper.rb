@@ -1,5 +1,5 @@
 module SidebarHelper
-  def sidebar_item_class url
+  def sidebar_item_class(url)
     if current_page? url
       "sidebar-item active"
     else
