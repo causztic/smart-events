@@ -59,19 +59,19 @@ Coordinator.create!({ email: "coordinator@sutd.edu.sg", password: "password", pa
 # create a series of students
 students = []
 400.times do |t|
-    students << { type: Student, email: "freshmore#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
+    students << { email: "freshmore#{t}@sutd.edu.sg", password: "password", password_confirmation: "password" }
 end
 
 100.times do |t|
-    students << { type: Student, email: "istd#{t}@sutd.edu.sg", pillar: :ISTD, password: "password", password_confirmation: "password" }
-    students << { type: Student, email: "epd#{t}@sutd.edu.sg", pillar: :EPD, password: "password", password_confirmation: "password" }
-    students << { type: Student, email: "asd#{t}@sutd.edu.sg", pillar: :ASD, password: "password", password_confirmation: "password" }
-    students << { type: Student, email: "esd#{t}@sutd.edu.sg", pillar: :ESD, password: "password", password_confirmation: "password" }
+    students << { email: "istd#{t}@sutd.edu.sg", pillar: :ISTD, password: "password", password_confirmation: "password" }
+    students << { email: "epd#{t}@sutd.edu.sg", pillar: :EPD, password: "password", password_confirmation: "password" }
+    students << { email: "asd#{t}@sutd.edu.sg", pillar: :ASD, password: "password", password_confirmation: "password" }
+    students << { email: "esd#{t}@sutd.edu.sg", pillar: :ESD, password: "password", password_confirmation: "password" }
 end
 
 puts "Creating students, please wait warmly."
-
-User.bulk_insert(values: students)
+# can't use bulk_insert as password_digest is not rendered with it
+Student.create!(students)
 
 puts "#{Student.count} students created.\n"
 puts "Run 'rake scrape:faculty' to add in faculty accounts."
