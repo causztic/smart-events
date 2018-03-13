@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root 'sessions#new'
 
   get    '/login' => 'sessions#new'
@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   #post   '/users' => 'users#create'
 
   resources :locations, only: [:index]
-  resources :subjects, only: [:index, :show], constraints: { id: /[^\/]+/ }
+  resources :subjects, only: [:index, :show], constraints: { id: %r{[^/]+} }
 
-  namespace :schedules do 
+  namespace :schedules do
     get :show
   end
 

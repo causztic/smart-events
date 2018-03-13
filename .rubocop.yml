@@ -1,11 +1,15 @@
 AllCops:
   TargetRubyVersion: 2.5
   Exclude:
-    - db/migrate/*
-    - db/*
+    - node_modules/**/*
+    - db/**/*
+    - bin/*
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 Lint/AssignmentInCondition:
   Severity: refactor
