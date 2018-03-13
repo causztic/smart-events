@@ -19,6 +19,12 @@ default: &default
     - .sass
     - .scss
     - .css
+<<<<<<< HEAD
+=======
+    - .module.sass
+    - .module.scss
+    - .module.css
+>>>>>>> origin/master
     - .png
     - .svg
     - .gif

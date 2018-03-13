@@ -27,7 +27,10 @@
 # Ignore database configuration file
 
 /public/packs-test
+<<<<<<< HEAD
 /node_modules
+=======
+>>>>>>> origin/master
 yarn-debug.log*
 .yarn-integrity
 database.yml
@@ -35,11 +38,23 @@ database.yml
 # ignore packs
 public/packs/*
 
+<<<<<<< HEAD
 */.DS_Store
 /public/packs-test
 /node_modules
+=======
+.DS_Store
+/public/packs-test
+>>>>>>> origin/master
 yarn-debug.log*
 .yarn-integrity
 
 # coveralls
+<<<<<<< HEAD
 coverage/*
+=======
+coverage/*
+/public/packs-test
+yarn-debug.log*
+.yarn-integrity
+>>>>>>> origin/master

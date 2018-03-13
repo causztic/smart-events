@@ -2,14 +2,27 @@ language: ruby
 rvm: 
   - 2.4.2
 
+<<<<<<< HEAD
+=======
+before_install:
+  - nvm install 8
+>>>>>>> origin/master
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
   - cp config/database.yml.travis config/database.yml
+<<<<<<< HEAD
 
 script:
   - bundle exec rake db:setup
+=======
+  - yarn install
+
+script:
+  - bundle exec rake db:create
+  - bundle exec rake db:schema:load
+>>>>>>> origin/master
   - bundle exec rake spec
 
 after_script:
@@ -17,7 +30,13 @@ after_script:
 
 notifications:
   email: false
+<<<<<<< HEAD
 cache: bundler
+=======
+cache: 
+  bundler: true
+  yarn: true
+>>>>>>> origin/master
 services:
   - postgresql
 addons:

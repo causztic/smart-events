@@ -15,12 +15,30 @@ git clone git@github.com:causztic/smart-events.git
 bundle install
 cp config/database.yml.sample config/database.yml
 yarn install
+<<<<<<< HEAD
 ```
 
 # Testing
 - Create a database **smart_events_dev**
 - Update database.yml
 
+=======
+```
+
+# Testing
+- Create a database **smart_events_test**
+- Update database.yml
+
+
+# Populating Data
+```
+rake db:seed
+rake scrape:faculty  # this scrapes SUTD's page for faculty email
+rake assign:subjects # assign subjects randomly to students based on their pillar
+rake assign:faculty  # assign faculty to the subjects assigned
+```
+
+>>>>>>> origin/master
 Run tests with
 ```
 rspec

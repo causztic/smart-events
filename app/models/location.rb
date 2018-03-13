@@ -1,7 +1,5 @@
+# Location of where any lesson-session is being held.
 class Location < ApplicationRecord
-
-    has_and_belongs_to_many :lessons
-    validates :name, presence: true
-
-
+  has_many :sessions
+  validates :name, :roomname, presence: true
 end
