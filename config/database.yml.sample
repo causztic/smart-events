@@ -16,3 +16,11 @@ development:
   password: your_password_here
   host: localhost
   encoding: UTF8
+
+test:
+  <<: *default
+  database: smart_events_test
+  username: your_username_here
+  password: your_password_here
+  host: localhost
+  encoding: UTF8
