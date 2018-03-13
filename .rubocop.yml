@@ -1,0 +1,32 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - db/migrate/*
+    - db/*
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Lint/AssignmentInCondition:
+  Severity: refactor
+
+Metrics/AbcSize:
+  Severity: refactor
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Severity: refactor

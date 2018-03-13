@@ -38,8 +38,9 @@ gem 'webpacker-react', "~> 0.3.2"
 gem 'friendly_id', '~> 5.1.0'
 
 # misc
-gem 'bulk_insert'
+gem 'rubocop', require: false
 gem 'simplecov', require: false, group: :test
+gem 'bulk_insert'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
