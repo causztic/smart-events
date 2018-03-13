@@ -24,7 +24,7 @@ namespace :assign do
     # we assign 3 subjects for each instructor.
     subjects = Subject.with_students.to_a
     Instructor.all.order("RANDOM()").each do |instructor|
-      s = subjects.shift(3)
+      s = subjects.shift(2)
       instructor.subjects = s
       instructor.save!
     end
