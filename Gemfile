@@ -37,6 +37,8 @@ gem 'webpacker', '~> 3.3'
 gem 'webpacker-react', "~> 0.3.2"
 gem 'friendly_id', '~> 5.1.0'
 
+# misc
+gem 'bulk_insert'
 gem 'simplecov', require: false, group: :test
 
 group :development, :test do
