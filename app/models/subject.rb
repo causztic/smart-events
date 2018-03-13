@@ -3,7 +3,7 @@ class Subject < ApplicationRecord
   has_many :lessons, dependent: :destroy
 
   validates :code, :name, :hours_per_week, :facility_hours, :minimum_hours_per_lesson, :term_available, presence: true
-  validates :hours_per_week, numericality: { less_than: 10 , greater_than: 2 }
+  validates :hours_per_week, numericality: { less_than: 10 }
   validate :hours_per_week_must_be_bigger
 
   enum pillar: ::PILLARS
@@ -16,7 +16,7 @@ class Subject < ApplicationRecord
   end
 
   def self.subjects_this_term(pillar, term = 0)
-    where(pillar: pillar, term_available: term).order("RANDOM()").limit(4) # number of subjects kept to 4
+    where(pillar: pillar, term_available: term).order("RANDOM()").limit(3)
   end
 
   def self.freshmore_hass(term = 0)

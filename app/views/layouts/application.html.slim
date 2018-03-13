@@ -17,21 +17,12 @@ html
       .alert.alert-danger  = alert
     - if current_user
       nav.navbar.navbar-yellow
-<<<<<<< HEAD
-        a.navbar-brand href="#" = current_user.roles.first.name.upcase
-        = link_to destroy_user_session_path, method: :delete do
-          i.fas.fa-sign-out-alt
-      .container-fluid
-        .row
-          = render "shared/sidebar"
-=======
         a.navbar-brand href=root_path = current_user.type.upcase
         = link_to logout_path, method: :delete do
           i.fas.fa-sign-out-alt
       .container-fluid
         .row
           = render "#{user_partial}/sidebar"
->>>>>>> origin/master
           .col-md-11.col-12.main-content
             = yield
     - else

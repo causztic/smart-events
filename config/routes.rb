@@ -25,11 +25,4 @@ Rails.application.routes.draw do
   namespace :coordinator do
     get :dashboard
   end
-
-  resources :locations, only: [:index]
-  resources :subjects, only: [:index]
-
-  namespace :schedules do 
-    get :show
-  end
 end
