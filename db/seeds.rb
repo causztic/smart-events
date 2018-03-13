@@ -25,10 +25,10 @@ csv.each do |row|
         t[:description] = row[2].gsub("$",",")
     end
     t[:hours_per_week] = row[3]
-    t[:facility_hours] = row[4].gsub("$",",")
+    t[:facility_hours] = {}
     t[:minimum_hours_per_lesson] = row[5]
     t[:term_available] = row[6]
-    t[:pillar] = row[7]
+    t[:pillar] = Subject.pillars[row[7]]
     subjects << t
 end
 
