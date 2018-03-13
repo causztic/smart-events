@@ -33,4 +33,6 @@ rake assign:faculty  # assign faculty to the subjects assigned
 Run tests with
 ```
 rspec
+rubocop
+reek
 ```

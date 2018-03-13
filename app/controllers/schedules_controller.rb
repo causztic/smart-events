@@ -1,4 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user!
-  def show; end
+  def show
+    #@events = user.sessions
+    @events = []
+  end
 end
