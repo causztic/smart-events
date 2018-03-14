@@ -9,8 +9,13 @@ FactoryBot.define do
     term_available 1
     factory :subject_with_invalid_hours do
         hours_per_week 10_000
+    factory :subject_with_invalid_hours do
+        hours_per_week 4
     factory :subject_with_invalid_term do
         term_available 9
+    factory :subject_with_invalid_term do
+        term_available 0
+    end
     end
     end
     end
