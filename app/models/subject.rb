@@ -5,6 +5,7 @@ class Subject < ApplicationRecord
   validates :code, :name, :hours_per_week, :facility_hours, :minimum_hours_per_lesson, :term_available, presence: true
   validates :hours_per_week, numericality: { less_than: 10 }
   validate :hours_per_week_must_be_bigger
+  validates :term_available, numericality: { greater_than: 0, less_than: 9}
 
   enum pillar: ::PILLARS
 
