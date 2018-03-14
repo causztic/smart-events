@@ -7,7 +7,7 @@ export class Calendar extends Component {
     super(props)
     BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
     this.state = {
-      allViews: Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]),
+      allViews: ['month', 'work_week'],
       events: this.props.events
     }
   }
