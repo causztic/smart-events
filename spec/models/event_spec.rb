@@ -15,6 +15,21 @@ RSpec.describe Event, type: :model do
             event.start_time = Time.now
             event.end_time = Time.now - 1.hour
             expect(event).to_not be_valid
+           
+            event.start_date = start_date
+            event.end_date = end_date
+            expect(events.start_date).to be <= events.end_date
+            expect(duration).to be_between(0,600).inclusive
         end
     end
+    
+    describe "name validations" do
+        it "should validate the presence of names" do
+            it { should validate_presence_of(:name) }
+            it { should validate_presence_of(:speaker_name) }
+        end
+    end
+    
+    
+    
 end
