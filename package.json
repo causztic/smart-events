@@ -13,6 +13,7 @@
     "webpacker-react": "^0.3.2"
   },
   "devDependencies": {
+    "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1"
   }
 }
