@@ -36,6 +36,7 @@ gem "jquery-rails"
 gem "slim"
 gem "webpacker", "~> 3.3"
 gem "webpacker-react", "~> 0.3.2"
+gem "icalendar"
 
 # misc
 gem "bulk_insert"

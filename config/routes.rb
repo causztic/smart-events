@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :schedules do
     get :show
+    get :download
   end
 
   namespace :student do
