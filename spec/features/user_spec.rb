@@ -1,12 +1,17 @@
-require 'rails_helper'
+require "rails_helper"
 
-feature "Signing in" do
+feature "Session check" do
   before :each do
-    @user = create(:user) # this creates a default user using factory_bot
+    @instructor = create(:instructor) # this creates a default user using factory_bot
   end
-
-  it "signs me in" do
-    login_as(@user, scope: :user)
+  it "should redirect me back to the login screen with an invalid email" do
+    visit "login"
+    within(".landing-form") do
+      fill_in "Email", with: "non-existent@email.com"
+      fill_in "Password", with: "password"
+    end
+    click_button "Log in"
+    expect(page).to have_content(::NOTICE::LOG_IN_FAILURE)
+    expect(page).to have_current_path(login_path)
   end
-  
 end

@@ -1,0 +1,13 @@
+.sidebar.col-md-1.col-12
+  = link_to schedules_show_path, class: sidebar_item_class(schedules_show_path) do
+    i.fas.fa-alt.fa-calendar-alt.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+    p Class Schedule
+  = link_to instructor_subjects_path, class: sidebar_item_class(instructor_subjects_path) do
+    i.fas.fa-alt.fa-book.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+    p Subjects This Term
+  = link_to instructor_preferences_path, class: sidebar_item_class(instructor_preferences_path) do
+    i.fas.fa-clipboard-list.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+    p Schedule Preferences
+  .sidebar-item
+    i.fas.fa-alt.fa-comments.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
+    p Contact Coordinator

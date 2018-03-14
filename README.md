@@ -18,10 +18,21 @@ yarn install
 ```
 
 # Testing
-- Create a database **smart_events_dev**
+- Create a database **smart_events_test**
 - Update database.yml
+
+
+# Populating Data
+```
+rake db:seed
+rake scrape:faculty  # this scrapes SUTD's page for faculty email
+rake assign:subjects # assign subjects randomly to students based on their pillar
+rake assign:faculty  # assign faculty to the subjects assigned
+```
 
 Run tests with
 ```
 rspec
+rubocop
+reek
 ```

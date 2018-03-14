@@ -1,157 +1,155 @@
 ﻿code,name,description,hours_per_week,facility_hours,minimum_hours_per_lesson,term_available,pillar
-10.001,Advanced Mathematics I,nil,0,nil:0,0,0,Freshmore
-10.002,Physics I,nil,0,nil:0,0,0,Freshmore
-10.006,Chemistry and Biology: Natural World,nil,0,nil:0,0,0,Freshmore
-02.001,World Texts and Interpretations,nil,0,nil:0,0,0,Freshmore
-10.004,Advanced Mathematics II,nil,0,nil:0,0,0,Freshmore
-10.005,Physics II,nil,0,nil:0,0,0,Freshmore
-02.003,Theorizing Society$ the Self$ and Culture,nil,0,nil:0,0,0,Freshmore
-03.007 ,Introduction to Design,nil,0,nil:0,0,0,Freshmore
-10.007 ,Modelling the Systems World,nil,0,nil:0,0,0,Freshmore
-10.008 ,Engineering in the Physical World,nil,0,nil:0,0,0,Freshmore
-10.009 ,The Digital World,nil,0,nil:0,0,0,Freshmore
-10.011 ,Introduction to Physical Chemistry​,nil,0,nil:0,0,0,Freshmore
-10.012 ,Introduction to Biology,nil,0,nil:0,0,0,Freshmore
-01.400,Capstone 1,nil,0,nil:0,0,0,PillarYear
-01.401,Capstone 2,nil,0,nil:0,0,0,PillarYear
-30.001,Structures and Materials,nil,0,nil:0,0,0,EPD
-30.002,Circuits and Electronics,nil,0,nil:0,0,0,EPD
-30.003,Introduction to Probability and Statistics,nil,0,nil:0,0,0,EPD
-30.007,Engineering Design and Project Engineering,nil,0,nil:0,0,0,EPD
-30.101,Systems and Control,nil,0,nil:0,0,0,EPD
-30.104,Dynamics,nil,0,nil:0,0,0,EPD
-30.105,Machine Element Design,nil,0,nil:0,0,0,EPD
-30.106,Microelectronics Circuits and Devices,nil,0,nil:0,0,0,EPD
-30.107,Power Electronics,nil,0,nil:0,0,0,EPD
-30.108,Material Science,nil,0,nil:0,0,0,EPD
-30.109,Thermal Systems for Power and Environment,nil,0,nil:0,0,0,EPD
-30.110,Digital Systems Laboratory,nil,0,nil:0,0,0,EPD
-30.111,Entrepreneurship,nil,0,nil:0,0,0,EPD
-30.203,Topics in Biomedical and Healthcare Engineering,nil,0,nil:0,0,0,EPD
-30.113,Design and Fabrication of Microelectromechanical Systems ,nil,0,nil:0,0,0,EPD
-30.114,Advanced Feedback and Control,nil,0,nil:0,0,0,EPD
-30.115,Digital Signal Processing,nil,0,nil:0,0,0,EPD
-30.116,Introduction to Nano-electronics,nil,0,nil:0,0,0,EPD
-30.118,Optical Engineering and Communications,nil,0,nil:0,0,0,EPD
-30.123,Healthcare Product Design,nil,0,nil:0,0,0,EPD
-30.205,Aerodynamics,nil,0,nil:0,0,0,EPD
-30.117,Electric Power Systems Analysis and Design,nil,0,nil:0,0,0,EPD
-30.119,Intelligent Robotics,nil,0,nil:0,0,0,EPD
-30.200,Micro-Nano Projects Laboratory,nil,0,nil:0,0,0,EPD
-30.201,Wireless Communications and Internet of Things,nil,0,nil:0,0,0,EPD
-30.202,Digital Integrated Circuits Design,nil,0,nil:0,0,0,EPD
-30.207,Structural Mechanics and Design,nil,0,nil:0,0,0,EPD
-01.101,Global Health Technologies,nil,0,nil:0,0,0,EPD
-01.106,Engineering Management,nil,0,nil:0,0,0,EPD
-01.111,Culture Formation and Innovative Product Design,nil,0,nil:0,0,0,EPD
-01.105,Design and Manufacturing,nil,0,nil:0,0,0,EPD
-20.312,Social Architecture: Theory and Practice,nil,0,nil:0,0,0,ASD
-20.309,Sustainability of Ancient Chinese Architecture Design in the Modern World,nil,0,nil:0,0,0,ASD
-20.306,Integrated Building Design,nil,0,nil:0,0,0,ASD
-20.305,Conservation Theories and Approaches of Built Heritage,nil,0,nil:0,0,0,ASD
-20.112,Sustainable Design Option Studio 2,nil,0,nil:0,0,0,ASD
-20.314,Paradigms of Adaptation,nil,0,nil:0,0,0,ASD
-20.304,Urban Housing Typologies,nil,0,nil:0,0,0,ASD
-20.302,Advanced Topics in Performative Design: Daylight and Electric Lighting,nil,0,nil:0,0,0,ASD
-20.301,Material Computation: Advanced Topics in Geometry and Matter,nil,0,nil:0,0,0,ASD
-20.111,Sustainable Design Option Studio 1,nil,0,nil:0,0,0,ASD
-20.223 ,History$ Theory and Culture 3: Contemporary Architecture Between Technology$ Science and Culture,nil,0,nil:0,0,0,ASD
-20.213,Building Information Modeling,nil,0,nil:0,0,0,ASD
-20.203,Architectural Energy Systems,nil,0,nil:0,0,0,ASD
-20.103,Architecture Core Studio 3,nil,0,nil:0,0,0,ASD
-20.222,History$ Theory and Culture 2,nil,0,nil:0,0,0,ASD
-20.212,Digital Design and Fabrication,nil,0,nil:0,0,0,ASD
-20.202,Architectural Structure and Enclosure Design,nil,0,nil:0,0,0,ASD
-20.102,Architecture Core Studio 2,nil,0,nil:0,0,0,ASD
-20.221,History$ Theory and Culture 1,nil,0,nil:0,0,0,ASD
-20.211,Introduction to Design Computation,nil,0,nil:0,0,0,ASD
-20.201,Architectural Science and Technology,nil,0,nil:0,0,0,ASD
-20.101,Architecture Core Studio 1,nil,0,nil:0,0,0,ASD
-40.001 ,Probability,nil,0,nil:0,0,0,ESD
-40.002 ,Optimisation,nil,0,nil:0,0,0,ESD
-40.004 ,Statistics,nil,0,nil:0,0,0,ESD
-40.011 ,Data and Business Analytics,nil,0,nil:0,0,0,ESD
-40.012 ,Manufacturing and Service Operations,nil,0,nil:0,0,0,ESD
-40.013 ,Network Analysis and Control,nil,0,nil:0,0,0,ESD
-40.014 ,Engineering Systems Architecture,nil,0,nil:0,0,0,ESD
-40.015 ,Simulation Modelling and Analysis,nil,0,nil:0,0,0,ESD
-40.220 ,The Analytics Edge,nil,0,nil:0,0,0,ESD
-40.230 ,Sustainable Engineering,nil,0,nil:0,0,0,ESD
-40.232 ,Water Resources Management,nil,0,nil:0,0,0,ESD
-40.240 ,Investment Science,nil,0,nil:0,0,0,ESD
-40.242 ,Derivative Pricing and Risk Management,nil,0,nil:0,0,0,ESD
-40.260 ,Supply Chain Management,nil,0,nil:0,0,0,ESD
-40.302 ,Advanced Topics in Optimisation,nil,0,nil:0,0,0,ESD
-40.305 ,Advanced Topics in Stochastic Modelling,nil,0,nil:0,0,0,ESD
-40.316 ,Game Theory,nil,0,nil:0,0,0,ESD
-40.317 ,Financial Systems Design,nil,0,nil:0,0,0,ESD
-40.318 ,Global Trade and Logistics,nil,0,nil:0,0,0,ESD
-01.102 ,Energy Systems and Management,nil,0,nil:0,0,0,ESD
-01.104 ,Networked Life,nil,0,nil:0,0,0,ESD
-01.107,Urban Transportation,nil,0,nil:0,0,0,ESD
-50.001,Introduction to Information Systems and Programming,nil,0,nil:0,0,0,ISTD
-50.002,Computation Structures,nil,0,nil:0,0,0,ISTD
-50.003,Elements of Software Construction,nil,0,nil:0,0,0,ISTD
-50.004,Introduction to Algorithms,nil,0,nil:0,0,0,ISTD
-50.005,Computer System Engineering,nil,0,nil:0,0,0,ISTD
-50.034,Introduction to Probability and Statistics,nil,0,nil:0,0,0,ISTD
-50.006,User Interface Design and Implementation,nil,0,nil:0,0,0,ISTD
-50.008,Database Management Systems,nil,0,nil:0,0,0,ISTD
-50.012,Networks,nil,0,nil:0,0,0,ISTD
-50.017,Graphics and Visualisation,nil,0,nil:0,0,0,ISTD
-50.020,Security,nil,0,nil:0,0,0,ISTD
-50.021,Artificial Intelligence,nil,0,nil:0,0,0,ISTD
-50.033,Foundations of Game Design and Development,nil,0,nil:0,0,0,ISTD
-50.035,Computer Vision,nil,0,nil:0,0,0,ISTD
-50.036,Foundations of Distributed Autonomous Systems,nil,0,nil:0,0,0,ISTD
-50.037,Blockchain Technology,nil,0,nil:0,0,0,ISTD
-XXXXX,Computational Data Science,nil,0,nil:0,0,0,ISTD
-01.110,Computational Fabrication,nil,0,nil:0,0,0,ISTD
-01.112,Machine Learning,nil,0,nil:0,0,0,ISTD
-02.102,The World Since 1400,nil,0,nil:0,0,0,PillarYear
-02.103,Film Studies: History$ Theory and Practice,nil,0,nil:0,0,0,PillarYear
-02.105,Sages Through The Ages: Readings in Early Indian and Chinese Religion and Philosophy,nil,0,nil:0,0,0,PillarYear
-02.107,History of Chinese Urban Development,nil,0,nil:0,0,0,PillarYear
-02.108,Modern China: Pluralism$ and Beyond Territoriality,nil,0,nil:0,0,0,PillarYear
-02.109 ,Ethics of Leadership,nil,0,nil:0,0,0,PillarYear
-02.110,The Chinese Lyrical Tradition: Arts$ Literature and Landscape Design,nil,0,nil:0,0,0,PillarYear
-02.112,Space and Power,nil,0,nil:0,0,0,PillarYear
-02.113,The Laboratory of the Mind,nil,0,nil:0,0,0,PillarYear
-02.114,The Multicultural Archipelago in History and Story,nil,0,nil:0,0,0,PillarYear
-02.115 ,Global Shakespeares,nil,0,nil:0,0,0,PillarYear
-02.116,The Word and the World: Introducing Literary Theory,nil,0,nil:0,0,0,PillarYear
-02.118 ,Film Studies II: Production,nil,0,nil:0,0,0,PillarYear
-02.119,Introduction to Political Philosophy,nil,0,nil:0,0,0,PillarYear
-02.120,History of Traditional Chinese Short Fiction,nil,0,nil:0,0,0,PillarYear
-02.121,The Question of Being,nil,0,nil:0,0,0,PillarYear
-02.122,The Day After Tomorrow: Environmental Apocalypse and Political Mobilization,nil,0,nil:0,0,0,PillarYear
-02.123,Questioning Modernity in Europe and Asia,nil,0,nil:0,0,0,PillarYear
-02.125,Normalcy and Deviance: Philosophical Approaches to Sexuality,nil,0,nil:0,0,0,PillarYear
-02.126,Southeast Asia Under Japan: Motives$ Memoirs$ and Media,nil,0,nil:0,0,0,PillarYear
-02.127 ,Satan and His Afterlives in Literature and Film,nil,0,nil:0,0,0,PillarYear
-02.130 ,Slums$ Squatters$ and Smart Cities: History and Theory of Urban Planning,nil,0,nil:0,0,0,PillarYear
-02.201 ,Digital Sociology,nil,0,nil:0,0,0,PillarYear
-02.202 ,Organizational Processes,nil,0,nil:0,0,0,PillarYear
-02.203,Psychological Approaches to Bilingualism,nil,0,nil:0,0,0,PillarYear
-02.204,Technology and the Self,nil,0,nil:0,0,0,PillarYear
-02.205,Human Development: Theory and Practice,nil,0,nil:0,0,0,PillarYear
-02.206 ,Ethics and Social Responsibility,nil,0,nil:0,0,0,PillarYear
-02.207 ,Organizations and People,nil,0,nil:0,0,0,PillarYear
-02.208 ,Microeconomics,nil,0,nil:0,0,0,PillarYear
-02.209,Social Theories of Urban Life,nil,0,nil:0,0,0,PillarYear
-02.210,Who Gets Ahead? Sociology of Social Networks and Social Capital,nil,0,nil:0,0,0,PillarYear
-02.211,Critical Management Studies,nil,0,nil:0,0,0,PillarYear
-02.212,The Visual Culture of Science and Technology,nil,0,nil:0,0,0,PillarYear
-02.213,How Culture Works,nil,0,nil:0,0,0,PillarYear
-02.214,Magic$ Science and Religion,nil,0,nil:0,0,0,PillarYear
-02.217 ,Gender Sexuality and Society,nil,0,nil:0,0,0,PillarYear
-02.218 ,Introduction to Psychology,nil,0,nil:0,0,0,PillarYear
-02.219 ,Rice Cultures: Technology$ Society and Environment in Asia,nil,0,nil:0,0,0,PillarYear
-02.220 ,“How the Things People Make$ Make People”: Material Things in Social Life,nil,0,nil:0,0,0,PillarYear
-02.221 ,Making Maps I: Introduction to Spatial Analysis$ Data Visualization and Map Design,nil,0,nil:0,0,0,PillarYear
-02.222 ,Unnatural Disasters,nil,0,nil:0,0,0,PillarYear
-02.223,Morals and Markets,nil,0,nil:0,0,0,PillarYear
-02.224,Sociology of Deviance and Social Control,nil,0,nil:0,0,0,PillarYear
-02.227,Maps and Politics,nil,0,nil:0,0,0,PillarYear
-02.302,Business Culture and Entrepreneurship in China,nil,0,nil:0,0,0,PillarYear
-02.303,The Role of Technology and Design on Growth in China,nil,0,nil:0,0,0,PillarYear
+10.001,Advanced Mathematics I,,0,,0,0,Freshmore
+10.002,Physics I,,0,,0,0,Freshmore
+10.006,Chemistry and Biology: Natural World,,0,,0,0,Freshmore
+02.001,World Texts and Interpretations,,0,,0,0,FreshmoreHASS
+10.004,Advanced Mathematics II,,0,,0,1,Freshmore
+10.005,Physics II,,0,,0,1,Freshmore
+02.003,Theorizing Society$ the Self$ and Culture,,0,,0,1,FreshmoreHASS
+03.007,Introduction to Design,,0,,0,1,Freshmore
+10.007,Modelling the Systems World,,0,,0,2,Freshmore
+10.008,Engineering in the Physical World,,0,,0,2,Freshmore
+10.009,The Digital World,,0,,0,2,Freshmore
+10.011,Introduction to Physical Chemistry​,,0,,0,2,Freshmore
+10.012,Introduction to Biology,,0,,0,2,Freshmore
+30.001,Structures and Materials,,0,,0,3,EPD
+30.002,Circuits and Electronics,,0,,0,3,EPD
+30.003,Introduction to Probability and Statistics,,0,,0,3,EPD
+30.007,Engineering Design and Project Engineering,,0,,0,4,EPD
+30.101,Systems and Control,,0,,0,4,EPD
+30.104,Dynamics,,0,,0,4,EPD
+30.105,Machine Element Design,,0,,0,5,EPD
+30.106,Microelectronics Circuits and Devices,,0,,0,5,EPD
+30.107,Power Electronics,,0,,0,5,EPD
+30.108,Material Science,,0,,0,5,EPD
+30.109,Thermal Systems for Power and Environment,,0,,0,5,EPD
+30.110,Digital Systems Laboratory,,0,,0,5,EPD
+30.111,Entrepreneurship,,0,,0,5,EPD
+30.203,Topics in Biomedical and Healthcare Engineering,,0,,0,5,EPD
+30.113,Design and Fabrication of Microelectromechanical Systems ,,0,,0,5,EPD
+30.114,Advanced Feedback and Control,,0,,0,5,EPD
+30.115,Digital Signal Processing,,0,,0,5,EPD
+30.116,Introduction to Nano-electronics,,0,,0,5,EPD
+30.118,Optical Engineering and Communications,,0,,0,5,EPD
+30.123,Healthcare Product Design,,0,,0,5,EPD
+30.205,Aerodynamics,,0,,0,5,EPD
+30.117,Electric Power Systems Analysis and Design,,0,,0,5,EPD
+30.119,Intelligent Robotics,,0,,0,5,EPD
+30.200,Micro-Nano Projects Laboratory,,0,,0,5,EPD
+30.201,Wireless Communications and Internet of Things,,0,,0,5,EPD
+30.202,Digital Integrated Circuits Design,,0,,0,5,EPD
+30.207,Structural Mechanics and Design,,0,,0,5,EPD
+01.101,Global Health Technologies,,0,,0,5,EPD
+01.106,Engineering Management,,0,,0,5,EPD
+01.111,Culture Formation and Innovative Product Design,,0,,0,5,EPD
+01.105,Design and Manufacturing,,0,,0,5,EPD
+20.312,Social Architecture: Theory and Practice,,0,,0,3,ASD
+20.309,Sustainability of Ancient Chinese Architecture Design in the Modern World,,0,,0,3,ASD
+20.306,Integrated Building Design,,0,,0,3,ASD
+20.305,Conservation Theories and Approaches of Built Heritage,,0,,0,4,ASD
+20.112,Sustainable Design Option Studio 2,,0,,0,4,ASD
+20.314,Paradigms of Adaptation,,0,,0,4,ASD
+20.304,Urban Housing Typologies,,0,,0,5,ASD
+20.302,Advanced Topics in Performative Design: Daylight and Electric Lighting,,0,,0,5,ASD
+20.301,Material Computation: Advanced Topics in Geometry and Matter,,0,,0,5,ASD
+20.111,Sustainable Design Option Studio 1,,0,,0,5,ASD
+20.223 ,History$ Theory and Culture 3: Contemporary Architecture Between Technology$ Science and Culture,,0,,0,5,ASD
+20.213,Building Information Modeling,,0,,0,5,ASD
+20.203,Architectural Energy Systems,,0,,0,5,ASD
+20.103,Architecture Core Studio 3,,0,,0,5,ASD
+20.222,History$ Theory and Culture 2,,0,,0,5,ASD
+20.212,Digital Design and Fabrication,,0,,0,5,ASD
+20.202,Architectural Structure and Enclosure Design,,0,,0,5,ASD
+20.102,Architecture Core Studio 2,,0,,0,5,ASD
+20.221,History$ Theory and Culture 1,,0,,0,5,ASD
+20.211,Introduction to Design Computation,,0,,0,5,ASD
+20.201,Architectural Science and Technology,,0,,0,5,ASD
+20.101,Architecture Core Studio 1,,0,,0,5,ASD
+40.001 ,Probability,,0,,0,0,ESD
+40.002 ,Optimisation,,0,,0,0,ESD
+40.004 ,Statistics,,0,,0,0,ESD
+40.011 ,Data and Business Analytics,,0,,0,0,ESD
+40.012 ,Manufacturing and Service Operations,,0,,0,0,ESD
+40.013 ,Network Analysis and Control,,0,,0,0,ESD
+40.014 ,Engineering Systems Architecture,,0,,0,0,ESD
+40.015 ,Simulation Modelling and Analysis,,0,,0,0,ESD
+40.220 ,The Analytics Edge,,0,,0,0,ESD
+40.230 ,Sustainable Engineering,,0,,0,0,ESD
+40.232 ,Water Resources Management,,0,,0,0,ESD
+40.240 ,Investment Science,,0,,0,0,ESD
+40.242 ,Derivative Pricing and Risk Management,,0,,0,0,ESD
+40.260 ,Supply Chain Management,,0,,0,0,ESD
+40.302 ,Advanced Topics in Optimisation,,0,,0,0,ESD
+40.305 ,Advanced Topics in Stochastic Modelling,,0,,0,0,ESD
+40.316 ,Game Theory,,0,,0,0,ESD
+40.317 ,Financial Systems Design,,0,,0,0,ESD
+40.318 ,Global Trade and Logistics,,0,,0,0,ESD
+01.102 ,Energy Systems and Management,,0,,0,0,ESD
+01.104 ,Networked Life,,0,,0,0,ESD
+01.107,Urban Transportation,,0,,0,0,ESD
+50.001,Introduction to Information Systems and Programming,,0,,0,3,ISTD
+50.002,Computation Structures,,0,,0,3,ISTD
+50.003,Elements of Software Construction,,0,,0,4,ISTD
+50.004,Introduction to Algorithms,,0,,0,3,ISTD
+50.005,Computer System Engineering,,0,,0,4,ISTD
+50.034,Introduction to Probability and Statistics,,0,,0,4,ISTD
+50.006,User Interface Design and Implementation,,0,,0,5,ISTD
+50.008,Database Management Systems,,0,,0,5,ISTD
+50.012,Networks,,0,,0,5,ISTD
+50.017,Graphics and Visualisation,,0,,0,5,ISTD
+50.020,Security,,0,,0,5,ISTD
+50.021,Artificial Intelligence,,0,,0,5,ISTD
+50.033,Foundations of Game Design and Development,,0,,0,5,ISTD
+50.035,Computer Vision,,0,,0,5,ISTD
+50.036,Foundations of Distributed Autonomous Systems,,0,,0,5,ISTD
+50.037,Blockchain Technology,,0,,0,5,ISTD
+XXXXX,Computational Data Science,,0,,0,5,ISTD
+01.110,Computational Fabrication,,0,,0,5,ISTD
+01.112,Machine Learning,,0,,0,5,ISTD
+02.102,The World Since 1400,,0,,0,0,HASS
+02.103,Film Studies: History$ Theory and Practice,,0,,0,0,HASS
+02.105,Sages Through The Ages: Readings in Early Indian and Chinese Religion and Philosophy,,0,,0,0,HASS
+02.107,History of Chinese Urban Development,,0,,0,0,HASS
+02.108,Modern China: Pluralism$ and Beyond Territoriality,,0,,0,0,HASS
+02.109 ,Ethics of Leadership,,0,,0,0,HASS
+02.110,The Chinese Lyrical Tradition: Arts$ Literature and Landscape Design,,0,,0,0,HASS
+02.112,Space and Power,,0,,0,0,HASS
+02.113,The Laboratory of the Mind,,0,,0,0,HASS
+02.114,The Multicultural Archipelago in History and Story,,0,,0,0,HASS
+02.115 ,Global Shakespeares,,0,,0,0,HASS
+02.116,The Word and the World: Introducing Literary Theory,,0,,0,0,HASS
+02.118 ,Film Studies II: Production,,0,,0,0,HASS
+02.119,Introduction to Political Philosophy,,0,,0,0,HASS
+02.120,History of Traditional Chinese Short Fiction,,0,,0,0,HASS
+02.121,The Question of Being,,0,,0,0,HASS
+02.122,The Day After Tomorrow: Environmental Apocalypse and Political Mobilization,,0,,0,0,HASS
+02.123,Questioning Modernity in Europe and Asia,,0,,0,0,HASS
+02.125,Normalcy and Deviance: Philosophical Approaches to Sexuality,,0,,0,0,HASS
+02.126,Southeast Asia Under Japan: Motives$ Memoirs$ and Media,,0,,0,0,HASS
+02.127,Satan and His Afterlives in Literature and Film,,0,,0,0,HASS
+02.130,Slums$ Squatters$ and Smart Cities: History and Theory of Urban Planning,,0,,0,0,HASS
+02.201,Digital Sociology,,0,,0,0,HASS
+02.202,Organizational Processes,,0,,0,0,HASS
+02.203,Psychological Approaches to Bilingualism,,0,,0,0,HASS
+02.204,Technology and the Self,,0,,0,0,HASS
+02.205,Human Development: Theory and Practice,,0,,0,0,HASS
+02.206,Ethics and Social Responsibility,,0,,0,0,HASS
+02.207,Organizations and People,,0,,0,0,HASS
+02.208,Microeconomics,,0,,0,0,HASS
+02.209,Social Theories of Urban Life,,0,,0,0,HASS
+02.210,Who Gets Ahead? Sociology of Social Networks and Social Capital,,0,,0,0,HASS
+02.211,Critical Management Studies,,0,,0,0,HASS
+02.212,The Visual Culture of Science and Technology,,0,,0,0,HASS
+02.213,How Culture Works,,0,,0,0,HASS
+02.214,Magic$ Science and Religion,,0,,0,0,HASS
+02.217,Gender Sexuality and Society,,0,,0,0,HASS
+02.218,Introduction to Psychology,,0,,0,0,HASS
+02.219,Rice Cultures: Technology$ Society and Environment in Asia,,0,,0,0,HASS
+02.220,“How the Things People Make$ Make People”: Material Things in Social Life,,0,,0,0,HASS
+02.221,Making Maps I: Introduction to Spatial Analysis$ Data Visualization and Map Design,,0,,0,0,HASS
+02.222,Unnatural Disasters,,0,,0,0,HASS
+02.223,Morals and Markets,,0,,0,0,HASS
+02.224,Sociology of Deviance and Social Control,,0,,0,0,HASS
+02.227,Maps and Politics,,0,,0,0,HASS
+02.302,Business Culture and Entrepreneurship in China,,0,,0,0,HASS
+02.303,The Role of Technology and Design on Growth in China,,0,,0,0,HASS

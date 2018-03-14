@@ -1,27 +1,27 @@
+# Base User class.
 class User < ApplicationRecord
-  rolify
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
-  
-  ROLES = [:coordinator, :student, :instructor]
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
-  # an instructor teaches many subjects,
-  # a student is enrolled to many subjects.
-  has_and_belongs_to_many :subjects
+  has_secure_password
 
-  def send_message
-    if has_role? :instructor, :coordinator
+  validates :type, :email, presence: true
+  validates :password, confirmation: true
+  validates :password_confirmation, presence: true, if: -> { new_record? }
 
-    end
+  def coordinator?
+    self.class == Coordinator
   end
 
-  def review_message
-    if has_role? :instructor
-      #review own message history
-    end
-    if has_role? :coordinator
-      #review all message history
-    end
+  def instructor?
+    self.class == Instructor
+  end
+
+  def student?
+    self.class == Student
+  end
+
+  def display_name
+    name.present? ? name : email
   end
 end

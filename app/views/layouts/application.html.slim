@@ -7,8 +7,8 @@ html
     = stylesheet_pack_tag 'vendor'
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application'
-    script src="https://use.fontawesome.com/releases/v5.0.6/js/solid.js"
-    script src="https://use.fontawesome.com/releases/v5.0.6/js/fontawesome.js"
+    script src="https://use.fontawesome.com/releases/v5.0.7/js/solid.js"
+    script src="https://use.fontawesome.com/releases/v5.0.7/js/fontawesome.js"
 
   body class="#{controller.controller_name}-#{controller.action_name}"
     - if notice
@@ -17,12 +17,12 @@ html
       .alert.alert-danger  = alert
     - if current_user
       nav.navbar.navbar-yellow
-        a.navbar-brand href="#" = current_user.roles.first.name.upcase
-        = link_to destroy_user_session_path, method: :delete do
+        a.navbar-brand href=root_path = current_user.type.upcase
+        = link_to logout_path, method: :delete do
           i.fas.fa-sign-out-alt
       .container-fluid
         .row
-          = render "shared/sidebar"
+          = render "#{user_partial}/sidebar"
           .col-md-11.col-12.main-content
             = yield
     - else
