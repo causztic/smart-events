@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ChatRoom, type: :model do
-  it { should belong_to(:instructor) }
-  it { should have_one(:coordinator) }
+  it { should belong_to(:user) }
+  it { should have_many(:users) }
+  it { should have_many(:messages) }
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "sessions#new"
+  mount ActionCable.server => '/cable'
 
   get    "/login" => "sessions#new"
   post   "/login" => "sessions#create"
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:index]
   resources :subjects, only: %i[index show], constraints: { id: %r{[^/]+} }
+  resources :messages
 
   namespace :schedules do
     get :show
@@ -20,10 +22,6 @@ Rails.application.routes.draw do
   end
 
   namespace :instructor do
-    resource :chat_room, only: [] do
-      get :start
-    end
-
     get :dashboard
     get :subjects
     get :preferences
