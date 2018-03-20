@@ -30,13 +30,13 @@ export class ChatChannel extends PureComponent {
     return (
     <div>
       <ActionCable ref='roomChannel' channel={{channel: 'MessagesChannel', room: this.props.room}} onReceived={this.onReceived} />
-      <ul>
+      <ul className='messages'>
         {messages.map((m) =>
           <li key={m.message.id}>{m.message.content}</li>
         )}
       </ul>
       <input ref='newMessage' type='text' />
-      <button onClick={this.sendMessage}>Send</button>
+      <button onClick={this.sendMessage}>></button>
     </div>
     )
   }
