@@ -1,12 +1,31 @@
 import React, { PureComponent } from 'react';
 import {ActionCableProvider, ActionCable} from 'react-actioncable-provider';
+import axios from 'axios';
 
 export class ChatChannel extends PureComponent {
   constructor(props){
     super(props);
     this.onReceived = this.onReceived.bind(this);
+    this.checkEnter = this.checkEnter.bind(this);
     this.state = {
       messages: []
+    }
+  }
+
+  componentDidMount(){
+    axios.get(`/chat_rooms/${this.props.room}/messages.json`)
+    .then(res => {
+      const messages = res.data.results;
+      this.setState({ messages: [
+        ...messages,
+        ...this.state.messages,
+      ] });
+    });
+  }
+
+  checkEnter (key) {
+    if (key.key === 'Enter') {
+      this.sendMessage();
     }
   }
 
@@ -14,7 +33,7 @@ export class ChatChannel extends PureComponent {
     this.setState({
       messages: [
         ...this.state.messages,
-        message
+        message.message
       ]
     })
   }
@@ -22,7 +41,10 @@ export class ChatChannel extends PureComponent {
   sendMessage = () => {
     const message = this.refs.newMessage.value
     // Call perform or send
-    this.refs.roomChannel.send({message: message, room: this.props.room})
+    if (message.length > 0){
+      this.refs.roomChannel.send({message: message, room: this.props.room})
+      this.refs.newMessage.value = '';
+    }
   }
 
   render() {
@@ -31,11 +53,11 @@ export class ChatChannel extends PureComponent {
     <div>
       <ActionCable ref='roomChannel' channel={{channel: 'MessagesChannel', room: this.props.room}} onReceived={this.onReceived} />
       <ul className='messages'>
-        {messages.map((m) =>
-          <li key={m.message.id}>{m.message.content}</li>
+        {messages.map((message) =>
+          <li key={message.id}>{message.content}</li>
         )}
       </ul>
-      <input ref='newMessage' type='text' />
+      <input ref='newMessage' type='text' onKeyPress={this.checkEnter}/>
       <button onClick={this.sendMessage}>></button>
     </div>
     )
