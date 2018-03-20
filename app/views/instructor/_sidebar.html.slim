@@ -8,6 +8,4 @@
   = link_to instructor_preferences_path, class: sidebar_item_class(instructor_preferences_path) do
     i.fas.fa-clipboard-list.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
     p Schedule Preferences
-  .sidebar-item
-    i.fas.fa-alt.fa-comments.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
-    p Contact Coordinator
+= react_component "Chat"

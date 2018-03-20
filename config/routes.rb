@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   end
 
   namespace :instructor do
+    resource :chat_room, only: [] do
+      get :start
+    end
+
     get :dashboard
     get :subjects
     get :preferences

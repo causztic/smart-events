@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312143805) do
+ActiveRecord::Schema.define(version: 20180320073344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "title"
+    t.bigint "instructor_id"
+    t.bigint "coordinator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instructor_id", "coordinator_id"], name: "index_chat_rooms_on_instructor_id_and_coordinator_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
