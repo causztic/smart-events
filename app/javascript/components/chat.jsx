@@ -20,7 +20,12 @@ export class ChatChannel extends PureComponent {
         ...messages,
         ...this.state.messages,
       ] });
+      this.el.scrollIntoView({ behavior: 'smooth' });
     });
+  }
+
+  componentDidUpdate(){
+    this.el.scrollIntoView({ behavior: 'smooth' });
   }
 
   checkEnter (key) {
@@ -36,6 +41,7 @@ export class ChatChannel extends PureComponent {
         message.message
       ]
     })
+    this.el.scrollIntoView({ behavior: 'smooth' });
   }
 
   sendMessage = () => {
@@ -54,8 +60,11 @@ export class ChatChannel extends PureComponent {
       <ActionCable ref='roomChannel' channel={{channel: 'MessagesChannel', room: this.props.room}} onReceived={this.onReceived} />
       <ul className='messages'>
         {messages.map((message) =>
-          <li key={message.id}>{message.content}</li>
+          <li key={message.id} className={message.user_id === this.props.user_id ? 'self-message' : ''}>
+            <span>{message.content}</span>
+          </li>
         )}
+        <li ref={el => { this.el = el; }} />
       </ul>
       <input ref='newMessage' type='text' onKeyPress={this.checkEnter}/>
       <button onClick={this.sendMessage}>></button>
@@ -83,7 +92,7 @@ export class Chat extends PureComponent {
         <div className='chat-area'>
           { chatWindow &&
             <div className='chat-window'>
-              {this.props.chat_room_ids.map((id) =>  <ChatChannel key={id} room={id}/>)}
+              {this.props.chat_room_ids.map((id) =>  <ChatChannel key={id} room={id} user_id={this.props.user_id}/>)}
             </div>
           }
           <a className='chat-icon' onClick={this.toggleChatWindow}>💬</a>
