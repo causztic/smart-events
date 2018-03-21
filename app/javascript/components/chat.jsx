@@ -115,7 +115,7 @@ export class Chat extends PureComponent {
       <ActionCableProvider>
         <div className='chat-area'>
           { chatWindow &&
-            <div className='chat-window'>
+            <div className={chatRoomIds.length > 1 ? 'chat-window with-tabs' : 'chat-window'}>
               {chatRoomIds.length > 1 &&
                 chatRoomIds.map((id) => <span key={id.id} className={id.visible ? 'tab visible' : 'tab'}
                 onClick={() => this.updateShownChat(id)}>{id.name}</span>)
