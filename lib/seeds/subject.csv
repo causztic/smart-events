@@ -2,11 +2,11 @@
 10.001,Advanced Mathematics I,,0,{lecture: 2$classroom: 3},0,0,Freshmore
 10.002,Physics I,,0,{classroom: 5},0,0,Freshmore
 10.006,Chemistry and Biology: Natural World,,0,{lecture: 2$classroom: 4},0,0,Freshmore
-2.001,World Texts and Interpretations,,0,{lecture: 1$classroom: 2},0,0,FreshmoreHASS
+02.001,World Texts and Interpretations,,0,{lecture: 1$classroom: 2},0,0,FreshmoreHASS
 10.004,Advanced Mathematics II,,0,{lecture: 2$classroom: 3},0,1,Freshmore
 10.005,Physics II,,0,{classroom: 5},0,1,Freshmore
-2.003,Theorizing Society$ the Self$ and Culture,,0,{lecture: 1$classroom: 2},0,1,FreshmoreHASS
-3.007,Introduction to Design,,0,{lecture:1$classroom: 6},0,1,Freshmore
+02.003,Theorizing Society$ the Self$ and Culture,,0,{lecture: 1$classroom: 2},0,1,FreshmoreHASS
+03.007,Introduction to Design,,0,{lecture:1$classroom: 6},0,1,Freshmore
 10.007,Modelling the Systems World,,0,{lecture: 2$classroom: 3},0,2,Freshmore
 10.008,Engineering in the Physical World,,0,{classroom: 5},0,2,Freshmore
 10.009,The Digital World,,0,{classroom: 5},0,2,Freshmore
@@ -23,7 +23,7 @@
 30.107,Power Electronics,,0,,0,5,EPD
 30.108,Material Science,,0,,0,5,EPD
 30.109,Thermal Systems for Power and Environment,,0,,0,5,EPD
-30.11,Digital Systems Laboratory,,0,,0,5,EPD
+30.110,Digital Systems Laboratory,,0,,0,5,EPD
 30.111,Entrepreneurship,,0,,0,5,EPD
 30.203,Topics in Biomedical and Healthcare Engineering,,0,,0,5,EPD
 30.113,Design and Fabrication of Microelectromechanical Systems ,,0,,0,5,EPD
@@ -35,14 +35,14 @@
 30.205,Aerodynamics,,0,,0,5,EPD
 30.117,Electric Power Systems Analysis and Design,,0,,0,5,EPD
 30.119,Intelligent Robotics,,0,,0,5,EPD
-30.2,Micro-Nano Projects Laboratory,,0,,0,5,EPD
+30.200,Micro-Nano Projects Laboratory,,0,,0,5,EPD
 30.201,Wireless Communications and Internet of Things,,0,,0,5,EPD
 30.202,Digital Integrated Circuits Design,,0,,0,5,EPD
 30.207,Structural Mechanics and Design,,0,,0,5,EPD
-1.101,Global Health Technologies,,0,,0,5,EPD
-1.106,Engineering Management,,0,,0,5,EPD
-1.111,Culture Formation and Innovative Product Design,,0,,0,5,EPD
-1.105,Design and Manufacturing,,0,,0,5,EPD
+01.101,Global Health Technologies,,0,,0,5,EPD
+01.106,Engineering Management,,0,,0,5,EPD
+01.111,Culture Formation and Innovative Product Design,,0,,0,5,EPD
+01.105,Design and Manufacturing,,0,,0,5,EPD
 20.312,Social Architecture: Theory and Practice,,0,,0,3,ASD
 20.309,Sustainability of Ancient Chinese Architecture Design in the Modern World,,0,,0,3,ASD
 20.306,Integrated Building Design,,0,,0,3,ASD
@@ -84,9 +84,9 @@
 40.316,Game Theory,,0,,0,0,ESD
 40.317,Financial Systems Design,,0,,0,0,ESD
 40.318,Global Trade and Logistics,,0,,0,0,ESD
-1.102,Energy Systems and Management,,0,,0,0,ESD
-1.104,Networked Life,,0,,0,0,ESD
-1.107,Urban Transportation,,0,,0,0,ESD
+01.102,Energy Systems and Management,,0,,0,0,ESD
+01.104,Networked Life,,0,,0,0,ESD
+01.107,Urban Transportation,,0,,0,0,ESD
 50.001,Introduction to Information Systems and Programming,,0,,0,3,ISTD
 50.002,Computation Structures,,0,,0,3,ISTD
 50.003,Elements of Software Construction,,0,,0,4,ISTD
@@ -97,59 +97,59 @@
 50.008,Database Management Systems,,0,,0,5,ISTD
 50.012,Networks,,0,,0,5,ISTD
 50.017,Graphics and Visualisation,,0,,0,5,ISTD
-50.02,Security,,0,,0,5,ISTD
+50.020,Security,,0,,0,5,ISTD
 50.021,Artificial Intelligence,,0,,0,5,ISTD
 50.033,Foundations of Game Design and Development,,0,,0,5,ISTD
 50.035,Computer Vision,,0,,0,5,ISTD
 50.036,Foundations of Distributed Autonomous Systems,,0,,0,5,ISTD
 50.037,Blockchain Technology,,0,,0,5,ISTD
 XXXXX,Computational Data Science,,0,,0,5,ISTD
-1.11,Computational Fabrication,,0,,0,5,ISTD
-1.112,Machine Learning,,0,,0,5,ISTD
-2.102,The World Since 1400,,0,,0,0,HASS
-2.103,Film Studies: History$ Theory and Practice,,0,,0,0,HASS
-2.105,Sages Through The Ages: Readings in Early Indian and Chinese Religion and Philosophy,,0,,0,0,HASS
-2.107,History of Chinese Urban Development,,0,,0,0,HASS
-2.108,Modern China: Pluralism$ and Beyond Territoriality,,0,,0,0,HASS
-2.109,Ethics of Leadership,,0,,0,0,HASS
-2.11,The Chinese Lyrical Tradition: Arts$ Literature and Landscape Design,,0,,0,0,HASS
-2.112,Space and Power,,0,,0,0,HASS
-2.113,The Laboratory of the Mind,,0,,0,0,HASS
-2.114,The Multicultural Archipelago in History and Story,,0,,0,0,HASS
-2.115,Global Shakespeares,,0,,0,0,HASS
-2.116,The Word and the World: Introducing Literary Theory,,0,,0,0,HASS
-2.118,Film Studies II: Production,,0,,0,0,HASS
-2.119,Introduction to Political Philosophy,,0,,0,0,HASS
-2.12,History of Traditional Chinese Short Fiction,,0,,0,0,HASS
-2.121,The Question of Being,,0,,0,0,HASS
-2.122,The Day After Tomorrow: Environmental Apocalypse and Political Mobilization,,0,,0,0,HASS
-2.123,Questioning Modernity in Europe and Asia,,0,,0,0,HASS
-2.125,Normalcy and Deviance: Philosophical Approaches to Sexuality,,0,,0,0,HASS
-2.126,Southeast Asia Under Japan: Motives$ Memoirs$ and Media,,0,,0,0,HASS
-2.127,Satan and His Afterlives in Literature and Film,,0,,0,0,HASS
-2.13,Slums$ Squatters$ and Smart Cities: History and Theory of Urban Planning,,0,,0,0,HASS
-2.201,Digital Sociology,,0,,0,0,HASS
-2.202,Organizational Processes,,0,,0,0,HASS
-2.203,Psychological Approaches to Bilingualism,,0,,0,0,HASS
-2.204,Technology and the Self,,0,,0,0,HASS
-2.205,Human Development: Theory and Practice,,0,,0,0,HASS
-2.206,Ethics and Social Responsibility,,0,,0,0,HASS
-2.207,Organizations and People,,0,,0,0,HASS
-2.208,Microeconomics,,0,,0,0,HASS
-2.209,Social Theories of Urban Life,,0,,0,0,HASS
-2.21,Who Gets Ahead? Sociology of Social Networks and Social Capital,,0,,0,0,HASS
-2.211,Critical Management Studies,,0,,0,0,HASS
-2.212,The Visual Culture of Science and Technology,,0,,0,0,HASS
-2.213,How Culture Works,,0,,0,0,HASS
-2.214,Magic$ Science and Religion,,0,,0,0,HASS
-2.217,Gender Sexuality and Society,,0,,0,0,HASS
-2.218,Introduction to Psychology,,0,,0,0,HASS
-2.219,Rice Cultures: Technology$ Society and Environment in Asia,,0,,0,0,HASS
-2.22,“How the Things People Make$ Make People”: Material Things in Social Life,,0,,0,0,HASS
-2.221,Making Maps I: Introduction to Spatial Analysis$ Data Visualization and Map Design,,0,,0,0,HASS
-2.222,Unnatural Disasters,,0,,0,0,HASS
-2.223,Morals and Markets,,0,,0,0,HASS
-2.224,Sociology of Deviance and Social Control,,0,,0,0,HASS
-2.227,Maps and Politics,,0,,0,0,HASS
-2.302,Business Culture and Entrepreneurship in China,,0,,0,0,HASS
-2.303,The Role of Technology and Design on Growth in China,,0,,0,0,HASS
+01.110,Computational Fabrication,,0,,0,5,ISTD
+01.112,Machine Learning,,0,,0,5,ISTD
+02.102,The World Since 1400,,0,,0,0,HASS
+02.103,Film Studies: History$ Theory and Practice,,0,,0,0,HASS
+02.105,Sages Through The Ages: Readings in Early Indian and Chinese Religion and Philosophy,,0,,0,0,HASS
+02.107,History of Chinese Urban Development,,0,,0,0,HASS
+02.108,Modern China: Pluralism$ and Beyond Territoriality,,0,,0,0,HASS
+02.109,Ethics of Leadership,,0,,0,0,HASS
+02.110,The Chinese Lyrical Tradition: Arts$ Literature and Landscape Design,,0,,0,0,HASS
+02.112,Space and Power,,0,,0,0,HASS
+02.113,The Laboratory of the Mind,,0,,0,0,HASS
+02.114,The Multicultural Archipelago in History and Story,,0,,0,0,HASS
+02.115,Global Shakespeares,,0,,0,0,HASS
+02.116,The Word and the World: Introducing Literary Theory,,0,,0,0,HASS
+02.118,Film Studies II: Production,,0,,0,0,HASS
+02.119,Introduction to Political Philosophy,,0,,0,0,HASS
+02.120,History of Traditional Chinese Short Fiction,,0,,0,0,HASS
+02.121,The Question of Being,,0,,0,0,HASS
+02.122,The Day After Tomorrow: Environmental Apocalypse and Political Mobilization,,0,,0,0,HASS
+02.123,Questioning Modernity in Europe and Asia,,0,,0,0,HASS
+02.125,Normalcy and Deviance: Philosophical Approaches to Sexuality,,0,,0,0,HASS
+02.126,Southeast Asia Under Japan: Motives$ Memoirs$ and Media,,0,,0,0,HASS
+02.127,Satan and His Afterlives in Literature and Film,,0,,0,0,HASS
+02.130,Slums$ Squatters$ and Smart Cities: History and Theory of Urban Planning,,0,,0,0,HASS
+02.201,Digital Sociology,,0,,0,0,HASS
+02.202,Organizational Processes,,0,,0,0,HASS
+02.203,Psychological Approaches to Bilingualism,,0,,0,0,HASS
+02.204,Technology and the Self,,0,,0,0,HASS
+02.205,Human Development: Theory and Practice,,0,,0,0,HASS
+02.206,Ethics and Social Responsibility,,0,,0,0,HASS
+02.207,Organizations and People,,0,,0,0,HASS
+02.208,Microeconomics,,0,,0,0,HASS
+02.209,Social Theories of Urban Life,,0,,0,0,HASS
+02.210,Who Gets Ahead? Sociology of Social Networks and Social Capital,,0,,0,0,HASS
+02.211,Critical Management Studies,,0,,0,0,HASS
+02.212,The Visual Culture of Science and Technology,,0,,0,0,HASS
+02.213,How Culture Works,,0,,0,0,HASS
+02.214,Magic$ Science and Religion,,0,,0,0,HASS
+02.217,Gender Sexuality and Society,,0,,0,0,HASS
+02.218,Introduction to Psychology,,0,,0,0,HASS
+02.219,Rice Cultures: Technology$ Society and Environment in Asia,,0,,0,0,HASS
+02.220,“How the Things People Make$ Make People”: Material Things in Social Life,,0,,0,0,HASS
+02.221,Making Maps I: Introduction to Spatial Analysis$ Data Visualization and Map Design,,0,,0,0,HASS
+02.222,Unnatural Disasters,,0,,0,0,HASS
+02.223,Morals and Markets,,0,,0,0,HASS
+02.224,Sociology of Deviance and Social Control,,0,,0,0,HASS
+02.227,Maps and Politics,,0,,0,0,HASS
+02.302,Business Culture and Entrepreneurship in China,,0,,0,0,HASS
+02.303,The Role of Technology and Design on Growth in China,,0,,0,0,HASS
