@@ -83,21 +83,37 @@ export class Chat extends PureComponent {
     super(props);
     this.toggleChatWindow = this.toggleChatWindow.bind(this);
     this.state = {
-      chatWindow: false
+      chatWindow: false,
+      chatRoomIds: []
     }
   }
   toggleChatWindow() {
     this.setState({ chatWindow: !this.state.chatWindow });
   }
 
+  updateShownChat(id) {
+    this.setState({
+      chatRoomIds: this.state.chatRoomIds.map((chatroom) => {
+        return (chatroom.id === id.id ? { id: id.id, visible: true } : { id: chatroom.id, visible: false })
+      })
+    })
+  }
+
+  componentDidMount() {
+    let initialViews = this.props.chat_room_ids.map((id) => {return {id: id, visible: false}});
+    initialViews[0].visible = true;
+    this.setState({ chatRoomIds: initialViews });
+  }
+
   render() {
-    const { chatWindow } = this.state;
+    const { chatWindow, chatRoomIds } = this.state;
     return (
       <ActionCableProvider>
         <div className='chat-area'>
           { chatWindow &&
             <div className='chat-window'>
-              {this.props.chat_room_ids.map((id) =>  <ChatChannel key={id} room={id} user_id={this.props.user_id}/>)}
+              {chatRoomIds.map((id) => <span key={id.id} className="tab" onClick={() => this.updateShownChat(id)}>{id.id}</span>)}
+              {chatRoomIds.filter((x) => x.visible).map((id) => <ChatChannel key={id.id} room={id.id} user_id={this.props.user_id}/>)}
             </div>
           }
           <a className='chat-icon' onClick={this.toggleChatWindow}>💬</a>
