@@ -8,6 +8,6 @@ class CoordinatorController < ApplicationController
 
   private
   def set_chat_ids
-    @chat_ids = ChatRoom.all.select(:id).map &:id
+    @chats = ChatRoom.eager_load(:users).map {|cr| { id: cr.id, name: cr.user_name }}
   end
 end

@@ -94,13 +94,17 @@ export class Chat extends PureComponent {
   updateShownChat(id) {
     this.setState({
       chatRoomIds: this.state.chatRoomIds.map((chatroom) => {
-        return (chatroom.id === id.id ? { id: id.id, visible: true } : { id: chatroom.id, visible: false })
+        (chatroom.id === id.id) ? chatroom.visible = true : chatroom.visible = false;
+        return chatroom;
       })
     })
   }
 
   componentDidMount() {
-    let initialViews = this.props.chat_room_ids.map((id) => {return {id: id, visible: false}});
+    let initialViews = this.props.chat_room_ids.map((chatroom) => {
+      chatroom.visible = false;
+      return chatroom;
+    });
     initialViews[0].visible = true;
     this.setState({ chatRoomIds: initialViews });
   }
@@ -112,7 +116,10 @@ export class Chat extends PureComponent {
         <div className='chat-area'>
           { chatWindow &&
             <div className='chat-window'>
-              {chatRoomIds.map((id) => <span key={id.id} className={id.visible ? 'tab visible' : 'tab'} onClick={() => this.updateShownChat(id)}>{id.id}</span>)}
+              {chatRoomIds.length > 1 &&
+                chatRoomIds.map((id) => <span key={id.id} className={id.visible ? 'tab visible' : 'tab'}
+                onClick={() => this.updateShownChat(id)}>{id.name}</span>)
+              }
               {chatRoomIds.filter((x) => x.visible).map((id) => <ChatChannel key={id.id} room={id.id} user_id={this.props.user_id}/>)}
             </div>
           }
