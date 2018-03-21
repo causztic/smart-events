@@ -8,6 +8,16 @@
     height: 500px
     border: 1px solid #f5f5f5
     background-color: #fafafa
+    .tab
+      width: 100px
+      display: inline-block
+      background-color: lighten($yellow, 20)
+      cursor: pointer
+      padding: 5px
+      overflow: hidden
+      text-overflow: ellipsis
+      &.visible
+        background-color: $yellow
     input
       caret-color: $blue
       &:focus

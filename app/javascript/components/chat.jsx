@@ -112,7 +112,7 @@ export class Chat extends PureComponent {
         <div className='chat-area'>
           { chatWindow &&
             <div className='chat-window'>
-              {chatRoomIds.map((id) => <span key={id.id} className="tab" onClick={() => this.updateShownChat(id)}>{id.id}</span>)}
+              {chatRoomIds.map((id) => <span key={id.id} className={id.visible ? 'tab visible' : 'tab'} onClick={() => this.updateShownChat(id)}>{id.id}</span>)}
               {chatRoomIds.filter((x) => x.visible).map((id) => <ChatChannel key={id.id} room={id.id} user_id={this.props.user_id}/>)}
             </div>
           }
