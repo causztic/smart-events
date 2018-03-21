@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     user_session = session[:user_id]
+    cookies.signed[:user_id] = user_session
     @current_user ||= User.find(user_session) if user_session
   rescue ActiveRecord::RecordNotFound
     reset_session
