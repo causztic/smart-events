@@ -1,17 +1,17 @@
 ﻿code,name,description,hours_per_week,facility_hours,minimum_hours_per_lesson,term_available,pillar
-10.001,Advanced Mathematics I,,0,"{{lecture: 2},{classroom: 3}} ",0,0,Freshmore
+10.001,Advanced Mathematics I,,0,"{lecture: 2,classroom: 3} ",0,0,Freshmore
 10.002,Physics I,,0,{classroom: 5},0,0,Freshmore
-10.006,Chemistry and Biology: Natural World,,0,"{{lecture: 2},{classroom: 4}}",0,0,Freshmore
-2.001,World Texts and Interpretations,,0,"{{lecture: 1},{classroom: 2}}",0,0,FreshmoreHASS
-10.004,Advanced Mathematics II,,0,"{{lecture: 2},{classroom: 3}} ",0,1,Freshmore
+10.006,Chemistry and Biology: Natural World,,0,"{lecture: 2,classroom: 4}",0,0,Freshmore
+2.001,World Texts and Interpretations,,0,"{lecture: 1,classroom: 2}",0,0,FreshmoreHASS
+10.004,Advanced Mathematics II,,0,"{lecture: 2,classroom: 3} ",0,1,Freshmore
 10.005,Physics II,,0,{classroom: 5},0,1,Freshmore
-2.003,Theorizing Society$ the Self$ and Culture,,0,"{{lecture: 1},{classroom: 2}}",0,1,FreshmoreHASS
-3.007,Introduction to Design,,0,"{{lecture:1},{classroom: 6}}",0,1,Freshmore
-10.007,Modelling the Systems World,,0,"{{lecture: 2},{classroom: 3}} ",0,2,Freshmore
+2.003,Theorizing Society$ the Self$ and Culture,,0,"{lecture: 1,classroom: 2}",0,1,FreshmoreHASS
+3.007,Introduction to Design,,0,"{lecture:1,classroom: 6}",0,1,Freshmore
+10.007,Modelling the Systems World,,0,"{lecture: 2,classroom: 3} ",0,2,Freshmore
 10.008,Engineering in the Physical World,,0,{classroom: 5},0,2,Freshmore
 10.009,The Digital World,,0,{classroom: 5},0,2,Freshmore
-10.011,Introduction to Physical Chemistry​,,0,"{{lecture: 2},{classroom: 4}}",0,2,Freshmore
-10.012,Introduction to Biology,,0,"{{lecture: 2},{classroom: 4}}",0,2,Freshmore
+10.011,Introduction to Physical Chemistry​,,0,"{lecture: 2,classroom: 4}",0,2,Freshmore
+10.012,Introduction to Biology,,0,"{lecture: 2,classroom: 4}",0,2,Freshmore
 30.001,Structures and Materials,,0,,0,3,EPD
 30.002,Circuits and Electronics,,0,,0,3,EPD
 30.003,Introduction to Probability and Statistics,,0,,0,3,EPD
