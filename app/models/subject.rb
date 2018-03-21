@@ -21,7 +21,7 @@ class Subject < ApplicationRecord
   end
 
   def self.freshmore_hass(term = 0)
-    where(pillar: :FreshmoreHASS, term_available: term).limit(1)
+    where(pillar: :FreshmoreHASS, term_available: term).order("RANDOM()").limit(1)
   end
 
   # convenience method for random_sample with HASS

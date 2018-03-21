@@ -23,13 +23,12 @@ export class TimeSlotPicker extends PureComponent {
             console.log('Start:', start, 'End:', end);
           })
         }}
-        // onEventsRequested={({ calendarId, start, end, callback }) => {
-        //   loadMoreEvents(calendarId, start, end).then(callback);
-        // }}
-        // initialSelections={[
-        //   { start: new Date(), end: anotherDateObject }
-        // ]}
         recurring={true}
+        availableDays={['monday', 'tuesday', 'wednesday', 'thursday', 'friday']}
+        availableHourRange={{
+          start: 8.5,
+          end: 18
+        }}
       />)
   }
 }

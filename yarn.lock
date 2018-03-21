@@ -5735,9 +5735,9 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-available-times@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-available-times/-/react-available-times-1.1.2.tgz#014fe4612b88d59e64761457c2da840b5a646361"
+react-available-times@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-available-times/-/react-available-times-1.2.0.tgz#f33d34e52edc7e97dce74bd85b2e71fdb8bcc0e3"
   dependencies:
     moment "^2.18.1"
     moment-timezone "^0.5.13"
