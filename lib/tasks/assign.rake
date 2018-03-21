@@ -19,12 +19,17 @@ namespace :assign do
 
   task faculty: :environment do
     p "Assigning faculty to subjects"
-    # we assign 3 subjects for each instructor.
-    subjects = Subject.with_students.to_a
-    Instructor.all.order("RANDOM()").each do |instructor|
-      s = subjects.shift(2)
-      instructor.subjects = s
-      instructor.save!
+    instructors = Instructor.all.order("RANDOM()").select(:id).to_a
+
+    Subject.with_students.to_a.each do |subject|
+      if subject.HASS? || subject.FreshmoreHASS?
+        subject.instructors << instructors.shift
+      elsif subject.Freshmore?
+        subject.instructors << instructors.shift(5)
+      else
+        subject.instructors << instructors.shift(3)
+      end
     end
+
   end
 end

@@ -5,6 +5,7 @@ class Subject < ApplicationRecord
   validates :code, :name, :hours_per_week, :facility_hours, :minimum_hours_per_lesson, :term_available, presence: true
   validates :hours_per_week, numericality: { less_than: 10 }
   validate :hours_per_week_must_be_bigger
+  validates :term_available, numericality: { greater_than: 0, less_than: 9}
 
   enum pillar: ::PILLARS
 
@@ -20,7 +21,7 @@ class Subject < ApplicationRecord
   end
 
   def self.freshmore_hass(term = 0)
-    where(pillar: :FreshmoreHASS, term_available: term).limit(1)
+    where(pillar: :FreshmoreHASS, term_available: term).order("RANDOM()").limit(1)
   end
 
   # convenience method for random_sample with HASS
@@ -37,6 +38,7 @@ class Subject < ApplicationRecord
     return if hours_per_week.blank? && minimum_hours_per_lesson.blank?
     errors.add(:hours_per_week, "too small!") if hours_per_week < minimum_hours_per_lesson
   end
+
 
   # to use code as the params
   def to_param
