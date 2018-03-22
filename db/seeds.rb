@@ -14,21 +14,22 @@ User.delete_all
 
 # table for subjects
 csv_text = File.read(Rails.root.join("lib", "seeds", "subject.csv"))
-csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
+csv = CSV.parse(csv_text, headers: true, encoding: "ISO-8859-1", col_sep: ";", quote_char: "|")
 subjects = []
 csv.each do |row|
     next if row.empty?
     t = {}
     t[:code] = row[0]
-    t[:name] = row[1].gsub("$",",")
+    t[:name] = row[1]
     if row[2].present?
-        t[:description] = row[2].gsub("$",",")
+        t[:description] = row[2]
     end
     t[:hours_per_week] = row[3]
-    t[:facility_hours] = {}
+    t[:facility_hours] = JSON(row[4])
     t[:minimum_hours_per_lesson] = row[5]
     t[:term_available] = row[6]
     t[:pillar] = Subject.pillars[row[7]]
+
     subjects << t
 end
 
