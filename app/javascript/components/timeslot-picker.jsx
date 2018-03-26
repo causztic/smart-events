@@ -6,6 +6,24 @@ export class TimeSlotPicker extends PureComponent {
   constructor(props) {
     super(props);
     this.days = ["monday", "tuesday", "wednesday", "thursday", "friday"];
+    this.instance = axios.create({
+      headers: { 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content }
+    });
+    let preferences = this.props.preferences.map((p) => {
+      let key = Object.keys(p)[0];
+      let [ hour, minute ] = p[key].start.split(':');
+      let [ endHour, endMinute ] = p[key].end.split(':');
+
+      return {
+        start: new Date(2018, 0, this.days.indexOf(key) + 1, hour, minute),
+        end: new Date(2018, 0, this.days.indexOf(key) + 1, endHour, endMinute),
+      }
+    });
+
+    console.log(preferences)
+    this.state = {
+      preferences: preferences
+    };
   }
 
   getTime(rawValue) {
@@ -15,14 +33,15 @@ export class TimeSlotPicker extends PureComponent {
   }
 
   updateSelectedTimes(selections) {
-    times = selections.map(({ start, end }) => {
-      const { day, startHour: hour } = this.getTime(start);
-      const { endHour: hour } = this.getTime(end);
+    let times = selections.map(({ start, end }) => {
+      const { day, hour: startHour } = this.getTime(start);
+      const { hour: endHour } = this.getTime(end);
       let obj = new Object();
       obj[day] = { start: startHour, end: endHour };
-      console.log(obj);
       return obj;
     });
+    console.log(times);
+    this.instance.put(this.props.url, times, );
   }
 
   render() {
@@ -40,6 +59,7 @@ export class TimeSlotPicker extends PureComponent {
         ]}
         onChange={selections => this.updateSelectedTimes(selections)}
         recurring={true}
+        initialSelections={this.state.preferences}
         availableDays={this.days}
         availableHourRange={{
           start: 8.5,

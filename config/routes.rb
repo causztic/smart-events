@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get :dashboard
     get :subjects
     get :preferences
+    put :update_preferences
   end
 
   namespace :coordinator do
