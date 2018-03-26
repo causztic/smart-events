@@ -9,6 +9,11 @@ class InstructorController < ApplicationController
     @subjects = current_user.subjects
   end
 
+  def update_preferences
+    current_user.preferences = params[:_json]
+    current_user.save
+  end
+
   private
   def get_chat_room
     @chat = ChatRoom.find_or_create_by(user: current_user)

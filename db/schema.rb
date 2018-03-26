@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320144231) do
+ActiveRecord::Schema.define(version: 20180326171226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20180320144231) do
     t.string "avatar"
     t.string "slug"
     t.integer "pillar", default: 0
+    t.jsonb "preferences"
   end
 
   add_foreign_key "messages", "chat_rooms"

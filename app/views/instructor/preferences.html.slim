@@ -4,4 +4,4 @@
   .col-12
     p Modify your time-slot preferences by dragging on the desired days.
   .col-12
-    = react_component "TimeSlotPicker"
+    = react_component "TimeSlotPicker", url: instructor_update_preferences_path, preferences: current_user.preferences
