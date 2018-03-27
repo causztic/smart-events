@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326171226) do
+ActiveRecord::Schema.define(version: 20180327160203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,8 +78,10 @@ ActiveRecord::Schema.define(version: 20180326171226) do
     t.bigint "lesson_id"
     t.bigint "instructor_id"
     t.bigint "location_id"
+    t.bigint "subject_id"
     t.index ["instructor_id"], name: "index_sessions_on_instructor_id"
     t.index ["lesson_id"], name: "index_sessions_on_lesson_id"
+    t.index ["subject_id"], name: "index_sessions_on_subject_id"
   end
 
   create_table "sessions_users", force: :cascade do |t|
@@ -128,4 +130,5 @@ ActiveRecord::Schema.define(version: 20180326171226) do
 
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "sessions", "subjects"
 end
