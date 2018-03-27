@@ -27,11 +27,12 @@ module Scheduler
         # count the number of lecturers.
         1.upto((student_count / locations[location_name][0].capacity).ceil) do |t|
 
-          obj = { subject: subject.id,
+          obj = { subject_id: subject.id,
+            day: current_time.wday,
             start_time: current_time,
             end_time: current_time + hours.hours,
-            location: location_name,
-            instructor: instructors[t % instructor_count]
+            location_id: locations[location_name][0].id,
+            instructor_id: instructors[t % instructor_count]
           }
 
           # stagger the time if there are more sessions than instructors or if it is a lecture.
@@ -55,8 +56,9 @@ module Scheduler
     # schedules.each do |schedule|
     #   p schedule
     # end
-
-    schedules
+    if Session.count == 0
+      Session.bulk_insert(values: schedules.flatten)
+    end
   end
 
   @private = Module.new do

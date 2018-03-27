@@ -12,12 +12,13 @@ export class Calendar extends Component {
   }
 
   componentDidMount(){
-    // this.setState({ events: this.props.events.map((event) => {
-    //     event.start = new Date(event.start);
-    //     event.end = new Date(event.end);
-    //     return event;
-    //   })
-    // });
+    this.setState({ events: this.props.events.map((event) => {
+        event.title = event.subject
+        event.start = new Date(event.start_time);
+        event.end = new Date(event.end_time);
+        return event;
+      })
+    });
   }
 
   render() {
@@ -27,7 +28,8 @@ export class Calendar extends Component {
       views={Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])}
       step={60}
       showMultiDayTimes
-      defaultDate={new Date()}
+      defaultView='week'
+      defaultDate={new Date(2000, 0, 1)}
       />
     </div>)
   }
