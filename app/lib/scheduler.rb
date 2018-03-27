@@ -25,7 +25,6 @@ module Scheduler
           # stagger the time if there are more sessions than instructors or if it is a lecture.
           # reset to next day if the next lesson will overshoot timing.
           current_time += hours.hours if ((t+1) % instructor_count == 0 || location_name == "lecture")
-          p "#{current_time}, #{current_time + hours.hours}, #{current_time.beginning_of_day + 18.hours}"
           current_time = @private.reset_day(current_time) + 1.day if ((current_time + hours.hours) > (current_time.beginning_of_day + 18.hours))
           # create a schedule for the current_time.
           schedule = IceCube::Schedule.new(current_time, duration: hours * 60 * 60)
@@ -41,9 +40,10 @@ module Scheduler
       end
     end
 
-    schedules.each do |schedule|
-      p schedule.map {|s| { "#{s[:subject]}-#{s[:location]}": s[:time] }}
-    end
+    # schedules.each do |schedule|
+    #   p schedule.map {|s| { "#{s[:subject]}-#{s[:location]}": s[:time] }}
+    # end
+    schedules
   end
 
   @private = Module.new do
