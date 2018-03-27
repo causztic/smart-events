@@ -1,8 +1,12 @@
 class InstructorController < ApplicationController
+
   before_action -> { authenticate_role!(Instructor) }
   before_action :get_chat_room
 
-  def dashboard; end
+  def dashboard
+    Scheduler.generate :Freshmore
+  end
+
   def preferences; end
 
   def subjects
