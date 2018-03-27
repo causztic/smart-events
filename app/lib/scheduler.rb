@@ -52,7 +52,7 @@ module Scheduler
         current_time += hours.hours
       end
     end
-
+    final_schedules = []
     # schedules.each do |schedule|
     #   p schedule
     # end
@@ -63,7 +63,8 @@ module Scheduler
 
   @private = Module.new do
     def self.reset_week
-      Date.today.beginning_of_week + 8.hours + 30.minutes
+      term_start = Date.iso8601('2019-05-13T08:30:00+08:00')
+      term_start.beginning_of_week + 8.hours + 30.minutes
     end
 
     def self.reset_day date

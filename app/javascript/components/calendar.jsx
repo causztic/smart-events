@@ -29,7 +29,7 @@ export class Calendar extends Component {
       step={60}
       showMultiDayTimes
       defaultView='week'
-      defaultDate={new Date(2000, 0, 1)}
+      defaultDate={new Date(2019, 4, 13)}
       />
     </div>)
   }
