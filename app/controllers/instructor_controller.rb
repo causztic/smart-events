@@ -6,6 +6,11 @@ class InstructorController < ApplicationController
   def dashboard; end
   def preferences; end
 
+  def schedule
+    @events = Scheduler.generate :Freshmore
+    p @events
+  end
+
   def subjects
     @subjects = current_user.subjects
   end

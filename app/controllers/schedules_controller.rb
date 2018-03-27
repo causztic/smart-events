@@ -1,10 +1,5 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user!
-  def show
-    #@events = user.sessions
-    @chats = ChatRoom.eager_load(:users).map {|cr| { id: cr.id, name: cr.user_name }} if current_user.coordinator?
-    @chats = [ChatRoom.find_or_create_by(user: current_user)] if current_user.instructor?
-  end
 
   def download
     # generate a calendar and download.
