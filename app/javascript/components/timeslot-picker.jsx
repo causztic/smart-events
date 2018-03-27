@@ -9,14 +9,14 @@ export class TimeSlotPicker extends PureComponent {
     this.instance = axios.create({
       headers: { 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content }
     });
-    let preferences = this.props.preferences.map((p) => {
+    let preferences = (this.props.preferences || []).map((p) => {
       let key = Object.keys(p)[0];
       let [ hour, minute ] = p[key].start.split(':');
       let [ endHour, endMinute ] = p[key].end.split(':');
 
       return {
-        start: new Date(2018, 0, this.days.indexOf(key) + 1, hour, minute),
-        end: new Date(2018, 0, this.days.indexOf(key) + 1, endHour, endMinute),
+        start: new Date(2018, 2, this.days.indexOf(key) + 1, hour, minute),
+        end: new Date(2018, 2, this.days.indexOf(key) + 1, endHour, endMinute),
       }
     });
 
