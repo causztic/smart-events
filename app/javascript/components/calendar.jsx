@@ -30,6 +30,8 @@ export class Calendar extends Component {
       showMultiDayTimes
       defaultView='week'
       defaultDate={new Date(2019, 4, 13)}
+      min={new Date(2000, 0, 1, 8, 30)}
+      max={new Date(2000, 0, 1, 18)}
       />
     </div>)
   }

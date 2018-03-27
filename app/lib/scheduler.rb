@@ -52,12 +52,17 @@ module Scheduler
         current_time += hours.hours
       end
     end
-    final_schedules = []
-    # schedules.each do |schedule|
-    #   p schedule
-    # end
+    final = schedules.flatten.map do |schedule|
+      13.times.map do |t|
+        temp = schedule.clone
+        temp[:start_time] += t.weeks
+        temp[:end_time] += t.weeks
+        temp
+      end
+    end
+
     if Session.count == 0
-      Session.bulk_insert(values: schedules.flatten)
+      Session.bulk_insert(values: final.flatten)
     end
   end
 
