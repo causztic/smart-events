@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 
+function Event({ event }){
+  return (
+    <span>
+      {`${event.title} (${event.location})`}
+      <br/>
+      {event.instructor}
+    </span>
+  )
+}
+
 export class Calendar extends Component {
   constructor(props){
     super(props)
@@ -13,7 +23,6 @@ export class Calendar extends Component {
 
   componentDidMount(){
     this.setState({ events: this.props.events.map((event) => {
-        event.title = event.subject;
         event.start = new Date(event.start_time);
         event.end = new Date(event.end_time);
         return event;
@@ -32,6 +41,9 @@ export class Calendar extends Component {
       defaultDate={new Date(2019, 4, 13)}
       min={new Date(2000, 0, 1, 8, 30)}
       max={new Date(2000, 0, 1, 18)}
+      components={{
+        event: Event,
+      }}
       />
     </div>)
   }

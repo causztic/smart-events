@@ -9,12 +9,13 @@ class CoordinatorController < ApplicationController
   end
 
   def schedules
-    @events = Session.all.includes(:subject, :location).map {|s|
+    @events = Session.all.includes(:subject, :location, :instructor).map {|s|
       {
       start_time: s.start_time - 8.hours,
       end_time: s.end_time - 8.hours,
-      subject: s.subject.name,
-      location: s.location.roomname
+      title: s.subject.name,
+      location: s.location.roomname,
+      instructor: s.instructor.name,
       }
     }
   end
