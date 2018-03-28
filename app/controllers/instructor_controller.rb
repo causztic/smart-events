@@ -11,7 +11,7 @@ class InstructorController < ApplicationController
       {
       start_time: s.start_time - 8.hours,
       end_time: s.end_time - 8.hours,
-      subject: s.subject.name,
+      title: s.subject.name,
       location: s.location.roomname
       }
     }
