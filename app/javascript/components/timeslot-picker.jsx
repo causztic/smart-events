@@ -75,6 +75,7 @@ export class TimeSlotPicker extends PureComponent {
             selected: true
           }
         ]}
+        height={600}
         onChange={selections => this.updateSelectedTimes(selections)}
         recurring={true}
         initialSelections={this.state.preferences}

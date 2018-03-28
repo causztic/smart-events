@@ -1,29 +1,21 @@
 class SchedulesController < ApplicationController
-  before_action :authenticate_user!
 
-  def download
+  def subscription
     # generate a calendar and download.
     cal = Icalendar::Calendar.new
-    filename = "Class Schedule"
+    cal.x_wr_calname = 'Class Schedule'
 
-    if params[:format] == 'vcs'
-      cal.prodid = '-//Microsoft Corporation//Outlook MIMEDIR//EN'
-      cal.version = '1.0'
-      filename += '.vcs'
-    else # ical
-      cal.prodid = '-//Acme Widgets, Inc.//NONSGML ExportToCalendar//EN'
-      cal.version = '2.0'
-      filename += '.ics'
-    end
-
-    @events.each do |event|
+    User.find(params[:schedule_id]).sessions.includes(:subject, :location).each do |event|
       e = cal.event
-      e.dtstart     = event[:start]
-      e.dtend       = event[:end]
-      e.summary     = event[:title]
-      e.description = event[:title]
+      e.dtstart     = event.start_time
+      e.dtend       = event.end_time
+      e.summary     = event.subject.name
+      e.description = event.subject.description
+      e.location    = event.location.roomname
     end
 
-    send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
+    p cal
+
+    render plain: cal.to_ical
   end
 end

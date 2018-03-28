@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :messages, only: [:index], controller: "chat_rooms/messages"
   end
 
+  resources :schedules, only: [] do
+    get :subscription
+  end
+
   namespace :student do
     get :dashboard
     get :subjects
