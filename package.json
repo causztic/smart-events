@@ -8,9 +8,11 @@
     "moment": "^2.20.1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
-    "react-available-times": "^1.2.0",
     "react-actioncable-provider": "^1.0.3",
+    "react-available-times": "^1.2.0",
     "react-big-calendar": "^0.18.0",
+    "react-dnd": "^2.6.0",
+    "react-dnd-html5-backend": "^2.6.0",
     "react-dom": "^16.2.0",
     "webpacker-react": "^0.3.2"
   },
