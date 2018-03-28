@@ -23,7 +23,7 @@ namespace :assign do
 
     Subject.with_students.to_a.each do |subject|
       if subject.HASS? || subject.FreshmoreHASS?
-        subject.instructors << instructors.shift
+        subject.instructors << instructors.shift(3)
       elsif subject.Freshmore?
         subject.instructors << instructors.shift(5)
       else

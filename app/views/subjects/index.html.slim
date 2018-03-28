@@ -1,4 +1,6 @@
 .row
   - @subjects.each do |subject|
-    .col-12.col-md-4
-      h1= subject.name
+    .col-12
+      b= subject.name
+    .col-12
+      = subject.instructors.map(&:name).join(',')
