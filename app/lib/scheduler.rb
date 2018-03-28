@@ -1,21 +1,30 @@
 module Scheduler
   def self.generate student_pillar, term=0
     # generate a series of schedules based on the student pillar.
+    Session.delete_all
+    Session.connection.execute('ALTER SEQUENCE sessions_id_seq RESTART WITH 1')
+
     raise "Pillars must be in #{::STUDENT_PILLARS}" if ::STUDENT_PILLARS.exclude? student_pillar
 
+    # prepare required data
     subjects = Subject.find_by_sql("SELECT id, code, facility_hours,
-          COUNT(s.student_id) AS students,
-          COUNT(s.instructor_id) AS instructors,
-          array_agg(s.instructor_id) FILTER (WHERE s.instructor_id IS NOT NULL) AS instructor_ids
-          FROM subjects
-          INNER JOIN subjects_users s on s.subject_id = subjects.id
-          WHERE subjects.term_available = 0
-          AND subjects.pillar IN (0,6)
-          GROUP BY subjects.id;")
-
+      COUNT(s.student_id) AS students,
+      COUNT(s.instructor_id) AS instructors,
+      array_agg(s.instructor_id) FILTER (WHERE s.instructor_id IS NOT NULL) AS instructor_ids
+      FROM subjects
+      INNER JOIN subjects_users s on s.subject_id = subjects.id
+      WHERE subjects.term_available = 0
+      AND subjects.pillar IN (0,6)
+      GROUP BY subjects.id;")
     locations = Location.all.select(:id, :name, :roomname, :classroom, :capacity).group_by &:classroom
-    schedules = []
-    current_time = @private.reset_week
+    schedules = {}
+    max_cohort_size = 0
+
+    locations.each_key do |key|
+      schedules[key] = []
+    end
+
+    session_id = 0
 
     subjects.each do |subject|
       student_count = subject.attributes["students"].to_f
@@ -23,46 +32,73 @@ module Scheduler
       instructors = subject.attributes["instructor_ids"]
       # use the count and determine the number of sessions needed
       subject.facility_hours.each_pair do |location_name, hours|
-        # assume that hours are < 3 hours right now.
-        # count the number of lecturers.
-        1.upto((student_count / locations[location_name][0].capacity).ceil) do |t|
+        size = (student_count / locations[location_name][0].capacity).ceil
+        max_cohort_size = size if size > max_cohort_size
 
-          obj = { subject_id: subject.id,
-            day: current_time.wday,
-            start_time: current_time,
-            end_time: current_time + hours.hours,
-            location_id: locations[location_name][0].id,
-            instructor_id: instructors[t % instructor_count]
-          }
+        1.upto(size) do |t|
+          hour_blocks = (hours.to_f / 3).ceil
+          # we must ensure that each session cannot be too long
+          hour_blocks.times do |d|
+            schedules[location_name] << {
+              subject_id: subject.id,
+              location_id: locations[location_name][0].id,
+              duration: hours.to_f / hour_blocks,
+              instructor_id: instructors[t % instructor_count] }
+            end
+        end
+      end
+    end
 
-          # stagger the time if there are more sessions than instructors or if it is a lecture.
-          # reset to next day if the next lesson will overshoot timing.
-          current_time += hours.hours if ((t+1) % instructor_count == 0 || location_name == "lecture")
-          current_time = @private.reset_day(current_time) + 1.day if ((current_time + hours.hours) > (current_time.beginning_of_day + 18.hours))
-          # create a schedule for the current_time.
-          # schedule = IceCube::Schedule.new(current_time, duration: hours * 60 * 60)
-          # schedule.add_recurrence_rule IceCube::Rule.weekly
-          # obj[:schedule] = schedule.to_hash
+    <<-DOC
+    the schedules are now the required minimum number of sessions needed to be conducted.
+    they have already been assigned to instructors.
+    we now need to assign them class by class.
+    DOC
 
-          index = t-1
-          schedules[index].is_a?(Array) ? schedules[index] << obj : schedules[index] = [obj]
+    cohort_sessions = Array.new(max_cohort_size) {|s| [] }
+    freshmores = Student.freshmores
+    # we go through by settling in order of capacity.
+    %w(lecture classroom lab think_tank).each do |location_type|
+      schedules[location_type].group_by {|s| s[:subject_id] }.each_value do |value|
+        f = freshmores.in_groups(value.count, false)
+        value.each_with_index do |session, index|
+          session[:students] = f[index] # split the students up based on the number of sessions in that area.
+        end
+        # fill up sessions
+        if value.count <= max_cohort_size
+          cohort_sessions.each_slice(max_cohort_size / value.count).with_index do |session, index|
+            session.each { |s| s.push(value[index]) }
+          end
+        else
+          index = 0
+          cohort_sessions.each do |session|
+            (value.count / max_cohort_size).times do |t|
+              session.push(value[index])
+              index += 1
+            end
+          end
+        end
+      end
+    end
+
+    cohort_sessions.each do |cohort|
+      current_time = @private.reset_week
+      cohort.each_with_index do |session, i|
+        if session[:start_time].nil? # don't modify sessions that have times already set
+          session[:start_time] = current_time
+          session[:end_time] = current_time + session[:duration].hours
         end
 
-        # after assigning the sessions for the particular subject, advance the time
-        current_time += hours.hours
+        current_time += session[:duration].hours
+          # if the next extension will exceed the day, go the next one
+        if (i != cohort.length - 1) && (current_time + cohort[i+1][:duration].hours) > (current_time.beginning_of_day + 18.hours)
+          current_time = @private.reset_day(current_time) + 1.day
+        end
       end
     end
-    final = schedules.flatten.map do |schedule|
-      13.times.map do |t|
-        temp = schedule.clone
-        temp[:start_time] += t.weeks
-        temp[:end_time] += t.weeks
-        temp
-      end
-    end
-
-    if Session.count == 0
-      Session.bulk_insert(values: final.flatten)
+    cohort_sessions.flatten.uniq.each do |session|
+      session.delete(:duration)
+      Session.new(session).save!
     end
   end
 

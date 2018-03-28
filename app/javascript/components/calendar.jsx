@@ -13,7 +13,7 @@ export class Calendar extends Component {
 
   componentDidMount(){
     this.setState({ events: this.props.events.map((event) => {
-        event.title = event.subject
+        event.title = event.subject;
         event.start = new Date(event.start_time);
         event.end = new Date(event.end_time);
         return event;

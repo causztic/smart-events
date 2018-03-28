@@ -8,6 +8,17 @@ class CoordinatorController < ApplicationController
       where su.student_id IS NULL AND su.instructor_id IS NULL;").count
   end
 
+  def schedules
+    @events = Session.all.includes(:subject, :location).map {|s|
+      {
+      start_time: s.start_time - 8.hours,
+      end_time: s.end_time - 8.hours,
+      subject: s.subject.name,
+      location: s.location.roomname
+      }
+    }
+  end
+
   private
   def set_chat_ids
     @chats = ChatRoom.eager_load(:users).map {|cr| { id: cr.id, name: cr.user_name }}
