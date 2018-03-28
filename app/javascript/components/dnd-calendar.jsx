@@ -4,6 +4,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import moment from 'moment'
+import axios from 'axios'
 
 function Event({ event }){
   return (
@@ -25,6 +26,9 @@ class Calendar extends PureComponent {
       events: []
     }
     this.moveSession = this.moveSession.bind(this)
+    this.instance = axios.create({
+      headers: { 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content }
+    });
   }
 
   componentDidMount(){
@@ -39,7 +43,6 @@ class Calendar extends PureComponent {
   moveSession({ event, start, end }) {
     if (this.props.dnd) {
       const { events } = this.state
-      console.log("asdf");
       const idx = events.indexOf(event)
       const updatedEvent = { ...event, start, end }
 
@@ -49,6 +52,7 @@ class Calendar extends PureComponent {
       this.setState({
         events: nextEvents,
       })
+      this.instance.put(this.props.url, {id: event.id, start: start, end: end}, );
     }
   }
 
