@@ -3,7 +3,9 @@ class CoordinatorController < ApplicationController
   before_action :set_chat_ids
 
   def dashboard
-    @unassigned_subjects = Subject.left_outer_joins(:instructors).where(users: { id: nil })
+    @unassigned_subjects = Subject.find_by_sql("select * from subjects s
+      left outer join subjects_users su on s.id = su.subject_id
+      where su.student_id IS NULL AND su.instructor_id IS NULL;").count
   end
 
   private
