@@ -105,7 +105,8 @@ export class Chat extends PureComponent {
       chatroom.visible = false;
       return chatroom;
     });
-    initialViews[0].visible = true;
+    if (initialViews.length > 0)
+      initialViews[0].visible = true;
     this.setState({ chatRoomIds: initialViews });
   }
 
