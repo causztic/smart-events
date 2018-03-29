@@ -52,7 +52,11 @@ class Calendar extends PureComponent {
       this.setState({
         events: nextEvents,
       })
-      this.instance.put(this.props.url, {id: event.id, start: start, end: end}, );
+      this.instance.put(this.props.url, {id: event.id, start_time: start, end_time: end}).then(
+        (response) => {
+          console.log(response.status);
+        }
+      )
     }
   }
 
