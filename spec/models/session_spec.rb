@@ -34,7 +34,7 @@ RSpec.describe Session, type: :model do
       new_session.instructor = @session.instructor
 
       expect(new_session).not_to be_valid
-      expect(new_session.errors[:students].slength).to eq(1)
+      expect(new_session.errors[:students].length).to eq(1)
       expect(new_session.errors[:location].length).to eq(1)
       expect(new_session.errors[:instructor].length).to eq(1)
     end
