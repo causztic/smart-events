@@ -13,8 +13,9 @@ class Session < ApplicationRecord
     sql = "SELECT s.location_id, s.instructor_id, array_agg(u.student_id) students FROM sessions s
       INNER JOIN sessions_users u ON s.id = u.session_id
       WHERE s.id IN
-      (SELECT id FROM sessions WHERE start_time >= '#{start_time}'::timestamp
-        AND end_time <= '#{end_time}'::timestamp AND id != '#{id}')
+      (SELECT id FROM sessions WHERE start_time BETWEEN '#{start_time}'::timestamp AND '#{end_time - 1.second}'::timestamp
+        OR end_time BETWEEN '#{start_time + 1.second}'::timestamp AND '#{end_time}'::timestamp
+      AND id != '#{id}')
       GROUP BY(s.id);"
     results = ActiveRecord::Base.connection.execute(sql)
     results.each do |conflict|

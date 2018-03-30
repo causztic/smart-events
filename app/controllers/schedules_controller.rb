@@ -10,7 +10,7 @@ class SchedulesController < ApplicationController
     if session.update_attributes(s)
       render json: { status: 'Successfully updated session.' }, status: 200
     else
-      render json: { status: 'Error updating session.' }, status: 400
+      render json: { status: session.errors.to_json }, status: 400
     end
   end
 end
