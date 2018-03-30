@@ -45,7 +45,11 @@ gem "icalendar"
 gem "bulk_insert"
 gem "reek"
 gem "rubocop", require: false
-gem "simplecov", require: false, group: :test
+
+group :test do
+  gem "simplecov", require: false
+  gem "database_cleaner"
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -41,7 +41,7 @@ module Scheduler
           hour_blocks.times do |d|
             schedules[location_name] << {
               subject_id: subject.id,
-              location_id: locations[location_name][0].id,
+              location_id: locations[location_name][t % locations[location_name].length].id,
               duration: hours.to_f / hour_blocks,
               instructor_id: instructors[t % instructor_count] }
             end
