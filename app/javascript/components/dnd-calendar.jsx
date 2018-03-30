@@ -54,7 +54,13 @@ class Calendar extends PureComponent {
       })
       this.instance.put(this.props.url, {id: event.id, start_time: start, end_time: end}).then(
         (response) => {
-          console.log(response.status);
+          if (response.status === 200){
+            // is a valid response, do something about it
+          } else {
+            this.setState({
+              events: events
+            })
+          }
         }
       )
     }

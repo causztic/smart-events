@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :subject do
-    code "1"
+    code { Faker::Code.unique.ean }
     name "1"
     description { Faker::Simpsons.quote }
     hours_per_week 9

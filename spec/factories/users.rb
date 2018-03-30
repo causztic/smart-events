@@ -4,16 +4,16 @@ FactoryBot.define do
     password "password"
     password_confirmation "password"
 
-    factory :student do
-      type Student
+    factory :student, parent: :user, class: 'Student' do
     end
 
-    factory :instructor do
-      type Instructor
+    factory :instructor, parent: :user, class: 'Instructor' do
+      name { Faker::Name.name }
+      designation { Faker::Job.title }
+      faculty "faculty"
     end
 
-    factory :coordinator do
-      type Coordinator
+    factory :coordinator, parent: :user, class: 'Coordinator' do
     end
   end
 end
