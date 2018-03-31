@@ -15,6 +15,18 @@ ActiveRecord::Schema.define(version: 20180327164353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "events", force: :cascade do |t|
+    t.float "events_model"
+    t.string "name"
+    t.string "description"
+    t.string "speaker_name"
+    t.float "duration"
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
+    t.string "pillar"
+  end
+  
   create_table "chat_rooms", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
