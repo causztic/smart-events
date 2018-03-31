@@ -6,6 +6,16 @@ import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import moment from "moment";
 import axios from "axios";
 
+const DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
 function Event({ event }) {
   return (
     <span>
@@ -16,6 +26,10 @@ function Event({ event }) {
   );
 }
 
+function EventHeader({ date }) {
+  return <div>{DAYS[date.getDay()]}</div>;
+}
+
 const DND = withDragAndDrop(BigCalendar);
 
 class Calendar extends PureComponent {
@@ -23,7 +37,8 @@ class Calendar extends PureComponent {
     super(props);
     BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
     this.state = {
-      events: []
+      events: [],
+      affectAll: false
     };
     this.moveSession = this.moveSession.bind(this);
     this.instance = axios.create({
@@ -73,13 +88,16 @@ class Calendar extends PureComponent {
       <div style={{ height: "80vh" }}>
         <DND
           events={this.state.events}
+          views={["week"]}
+          toolbar={!this.state.affectAll}
           defaultView="week"
           defaultDate={new Date(2019, 4, 13)}
           min={new Date(2000, 0, 1, 8, 30)}
           max={new Date(2000, 0, 1, 18)}
           onEventDrop={this.moveSession}
           components={{
-            event: Event
+            event: Event,
+            header: this.state.affectAll && EventHeader
           }}
         />
       </div>

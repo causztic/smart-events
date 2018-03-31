@@ -1,6 +1,7 @@
 # Session for lessons.
 class Session < ApplicationRecord
-  has_and_belongs_to_many :students
+  has_many :sessions_users, dependent: :destroy
+  has_many :students, through: :sessions_users
   belongs_to :instructor
   belongs_to :subject
   belongs_to :location

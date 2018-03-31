@@ -2,7 +2,9 @@ module Scheduler
   def self.generate student_pillar, term=0
     # generate a series of schedules based on the student pillar.
     Session.delete_all
+    SessionsUser.delete_all
     Session.connection.execute('ALTER SEQUENCE sessions_id_seq RESTART WITH 1')
+    SessionsUser.connection.execute('ALTER SEQUENCE sessions_users_id_seq RESTART WITH 1')
 
     raise "Pillars must be in #{::STUDENT_PILLARS}" if ::STUDENT_PILLARS.exclude? student_pillar
 
@@ -86,6 +88,7 @@ module Scheduler
       running_hours = 0
       cohort.each_with_index do |session, i|
         if session[:start_time].nil? # don't modify sessions that have times already set
+          session[:day] = current_time.wday
           session[:start_time] = current_time
           session[:end_time] = current_time + session[:duration].hours
         end
@@ -107,9 +110,21 @@ module Scheduler
 
       end
     end
+
+    weeks = 12
     cohort_sessions.flatten.uniq.each do |session|
       session.delete(:duration)
-      Session.new(session).save!
+      # create the session across the week.
+      weeks.times do |t|
+        Session.create!(session)
+        session[:start_time] += 1.week
+        session[:end_time] += 1.week
+        if t == 5
+          # add 2 weeks
+          session[:start_time] += 1.week
+          session[:end_time] += 1.week
+        end
+      end
     end
   end
 
