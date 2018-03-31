@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   namespace :schedules do
     put :update
+  end
+
+  resources :schedules, only: [] do
     get :subscription
   end
 
