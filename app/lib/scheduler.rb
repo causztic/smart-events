@@ -83,17 +83,28 @@ module Scheduler
 
     cohort_sessions.each do |cohort|
       current_time = @private.reset_week
+      running_hours = 0
       cohort.each_with_index do |session, i|
         if session[:start_time].nil? # don't modify sessions that have times already set
           session[:start_time] = current_time
           session[:end_time] = current_time + session[:duration].hours
         end
 
+        running_hours += session[:duration]
         current_time += session[:duration].hours
-          # if the next extension will exceed the day, go the next one
+
+        # if there are long lessons already, give a break
+        if running_hours >= 4
+          current_time += 1.hour
+          running_hours = 0
+        end
+
+        # if the next extension will exceed the day, go the next one
         if (i != cohort.length - 1) && (current_time + cohort[i+1][:duration].hours) > (current_time.beginning_of_day + 18.hours)
           current_time = @private.reset_day(current_time) + 1.day
         end
+
+
       end
     end
     cohort_sessions.flatten.uniq.each do |session|
