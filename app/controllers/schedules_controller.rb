@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
+  before_action -> { authenticate_role!(Coordinator) }, except: [:subscription]
 
   def update
-    authenticate_role!(Coordinator)
     session = Session.find(params[:id])
     s = {
       start_time: params[:start_time].to_datetime + 8.hours,
@@ -12,6 +12,11 @@ class SchedulesController < ApplicationController
     else
       render json: { status: session.errors.to_json }, status: 400
     end
+  end
+
+  def regenerate
+    Scheduler.generate :Freshmore
+    redirect_to coordinator_schedules_path
   end
 
   def subscription

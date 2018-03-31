@@ -1,1 +1,3 @@
 = react_component "DNDCalendar", events: @events, dnd: true, url: schedules_update_path
+br
+= button_to "Regenerate Schedule", regenerate_schedules_path, method: :put, class: "btn btn-danger disable-on-click"

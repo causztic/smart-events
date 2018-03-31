@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :schedules, only: [] do
     get :subscription
+    put :regenerate, on: :collection
   end
 
   namespace :student do
