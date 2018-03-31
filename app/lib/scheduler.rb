@@ -112,20 +112,32 @@ module Scheduler
     end
 
     weeks = 12
-    cohort_sessions.flatten.uniq.each do |session|
+    id = 1
+    students = []
+    final_students = []
+    final_sessions = cohort_sessions.flatten.uniq.each_with_index.map do |session, index|
       session.delete(:duration)
+      students << { id: index+1, students: session.delete(:students) }
+      session
       # create the session across the week.
-      weeks.times do |t|
-        Session.create!(session)
-        session[:start_time] += 1.week
-        session[:end_time] += 1.week
-        if t == 5
-          # add 2 weeks
-          session[:start_time] += 1.week
-          session[:end_time] += 1.week
-        end
+      # weeks.times do |t|
+      #   Session.create!(session)
+      #   session[:start_time] += 1.week
+      #   session[:end_time] += 1.week
+      #   if t == 5
+      #     # add 2 weeks
+      #     session[:start_time] += 1.week
+      #     session[:end_time] += 1.week
+      #   end
+      # end
+    end
+    Session.bulk_insert(values: final_sessions)
+    students.each do |h, index|
+      h[:students].each do |student|
+        final_students << {session_id: h[:id], student_id: student.id }
       end
     end
+    SessionsUser.bulk_insert(values: final_students)
   end
 
   @private = Module.new do
