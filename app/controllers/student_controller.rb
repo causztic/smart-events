@@ -9,7 +9,7 @@ class StudentController < ApplicationController
       start_time: s.start_time - 8.hours,
       end_time: s.end_time - 8.hours,
       title: s.subject.name,
-      location: s.location.roomname,
+      location: s.location.classroom,
       instructor: s.instructor.name
       }
     }
