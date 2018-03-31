@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :schedules do
     put :update
+    get :subscription
   end
 
   namespace :student do

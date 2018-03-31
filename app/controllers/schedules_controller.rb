@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
-  before_action -> { authenticate_role!(Coordinator) }
 
   def update
+    authenticate_role!(Coordinator)
     session = Session.find(params[:id])
     s = {
       start_time: params[:start_time].to_datetime + 8.hours,
@@ -13,4 +13,24 @@ class SchedulesController < ApplicationController
       render json: { status: session.errors.to_json }, status: 400
     end
   end
+
+  def subscription
+    # generate a calendar and download.
+    cal = Icalendar::Calendar.new
+    cal.x_wr_calname = 'Class Schedule'
+
+    User.find(params[:schedule_id]).sessions.includes(:subject, :location).each do |event|
+      e = cal.event
+      e.dtstart     = event.start_time
+      e.dtend       = event.end_time
+      e.summary     = event.subject.name
+      e.description = event.subject.description
+      e.location    = event.location.roomname
+    end
+
+    p cal
+
+    render plain: cal.to_ical
+  end
+
 end

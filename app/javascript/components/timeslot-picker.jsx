@@ -7,24 +7,42 @@ export class TimeSlotPicker extends PureComponent {
     super(props);
     this.days = ["monday", "tuesday", "wednesday", "thursday", "friday"];
     this.instance = axios.create({
-      headers: { 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content }
-    });
-    let preferences = (this.props.preferences || []).map((p) => {
-      let key = Object.keys(p)[0];
-      let [ hour, minute ] = p[key].start.split(':');
-      let [ endHour, endMinute ] = p[key].end.split(':');
-
-      return {
-        start: new Date(2018, 2, this.days.indexOf(key) + 1, hour, minute),
-        end: new Date(2018, 2, this.days.indexOf(key) + 1, endHour, endMinute),
+      headers: {
+        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+          .content
       }
     });
+    if (this.props.preferences) {
+      let preferences = this.props.preferences.map(p => {
+        let key = Object.keys(p)[0];
+        let [hour, minute] = p[key].start.split(":");
+        let [endHour, endMinute] = p[key].end.split(":");
 
-    console.log(preferences)
-    this.state = {
-      preferences: preferences
-    };
+        minute = parseInt(minute);
+        endMinute = parseInt(endMinute);
+        return {
+          start: this.days.indexOf(key) * 24 * 60 + hour * 60 + minute,
+          end: this.days.indexOf(key) * 24 * 60 + endHour * 60 + endMinute
+        };
+      });
+      this.state = { preferences: preferences };
+    } else {
+
+      const baseStart = 8 * 60 + 30;
+      const baseEnd = 18 * 60;
+
+      let preferences = [0,1,2,3,4].map(day => ({
+        start: baseStart + day * 24 * 60,
+        end: baseEnd + day * 24 * 60
+      }))
+
+      this.state = {
+        preferences: preferences
+      }
+    }
   }
+
+  componentDidMount() {}
 
   getTime(rawValue) {
     const hour = (rawValue / 60) % 24;
@@ -41,7 +59,7 @@ export class TimeSlotPicker extends PureComponent {
       return obj;
     });
     console.log(times);
-    this.instance.put(this.props.url, times, );
+    this.instance.put(this.props.url, times);
   }
 
   render() {
@@ -57,6 +75,7 @@ export class TimeSlotPicker extends PureComponent {
             selected: true
           }
         ]}
+        height={600}
         onChange={selections => this.updateSelectedTimes(selections)}
         recurring={true}
         initialSelections={this.state.preferences}

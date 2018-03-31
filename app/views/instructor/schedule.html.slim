@@ -1,1 +1,2 @@
 = react_component "DNDCalendar", events: @events
+= link_to "Subscribe to Calendar", schedule_subscription_url(current_user.id, protocol: :webcal, format: :ics)
