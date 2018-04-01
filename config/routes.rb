@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     put :update
   end
 
+  resources :events
+
   resources :schedules, only: [] do
     get :subscription
     put :regenerate, on: :collection
