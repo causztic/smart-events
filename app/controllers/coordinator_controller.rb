@@ -18,6 +18,16 @@ class CoordinatorController < ApplicationController
       location: s.location.roomname,
       instructor: s.instructor.name,
       group: s.session_group,
+      type: 'session'
+      }
+    }.merge Event.all.map {|e|
+      {
+        id: e.id,
+        type: 'event',
+        start_time: e.start_datetime - 8.hours,
+        end_time: e.end_datetime - 8.hours,
+        title: e.name,
+        instructor: e.speaker_name
       }
     }
   end

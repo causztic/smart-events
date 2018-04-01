@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401091147) do
+ActiveRecord::Schema.define(version: 20180401095240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20180401091147) do
     t.time "start_time"
     t.time "end_time"
     t.integer "pillar"
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_events_on_location_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -141,6 +143,7 @@ ActiveRecord::Schema.define(version: 20180401091147) do
     t.jsonb "preferences"
   end
 
+  add_foreign_key "events", "locations"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "sessions", "subjects"

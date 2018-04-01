@@ -38,7 +38,7 @@ class Calendar extends PureComponent {
     BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
     this.state = {
       events: [],
-      affectAll: this.props.dnd
+      affectAll: false
     };
     this.moveSession = this.moveSession.bind(this);
     this.handleAffectAll = this.handleAffectAll.bind(this);
@@ -76,7 +76,7 @@ class Calendar extends PureComponent {
   moveSession({ event, start, end }) {
     if (this.props.dnd) {
       const { events } = this.state;
-      if (this.state.affectAll) {
+      if (this.state.affectAll && this.event.type === 'session') {
         const timeDifference = event.start - start;
         const eventsToMove = [...events].map(e => {
           // don't mutate previous state.
@@ -119,7 +119,8 @@ class Calendar extends PureComponent {
           .put(this.props.url, {
             id: event.id,
             start_time: start,
-            end_time: end
+            end_time: end,
+            type: event.type
           })
           .then()
           .catch(error => {
