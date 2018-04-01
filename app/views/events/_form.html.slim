@@ -2,6 +2,7 @@
   = f.input :name
   = f.input :description, as: :text
   = f.input :speaker_name
+  = f.association :location, collection: Location.eventable_locations, prompt: "Select a location"
   = f.input :pillar, collection: ::STUDENT_PILLARS, prompt: "No specific pillar"
   = f.input :date
   = f.input :start_time

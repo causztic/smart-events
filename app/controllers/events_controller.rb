@@ -31,13 +31,14 @@ class EventsController < CoordinatorController
   end
 
   def destroy
-    @event.delete
+    event = Event.find(params[:id])
+    event.delete
     redirect_to events_path, notice: "Successfully deleted event."
   end
 
   private
   def event_params
-    params.require(:event).permit(:name, :description, :speaker_name, :date, :start_time, :end_time)
+    params.require(:event).permit(:name, :description, :speaker_name, :date, :start_time, :end_time, :pillar, :location_id)
   end
 
 end

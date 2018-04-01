@@ -26,6 +26,10 @@ function Event({ event }) {
   );
 }
 
+function styleEvent({type}) {
+  return { className: type }
+}
+
 function EventHeader({ date }) {
   return <div>{DAYS[date.getDay()]}</div>;
 }
@@ -76,7 +80,7 @@ class Calendar extends PureComponent {
   moveSession({ event, start, end }) {
     if (this.props.dnd) {
       const { events } = this.state;
-      if (this.state.affectAll && this.event.type === 'session') {
+      if (this.state.affectAll && event.type === 'session') {
         const timeDifference = event.start - start;
         const eventsToMove = [...events].map(e => {
           // don't mutate previous state.
@@ -144,13 +148,14 @@ class Calendar extends PureComponent {
         <div style={{ height: "80vh" }}>
           <DND
             events={events}
-            views={["week"]}
+            views={["work_week"]}
             toolbar={!affectAll}
-            defaultView="week"
+            defaultView="work_week"
             defaultDate={new Date(2019, 4, 13)}
             min={new Date(2000, 0, 1, 8, 30)}
             max={new Date(2000, 0, 1, 18)}
             onEventDrop={this.moveSession}
+            eventPropGetter={styleEvent}
             components={{
               event: Event,
               header: affectAll && EventHeader

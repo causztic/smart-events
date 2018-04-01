@@ -2,15 +2,11 @@ class SchedulesController < ApplicationController
   before_action -> { authenticate_role!(Coordinator) }, except: [:subscription]
 
   def update
-    session = Session.find(params[:id])
-    s = {
-      start_time: params[:start_time].to_datetime + 8.hours,
-      end_time: params[:end_time].to_datetime + 8.hours
-    }
-    if session.update_attributes(s)
-      render json: { status: "Successfully updated session." }, status: 200
+    s = find_by_type
+    if @schedule.update_attributes(s)
+      render json: { status: "Successfully updated schedule." }, status: 200
     else
-      render json: { status: session.errors.to_json }, status: 400
+      render json: { status: schedule.errors.to_json }, status: 400
     end
   end
 
@@ -47,4 +43,31 @@ class SchedulesController < ApplicationController
 
     render plain: cal.to_ical
   end
+
+  private
+  def find_by_type
+    if params[:type] === 'session'
+      @schedule = Session.find(params[:id])
+      s = update_session
+    else
+      @schedule = Event.find(params[:id])
+      s = update_event
+    end
+  end
+
+  def update_session
+    {
+      start_time: params[:start_time].to_datetime + 8.hours,
+      end_time: params[:end_time].to_datetime + 8.hours
+    }
+  end
+
+  def update_event
+    {
+      date: params[:start_time].to_date.beginning_of_day,
+      start_time: params[:start_time].to_datetime + 8.hours,
+      end_time: params[:end_time].to_datetime + 8.hours
+    }
+  end
+
 end
