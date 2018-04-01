@@ -11,4 +11,11 @@
       .card.notice-card
         .card-body.alert-info There are currently no events created.
     - @events.each do |event|
-
+      .card.notice-card
+        .card-body class="#{event.upcoming? ? 'text-success' : 'text-danger'}"
+          b = "#{event.name} (#{event.date.strftime("%m %B %Y")}: #{event.start_time.strftime("%H:%M")} - #{event.end_time.strftime("%H:%M")})"
+          p = event.description
+          = link_to edit_event_path(event), class: 'btn btn-sm btn-outline-warning' do
+            i.fas.fa-fw.fa-alt.fa-pencil-alt
+          = link_to event_path(event), method: :delete, class: 'btn btn-sm btn-outline-danger', data: { confirm: "Are you sure you want to delete this event?" } do
+            i.fas.fa-fw.fa-alt.fa-times
