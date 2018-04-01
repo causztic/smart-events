@@ -18,9 +18,12 @@ Rails.application.routes.draw do
     put :update
   end
 
+  resources :events
+
   resources :schedules, only: [] do
     get :subscription
     put :regenerate, on: :collection
+    put :batch_update, on: :collection
   end
 
   namespace :student do

@@ -5,13 +5,23 @@ class SchedulesController < ApplicationController
     session = Session.find(params[:id])
     s = {
       start_time: params[:start_time].to_datetime + 8.hours,
-      end_time: params[:end_time].to_datetime + 8.hours,
+      end_time: params[:end_time].to_datetime + 8.hours
     }
     if session.update_attributes(s)
-      render json: { status: 'Successfully updated session.' }, status: 200
+      render json: { status: "Successfully updated session." }, status: 200
     else
       render json: { status: session.errors.to_json }, status: 400
     end
+  end
+
+  def batch_update
+    diff = params[:difference] / 1000
+    Session.where(session_group: params[:group]).find_each do |session|
+      unless (session.update_attributes(start_time: session.start_time - diff, end_time: session.end_time - diff))
+        render json: { status: session.errors.to_json }, status: 400 and return
+      end
+    end
+    render json: { status: "Successfully updated sessions." }, status: 200
   end
 
   def regenerate
@@ -22,7 +32,7 @@ class SchedulesController < ApplicationController
   def subscription
     # generate a calendar and download.
     cal = Icalendar::Calendar.new
-    cal.x_wr_calname = 'Class Schedule'
+    cal.x_wr_calname = "Class Schedule"
 
     User.find(params[:schedule_id]).sessions.includes(:subject, :location).each do |event|
       e = cal.event
@@ -37,5 +47,4 @@ class SchedulesController < ApplicationController
 
     render plain: cal.to_ical
   end
-
 end
