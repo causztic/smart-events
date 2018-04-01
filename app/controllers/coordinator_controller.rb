@@ -20,17 +20,7 @@ class CoordinatorController < ApplicationController
       group: s.session_group,
       type: 'session'
       }
-    }.concat Event.all.includes(:location).map {|e|
-      {
-        id: e.id,
-        type: 'event',
-        start_time: e.start_datetime - 8.hours,
-        end_time: e.end_datetime - 8.hours,
-        title: e.name,
-        location: e.location.roomname,
-        instructor: e.speaker_name
-      }
-    }
+    }.concat all_events
   end
 
   private

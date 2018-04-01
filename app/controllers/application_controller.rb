@@ -22,4 +22,19 @@ class ApplicationController < ActionController::Base
     authenticate_user!
     head :unauthorized unless current_user.class == role
   end
+
+  protected
+  def all_events
+    Event.all.includes(:location).map {|e|
+      {
+        id: e.id,
+        type: 'event',
+        start_time: e.start_datetime - 8.hours,
+        end_time: e.end_datetime - 8.hours,
+        title: e.name,
+        location: e.location.roomname,
+        instructor: e.speaker_name
+      }
+    }
+  end
 end

@@ -7,7 +7,18 @@ class Session < ApplicationRecord
   belongs_to :location
   enum day: Date::DAYNAMES
 
+  delegate :name, to: :subject
+  delegate :description, to: :subject
+
   validate :check_conflicts, on: :update
+
+  def start_datetime
+    start_time
+  end
+
+  def end_datetime
+    end_time
+  end
 
   def check_conflicts
     # checks for student conflicts, instructor conflicts, and location conflicts.
