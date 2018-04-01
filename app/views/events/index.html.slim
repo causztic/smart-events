@@ -1,0 +1,14 @@
+.row
+  .col-md-10.col-12
+    h1 Events
+  .col-md-2.col-12.right
+    = link_to new_event_path, class: 'btn btn-info' do
+      i.fas.fa-fw.fa-alt.fa-plus
+      span New Event
+.row
+  .col-12
+    - if @events.empty?
+      .card.notice-card
+        .card-body.alert-info There are currently no events created.
+    - @events.each do |event|
+

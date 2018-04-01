@@ -1,0 +1,9 @@
+h1 New Event
+= simple_form_for @event, html: { class: 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :description, as: :text
+  = f.input :speaker_name
+  = f.input :date
+  = f.input :start_time
+  = f.input :end_time
+  = f.submit "Create Event", class: "btn btn-success"

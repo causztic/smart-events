@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
 
+  validates :name, :speaker_name, :description, :start_time, :end_time, :date, presence: true
   validate :start_time_must_be_earlier
 
   private
