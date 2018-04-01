@@ -41,6 +41,7 @@ class Calendar extends PureComponent {
       affectAll: false
     };
     this.moveSession = this.moveSession.bind(this);
+    this.handleAffectAll = this.handleAffectAll.bind(this);
     this.instance = axios.create({
       headers: {
         "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -59,47 +60,101 @@ class Calendar extends PureComponent {
     });
   }
 
+  handleAffectAll() {
+    this.setState({
+      affectAll: !this.state.affectAll
+    });
+  }
+
+  handleErrors(error, events) {
+    this.setState({
+      errors: error.response.data.status,
+      events: events
+    });
+  }
+
   moveSession({ event, start, end }) {
     if (this.props.dnd) {
       const { events } = this.state;
-      const idx = events.indexOf(event);
-      const updatedEvent = { ...event, start, end };
-
-      const nextEvents = [...events];
-      nextEvents.splice(idx, 1, updatedEvent);
-
-      this.setState({
-        events: nextEvents
-      });
-      this.instance
-        .put(this.props.url, { id: event.id, start_time: start, end_time: end })
-        .then()
-        .catch(error => {
-          alert(error.response.data.status);
-          this.setState({
-            events: events
-          });
+      if (this.state.affectAll) {
+        const timeDifference = event.start - start;
+        const eventsToMove = [...events].map(e => {
+          // don't mutate previous state.
+          if (e.group === event.group) {
+            return {
+              ...e,
+              start: new Date(e.start - timeDifference),
+              end: new Date(e.end - timeDifference)
+            };
+          }
+          return { ...e };
         });
+
+        this.setState({
+          events: eventsToMove,
+          errors: null
+        });
+
+        this.instance
+          .put(this.props.batch_url, {
+            group: event.group,
+            difference: timeDifference
+          })
+          .then()
+          .catch(error => {
+            this.handleErrors(error)
+          });
+      } else {
+        const idx = events.indexOf(event);
+        const updatedEvent = { ...event, start, end };
+
+        const nextEvents = [...events];
+        nextEvents.splice(idx, 1, updatedEvent);
+
+        this.setState({
+          events: nextEvents,
+          errors: null
+        });
+        this.instance
+          .put(this.props.url, {
+            id: event.id,
+            start_time: start,
+            end_time: end
+          })
+          .then()
+          .catch(error => {
+            this.handleErrors(error, events)
+          });
+      }
     }
   }
 
   render() {
+    const { events, affectAll, errors } = this.state;
     return (
-      <div style={{ height: "80vh" }}>
-        <DND
-          events={this.state.events}
-          views={["week"]}
-          toolbar={!this.state.affectAll}
-          defaultView="week"
-          defaultDate={new Date(2019, 4, 13)}
-          min={new Date(2000, 0, 1, 8, 30)}
-          max={new Date(2000, 0, 1, 18)}
-          onEventDrop={this.moveSession}
-          components={{
-            event: Event,
-            header: this.state.affectAll && EventHeader
-          }}
-        />
+      <div>
+        { errors && <div className="alert alert-danger">{Object.values(errors)}</div>}
+        <div className="btn btn-info" onClick={this.handleAffectAll}>
+          {affectAll
+            ? "Modify Individual Sessions"
+            : "Modify Sessions Across Weeks"}
+        </div>
+        <div style={{ height: "80vh" }}>
+          <DND
+            events={events}
+            views={["week"]}
+            toolbar={!affectAll}
+            defaultView="week"
+            defaultDate={new Date(2019, 4, 13)}
+            min={new Date(2000, 0, 1, 8, 30)}
+            max={new Date(2000, 0, 1, 18)}
+            onEventDrop={this.moveSession}
+            components={{
+              event: Event,
+              header: affectAll && EventHeader
+            }}
+          />
+        </div>
       </div>
     );
   }

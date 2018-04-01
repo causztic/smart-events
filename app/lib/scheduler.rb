@@ -117,6 +117,7 @@ module Scheduler
     final_sessions = []
 
     cohort_sessions.flatten.uniq.each_with_index do |session, index|
+      session[:session_group] = index
       session.delete(:duration)
       # create the session across the week.
       weeks.times do |t|

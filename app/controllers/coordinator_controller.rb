@@ -17,6 +17,7 @@ class CoordinatorController < ApplicationController
       title: s.subject.name,
       location: s.location.roomname,
       instructor: s.instructor.name,
+      group: s.session_group,
       }
     }
   end
