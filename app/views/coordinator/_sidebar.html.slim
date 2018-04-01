@@ -2,7 +2,7 @@
   = link_to coordinator_schedules_path, class: sidebar_item_class(coordinator_schedules_path) do
     i.fas.fa-alt.fa-wrench.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
     p Manage Schedules
-  .sidebar-item
+  = link_to events_path, class: sidebar_item_class(events_path) do
     i.fas.fa-alt.fa-fax.fa-4x data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"
     p Events
   = link_to locations_path, class: sidebar_item_class(locations_path) do

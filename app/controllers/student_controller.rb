@@ -12,7 +12,7 @@ class StudentController < ApplicationController
       location: s.location.classroom,
       instructor: s.instructor.name
       }
-    }
+    }.concat all_events
   end
 
   def subjects

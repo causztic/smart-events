@@ -36,9 +36,9 @@ gem "jquery-rails"
 gem "slim"
 gem "webpacker", "~> 3.3"
 gem "webpacker-react", "~> 0.3.2"
+gem "simple_form"
 
 # schedules
-gem "ice_cube"
 gem "icalendar"
 
 # misc
@@ -56,7 +56,7 @@ group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", "~> 2.13"
-  gem "selenium-webdriver"
+  gem "poltergeist"
 
   gem "factory_bot_rails"
   gem "faker"

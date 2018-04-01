@@ -18,8 +18,9 @@ class CoordinatorController < ApplicationController
       location: s.location.roomname,
       instructor: s.instructor.name,
       group: s.session_group,
+      type: 'session'
       }
-    }
+    }.concat all_events
   end
 
   private
