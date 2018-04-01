@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Session, type: :model do
   it { should belong_to(:subject) }
   it { should belong_to(:instructor) }
-  it { should have_and_belong_to_many(:students) }
+  it { should have_many(:students) }
+  it { should have_many(:sessions_users) }
 
   describe "validation checks" do
 
