@@ -38,7 +38,7 @@ class Calendar extends PureComponent {
     BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
     this.state = {
       events: [],
-      affectAll: false
+      affectAll: true
     };
     this.moveSession = this.moveSession.bind(this);
     this.handleAffectAll = this.handleAffectAll.bind(this);
