@@ -38,7 +38,7 @@ class Calendar extends PureComponent {
     BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
     this.state = {
       events: [],
-      affectAll: true
+      affectAll: this.props.dnd
     };
     this.moveSession = this.moveSession.bind(this);
     this.handleAffectAll = this.handleAffectAll.bind(this);
@@ -134,11 +134,12 @@ class Calendar extends PureComponent {
     return (
       <div>
         { errors && <div className="alert alert-danger">{Object.values(errors)}</div>}
+        { this.props.dnd &&
         <div className="btn btn-info" onClick={this.handleAffectAll}>
           {affectAll
             ? "Modify Individual Sessions"
             : "Modify Sessions Across Weeks"}
-        </div>
+        </div> }
         <div style={{ height: "80vh" }}>
           <DND
             events={events}
