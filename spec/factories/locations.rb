@@ -5,5 +5,9 @@ FactoryBot.define do
     classroom "classroom"
     capacity 40
     locate "Location"
+    factory :lecture do
+      classroom "lecture"
+      capacity 200
+    end
   end
 end
