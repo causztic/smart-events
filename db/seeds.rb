@@ -21,11 +21,9 @@ csv.each do |row|
     t = {}
     t[:code] = row[0]
     t[:name] = row[1]
-    if row[2].present?
-        t[:description] = row[2]
-    end
+    t[:description] = row[2] if row[2].present?
     t[:hours_per_week] = row[3]
-    t[:facility_hours] = JSON(row[4])
+    t[:facility_hours] = JSON.parse(row[4]) if row[4].present?
     t[:minimum_hours_per_lesson] = row[5]
     t[:term_available] = row[6]
     t[:pillar] = Subject.pillars[row[7]]
