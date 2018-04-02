@@ -54,13 +54,17 @@ class Calendar extends PureComponent {
     });
   }
 
+  getEventsFromProps() {
+    return this.props.events.map(event => {
+      event.start = new Date(event.start_time);
+      event.end = new Date(event.end_time);
+      return event;
+    })
+  }
+
   componentDidMount() {
     this.setState({
-      events: this.props.events.map(event => {
-        event.start = new Date(event.start_time);
-        event.end = new Date(event.end_time);
-        return event;
-      })
+      events: this.getEventsFromProps()
     });
   }
 
@@ -75,6 +79,16 @@ class Calendar extends PureComponent {
       errors: error.response.data.status,
       events: events
     });
+  }
+
+  handleCohorts(index) {
+    let events = this.getEventsFromProps();
+    if (index !== -1) {
+      events = events.filter((event) => this.props.cohorts[index].includes(event.id))
+    }
+    this.setState({
+      events: events
+    })
   }
 
   moveSession({ event, start, end }) {
@@ -145,6 +159,16 @@ class Calendar extends PureComponent {
             ? "Modify Individual Sessions"
             : "Modify Sessions Across Weeks"}
         </div> }
+        <div className="btn-group btn-group-toggle" data-toggle="buttons" style={{float: 'right'}}>
+          <label className="btn btn-secondary focus active" onClick={() => this.handleCohorts(-1)}>
+            <input type="radio" name="options" autoComplete="off"/>ALL
+          </label>
+          { this.props.cohorts.map((cohort, index) =>
+            <label className="btn btn-secondary" key={index} onClick={() => this.handleCohorts(index)}>
+            <input type="radio" name="options" autoComplete="off"/>F0{index+1}
+            </label>)
+          }
+        </div>
         <div style={{ height: "80vh" }}>
           <DND
             events={events}

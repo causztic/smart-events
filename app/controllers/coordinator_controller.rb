@@ -21,6 +21,9 @@ class CoordinatorController < ApplicationController
       type: 'session'
       }
     }.concat all_events
+    @cohorts = SessionsUser.connection.execute(
+      'SELECT DISTINCT array_agg(session_id) FROM sessions_users GROUP BY student_id;').values
+      .map { |v| v[0][1..v[0].length-2].split(',').map &:to_i }
   end
 
   private
