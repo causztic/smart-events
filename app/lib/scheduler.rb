@@ -26,7 +26,7 @@ module Scheduler
       schedules[key] = []
     end
 
-    session_id = 0
+    group_number = 0 # group_number to ensure sessions of the same facility_hours are grouped together.
 
     subjects.each do |subject|
       student_count = subject.attributes["students"].to_f
@@ -42,11 +42,13 @@ module Scheduler
           # we must ensure that each session cannot be too long
           hour_blocks.times do |d|
             schedules[location_name] << {
+              group_number: group_number,
               subject_id: subject.id,
               location_id: locations[location_name][t % locations[location_name].length].id,
               duration: hours.to_f / hour_blocks,
               instructor_id: instructors[t % instructor_count] }
-            end
+          end
+          group_number += 1
         end
       end
     end
@@ -62,9 +64,13 @@ module Scheduler
     # we go through by settling in order of capacity.
     %w(lecture classroom lab think_tank).each do |location_type|
       schedules[location_type].group_by {|s| s[:subject_id] }.each_value do |value|
-        f = freshmores.in_groups(value.count, false)
-        value.each_with_index do |session, index|
-          session[:students] = f[index] # split the students up based on the number of sessions in that area.
+        # ensure that split up sessions are assigned to the same group
+        unique_sessions = value.uniq {|v| v[:group_number] }.count
+        f = freshmores.in_groups(unique_sessions, false)
+        value.each do |session|
+          # split the students up based on the number of sessions in that area.
+          unique_sessions -= 1
+          session[:students] = f[unique_sessions]
         end
         # fill up sessions
         if value.count <= max_cohort_size
