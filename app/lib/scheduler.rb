@@ -36,16 +36,13 @@ module Scheduler
       subject.facility_hours.each_pair do |location_name, hours|
         size = (student_count / locations[location_name][0].capacity).ceil
         max_cohort_size = size if size > max_cohort_size
-
         1.upto(size) do |t|
-          hour_blocks = (hours.to_f / 3).ceil
-          # we must ensure that each session cannot be too long
-          hour_blocks.times do |d|
+          hours.each do |d|
             schedules[location_name] << {
               group_number: group_number,
               subject_id: subject.id,
               location_id: locations[location_name][t % locations[location_name].length].id,
-              duration: hours.to_f / hour_blocks,
+              duration: d.to_f,
               instructor_id: instructors[t % instructor_count] }
           end
           group_number += 1
@@ -67,10 +64,9 @@ module Scheduler
         # ensure that split up sessions are assigned to the same group
         unique_sessions = value.uniq {|v| v[:group_number] }.count
         f = freshmores.in_groups(unique_sessions, false)
-        value.each do |session|
+        value.each_with_index do |session, index|
           # split the students up based on the number of sessions in that area.
-          unique_sessions -= 1
-          session[:students] = f[unique_sessions]
+          session[:students] = f[index % unique_sessions]
         end
         # fill up sessions
         if value.count <= max_cohort_size
@@ -127,6 +123,7 @@ module Scheduler
       session.delete(:duration)
       # create the session across the week.
       weeks.times do |t|
+        p session unless session[:students]
         students << session[:students].flat_map { |student| { session_id: id, student_id: student.id } }
         final_sessions << session.except(:students)
         id += 1

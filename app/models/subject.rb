@@ -5,6 +5,7 @@ class Subject < ApplicationRecord
   validates :code, :name, :hours_per_week, :facility_hours, :minimum_hours_per_lesson, :term_available, presence: true
   validates :hours_per_week, numericality: { less_than: 10 }
   validate :hours_per_week_must_be_bigger
+  validate :facility_hours_should_have_arrays
   validates :term_available, numericality: { greater_than: 0, less_than: 9}
 
   enum pillar: ::PILLARS
@@ -39,6 +40,11 @@ class Subject < ApplicationRecord
     errors.add(:hours_per_week, "too small!") if hours_per_week < minimum_hours_per_lesson
   end
 
+  def facility_hours_should_have_arrays
+    facility_hours.each_value do |value|
+      return errors.add(:facility_hours, "invalid hours! must be an array") unless value.is_a? Array
+    end
+  end
 
   # to use code as the params
   def to_param
