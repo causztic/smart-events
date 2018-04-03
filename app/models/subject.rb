@@ -1,6 +1,7 @@
 # Subject has many lessons, and is taught by multiple instructors.
 class Subject < ApplicationRecord
   has_many :lessons, dependent: :destroy
+  has_many :sessions
 
   validates :code, :name, :hours_per_week, :facility_hours, :minimum_hours_per_lesson, :term_available, presence: true
   validates :hours_per_week, numericality: { less_than: 10 }

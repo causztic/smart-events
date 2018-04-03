@@ -13,7 +13,7 @@
     - @events.each do |event|
       .card.notice-card
         .card-body class="#{event.upcoming? ? 'text-success' : 'text-danger'}"
-          b = "#{event.name} (#{event.date.strftime("%m %B %Y")}: #{event.start_time.strftime("%H:%M")} - #{event.end_time.strftime("%H:%M")})"
+          b = "#{event.name} (#{event.date.strftime("%d %B %Y")}: #{event.start_time.strftime("%H:%M")} - #{event.end_time.strftime("%H:%M")})"
           p = event.description
           = link_to edit_event_path(event), class: 'btn btn-sm btn-outline-warning' do
             i.fas.fa-fw.fa-alt.fa-pencil-alt

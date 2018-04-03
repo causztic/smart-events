@@ -107,7 +107,7 @@ class Calendar extends PureComponent {
     let events = [...this.state.originalEvents];
     if (index !== -1) {
       events = events.filter(event =>
-        this.props.cohorts[index].includes(event.id)
+        this.props.cohorts[index].includes(event.id) || event.type === 'event'
       );
     }
 
@@ -122,14 +122,15 @@ class Calendar extends PureComponent {
       if (e.id == event.id) {
         return {
           ...e,
-          location: event.location
+          location: event.location,
+          instructor: event.instructor,
         }
       }
       return { ...e };
     })
 
-    const events = this.props.cohorts !== -1 ? eventsToUpdate : eventsToUpdate.filter(event =>
-      this.props.cohorts[this.state.cohort].includes(event.id)
+    const events = this.state.cohorts === -1 ? eventsToUpdate : eventsToUpdate.filter(event =>
+      this.props.cohorts[this.state.cohort].includes(event.id) || event.type === 'event'
     );
 
     this.setState({
@@ -214,15 +215,11 @@ class Calendar extends PureComponent {
               : "Modify Sessions Across Weeks"}
           </div>
         )}
-        <div
-          className="btn-group btn-group-toggle"
-          data-toggle="buttons"
-          style={{ float: "right" }}
-        >
+        { this.props.cohorts &&
+        <div className="btn-group btn-group-toggle" data-toggle="buttons" style={{ float: "right" }}>
           <label
             className="btn btn-secondary active"
-            onClick={() => this.handleCohorts(-1)}
-          >
+            onClick={() => this.handleCohorts(-1)}>
             <input type="radio" name="options" autoComplete="off" />ALL
           </label>
           {this.props.cohorts.map((cohort, index) => (
@@ -236,7 +233,8 @@ class Calendar extends PureComponent {
             </label>
           ))}
         </div>
-        { show &&
+        }
+        { show && this.props.dnd &&
           <Modal show={show} onClose={this.hideModal} updateEvent={this.updateEvent} url={this.props.url} event={selectedEvent} instance={this.instance} locationUrl={this.props.available_url}/>
         }
         <div style={{ height: "80vh" }}>
@@ -269,6 +267,7 @@ class Modal extends Component {
     this.state = {
       errors: null,
       locations: [],
+      instructors: [],
       event: this.props.event,
     }
   }
@@ -285,6 +284,14 @@ class Modal extends Component {
         locations: response.data
       })
     })
+    if (this.props.event.type === 'session'){
+      this.props.instance.get(`/subjects/${this.props.event.subject_id}/instructors`)
+      .then((response) => {
+        this.setState({
+            instructors: response.data
+        })
+      })
+    }
   }
 
   updateLocation(e){
@@ -296,6 +303,29 @@ class Modal extends Component {
     .put(this.props.url, {
       id: this.state.event.id,
       location_id: e.target.value,
+      type: this.state.event.type
+    })
+    .then(success => {
+      this.setState({
+        event: event
+      }, () => {
+        this.props.updateEvent(event);
+      })
+    }).catch(error => {
+      this.setState({
+        errors: error.response.data.status
+      })
+    })
+  }
+
+  updateInstructor(e){
+    const event = {
+      ...this.state.event,
+      instructor: this.state.instructors.find((instructor) => instructor.id == e.target.value)
+    };
+    this.props.instance.put(this.props.url, {
+      id: this.state.event.id,
+      instructor_id: e.target.value,
       type: this.state.event.type
     })
     .then(success => {
@@ -357,7 +387,13 @@ class Modal extends Component {
             )}
           </select>
           <br/>
-          <b>{event.instructor.name}</b>
+          { event.type === 'session' &&
+          <select value={event.instructor.id} onChange={(e) => { this.updateInstructor(e) }}>
+            { this.state.instructors.map((instructor) =>
+              <option value={instructor.id} key={instructor.id}>{instructor.name}</option>
+            )}
+          </select> }
+          { event.type === 'event' && <b>{event.instructor.name}</b> }
           <br/>
           Start: <b>{new Date(event.start_time).toLocaleString("sg")}</b>
           <br/>

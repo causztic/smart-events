@@ -20,6 +20,10 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  # Capybara.register_driver :poltergeist_debug do |app|
+  #   Capybara::Poltergeist::Driver.new(app, {debug: true})
+  # end
+
   Capybara.javascript_driver = :poltergeist
 
   config.expect_with :rspec do |expectations|

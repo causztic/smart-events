@@ -19,7 +19,6 @@ feature 'creating an event' do
   end
 
   it "should be able to create a new event" do
-
     visit new_event_path
     fill_in "event_name", with: Faker::FamilyGuy.quote
     fill_in "event_speaker_name", with: Faker::Name.name

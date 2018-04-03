@@ -15,6 +15,7 @@ class CoordinatorController < ApplicationController
       start_time: s.start_time - 8.hours,
       end_time: s.end_time - 8.hours,
       title: s.subject.name,
+      subject_id: s.subject.id,
       location: { name: s.location.name, id: s.location.id, room: s.location.classroom },
       instructor: { name: s.instructor.name, id: s.instructor.id},
       group: s.session_group,

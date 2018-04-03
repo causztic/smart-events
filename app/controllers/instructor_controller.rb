@@ -9,10 +9,12 @@ class InstructorController < ApplicationController
   def schedule
     @events = current_user.sessions.includes(:subject, :location).map {|s|
       {
-      start_time: s.start_time - 8.hours,
-      end_time: s.end_time - 8.hours,
-      title: s.subject.name,
-      location: s.location.roomname
+        id: s.id,
+        start_time: s.start_time - 8.hours,
+        end_time: s.end_time - 8.hours,
+        title: s.subject.name,
+        location: { name: s.location.name, id: s.location.id, room: s.location.classroom },
+        type: 'session'
       }
     }
   end

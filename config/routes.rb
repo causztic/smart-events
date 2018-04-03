@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     get :available, on: :collection
   end
 
-  resources :subjects, only: %i[index show], constraints: { id: %r{[^/]+} }
+  resources :subjects, only: %i[index show], constraints: { id: %r{[^/]+} } do
+    get :instructors
+  end
+
   resources :messages
   resources :chat_rooms, only: [] do
     resources :messages, only: [:index], controller: "chat_rooms/messages"
