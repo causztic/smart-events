@@ -52,6 +52,7 @@ class Calendar extends PureComponent {
     this.handleAffectAll = this.handleAffectAll.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.updateEvent = this.updateEvent.bind(this);
     this.instance = axios.create({
       headers: {
         "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -99,7 +100,7 @@ class Calendar extends PureComponent {
       errors: error.response.data.status,
       originalEvents: originalEvents
     });
-    handleCohort(this.state.cohort);
+    handleCohorts(this.state.cohort);
   }
 
   handleCohorts(index) {
@@ -114,6 +115,28 @@ class Calendar extends PureComponent {
       events: events,
       cohort: index
     });
+  }
+
+  updateEvent(event) {
+    const eventsToUpdate = this.state.originalEvents.map(e => {
+      if (e.id == event.id) {
+        return {
+          ...e,
+          location: event.location
+        }
+      }
+      return { ...e };
+    })
+
+    const events = this.props.cohorts !== -1 ? eventsToUpdate : eventsToUpdate.filter(event =>
+      this.props.cohorts[this.state.cohort].includes(event.id)
+    );
+
+    this.setState({
+      originalEvents: eventsToUpdate,
+      events: events,
+      errors: null
+    })
   }
 
   moveSession({ event, start, end }) {
@@ -214,7 +237,7 @@ class Calendar extends PureComponent {
           ))}
         </div>
         { show &&
-          <Modal show={show} onClose={this.hideModal} event={selectedEvent} instance={this.instance} locationUrl={this.props.available_url}/>
+          <Modal show={show} onClose={this.hideModal} updateEvent={this.updateEvent} event={selectedEvent} instance={this.instance} locationUrl={this.props.available_url}/>
         }
         <div style={{ height: "80vh" }}>
           <DND
@@ -255,6 +278,7 @@ class Modal extends Component {
       params: {
         start: this.props.event.start,
         end: this.props.event.end,
+        room: this.props.event.location.room,
       }
     }).then((response) => {
       this.setState({
@@ -264,11 +288,14 @@ class Modal extends Component {
   }
 
   updateLocation(e){
+    const event = {
+      ...this.state.event,
+      location: this.state.locations.find((location) => location.id == e.target.value)
+    };
     this.setState({
-      event: {
-        ...this.state.event,
-        location: this.state.locations.find((location) => location.id == e.target.value)
-      }
+      event: event
+    }, () => {
+      this.props.updateEvent(event);
     })
   }
 
