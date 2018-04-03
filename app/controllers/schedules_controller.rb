@@ -56,6 +56,7 @@ class SchedulesController < ApplicationController
     h[:start_time] = params[:start_time].to_datetime + 8.hours if params[:start_time]
     h[:end_time] = params[:end_time].to_datetime + 8.hours if params[:end_time]
     h[:location_id] = params[:location_id] if params[:location_id]
+    h[:instructor_id] = params[:instructor_id] if params[:instructor_id]
     h
   end
 

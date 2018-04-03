@@ -122,13 +122,14 @@ class Calendar extends PureComponent {
       if (e.id == event.id) {
         return {
           ...e,
-          location: event.location
+          location: event.location,
+          instructor: event.instructor,
         }
       }
       return { ...e };
     })
 
-    const events = this.props.cohorts !== -1 ? eventsToUpdate : eventsToUpdate.filter(event =>
+    const events = this.state.cohorts === -1 ? eventsToUpdate : eventsToUpdate.filter(event =>
       this.props.cohorts[this.state.cohort].includes(event.id)
     );
 
@@ -269,6 +270,7 @@ class Modal extends Component {
     this.state = {
       errors: null,
       locations: [],
+      instructors: [],
       event: this.props.event,
     }
   }
@@ -285,6 +287,14 @@ class Modal extends Component {
         locations: response.data
       })
     })
+    if (this.props.event.type === 'session'){
+      this.props.instance.get(`/subjects/${this.props.event.subject_id}/instructors`)
+      .then((response) => {
+        this.setState({
+            instructors: response.data
+        })
+      })
+    }
   }
 
   updateLocation(e){
@@ -296,6 +306,29 @@ class Modal extends Component {
     .put(this.props.url, {
       id: this.state.event.id,
       location_id: e.target.value,
+      type: this.state.event.type
+    })
+    .then(success => {
+      this.setState({
+        event: event
+      }, () => {
+        this.props.updateEvent(event);
+      })
+    }).catch(error => {
+      this.setState({
+        errors: error.response.data.status
+      })
+    })
+  }
+
+  updateInstructor(e){
+    const event = {
+      ...this.state.event,
+      instructor: this.state.instructors.find((instructor) => instructor.id == e.target.value)
+    };
+    this.props.instance.put(this.props.url, {
+      id: this.state.event.id,
+      instructor_id: e.target.value,
       type: this.state.event.type
     })
     .then(success => {
@@ -357,7 +390,13 @@ class Modal extends Component {
             )}
           </select>
           <br/>
-          <b>{event.instructor.name}</b>
+          { event.type === 'session' &&
+          <select value={event.instructor.id} onChange={(e) => { this.updateInstructor(e) }}>
+            { this.state.instructors.map((instructor) =>
+              <option value={instructor.id} key={instructor.id}>{instructor.name}</option>
+            )}
+          </select> }
+          { event.type === 'event' && <b>{event.instructor.name}</b> }
           <br/>
           Start: <b>{new Date(event.start_time).toLocaleString("sg")}</b>
           <br/>
