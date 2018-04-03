@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
         start_time: e.start_datetime - 8.hours,
         end_time: e.end_datetime - 8.hours,
         title: e.name,
-        location: { name: e.location.name, id: e.location.id, room: s.location.classroom },
+        location: { name: e.location.name, id: e.location.id, room: e.location.classroom },
         instructor: { name: e.speaker_name }
       }
     }
