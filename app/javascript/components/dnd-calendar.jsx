@@ -237,7 +237,7 @@ class Calendar extends PureComponent {
           ))}
         </div>
         { show &&
-          <Modal show={show} onClose={this.hideModal} updateEvent={this.updateEvent} event={selectedEvent} instance={this.instance} locationUrl={this.props.available_url}/>
+          <Modal show={show} onClose={this.hideModal} updateEvent={this.updateEvent} url={this.props.url} event={selectedEvent} instance={this.instance} locationUrl={this.props.available_url}/>
         }
         <div style={{ height: "80vh" }}>
           <DND
@@ -292,10 +292,22 @@ class Modal extends Component {
       ...this.state.event,
       location: this.state.locations.find((location) => location.id == e.target.value)
     };
-    this.setState({
-      event: event
-    }, () => {
-      this.props.updateEvent(event);
+    this.props.instance
+    .put(this.props.url, {
+      id: this.state.event.id,
+      location_id: e.target.value,
+      type: this.state.event.type
+    })
+    .then(success => {
+      this.setState({
+        event: event
+      }, () => {
+        this.props.updateEvent(event);
+      })
+    }).catch(error => {
+      this.setState({
+        errors: error.response.data.status
+      })
     })
   }
 
