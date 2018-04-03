@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Component } from "react";
 import BigCalendar from "react-big-calendar";
 import HTML5Backend from "react-dnd-html5-backend";
 import { DragDropContext } from "react-dnd";
@@ -26,8 +26,8 @@ function Event({ event }) {
   );
 }
 
-function styleEvent({type}) {
-  return { className: type }
+function styleEvent({ type }) {
+  return { className: type };
 }
 
 function EventHeader({ date }) {
@@ -43,11 +43,15 @@ class Calendar extends PureComponent {
     this.state = {
       events: [],
       originalEvents: [],
+      selectedEvent: null,
       cohort: -1,
+      show: false,
       affectAll: false
     };
     this.moveSession = this.moveSession.bind(this);
     this.handleAffectAll = this.handleAffectAll.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
     this.instance = axios.create({
       headers: {
         "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
@@ -61,13 +65,26 @@ class Calendar extends PureComponent {
       event.start = new Date(event.start_time);
       event.end = new Date(event.end_time);
       return event;
-    })
+    });
   }
 
   componentDidMount() {
     this.setState({
       events: this.getEventsFromProps(),
       originalEvents: this.getEventsFromProps()
+    });
+  }
+
+  showModal(event) {
+    this.setState({
+      show: true,
+      selectedEvent: event
+    });
+  }
+
+  hideModal() {
+    this.setState({
+      show: false
     });
   }
 
@@ -88,19 +105,21 @@ class Calendar extends PureComponent {
   handleCohorts(index) {
     let events = [...this.state.originalEvents];
     if (index !== -1) {
-      events = events.filter((event) => this.props.cohorts[index].includes(event.id));
+      events = events.filter(event =>
+        this.props.cohorts[index].includes(event.id)
+      );
     }
 
     this.setState({
       events: events,
-      cohort: index,
-    })
+      cohort: index
+    });
   }
 
   moveSession({ event, start, end }) {
     if (this.props.dnd) {
       const { events, originalEvents } = this.state;
-      if (this.state.affectAll && event.type === 'session') {
+      if (this.state.affectAll && event.type === "session") {
         const timeDifference = event.start - start;
         const eventsToMove = [...originalEvents].map(e => {
           // don't mutate previous state.
@@ -125,10 +144,10 @@ class Calendar extends PureComponent {
             difference: timeDifference
           })
           .then(success => {
-            this.handleCohorts(this.state.cohort)
+            this.handleCohorts(this.state.cohort);
           })
           .catch(error => {
-            this.handleErrors(error, originalEvents)
+            this.handleErrors(error, originalEvents);
           });
       } else {
         const idx = originalEvents.indexOf(event);
@@ -149,36 +168,52 @@ class Calendar extends PureComponent {
             type: event.type
           })
           .then(success => {
-            this.handleCohorts(this.state.cohort)
+            this.handleCohorts(this.state.cohort);
           })
           .catch(error => {
-            this.handleErrors(error, originalEvents)
+            this.handleErrors(error, originalEvents);
           });
       }
     }
   }
 
   render() {
-    const { events, affectAll, errors } = this.state;
+    const { events, affectAll, errors, show, selectedEvent } = this.state;
     return (
       <div>
-        { errors && <div className="alert alert-danger">{Object.values(errors)}</div>}
-        { this.props.dnd &&
-        <div className="btn btn-info" onClick={this.handleAffectAll}>
-          {affectAll
-            ? "Modify Individual Sessions"
-            : "Modify Sessions Across Weeks"}
-        </div> }
-        <div className="btn-group btn-group-toggle" data-toggle="buttons" style={{float: 'right'}}>
-          <label className="btn btn-secondary active" onClick={() => this.handleCohorts(-1)}>
-            <input type="radio" name="options" autoComplete="off"/>ALL
+        {errors && (
+          <div className="alert alert-danger">{Object.values(errors)}</div>
+        )}
+        {this.props.dnd && (
+          <div className="btn btn-info" onClick={this.handleAffectAll}>
+            {affectAll
+              ? "Modify Individual Sessions"
+              : "Modify Sessions Across Weeks"}
+          </div>
+        )}
+        <div
+          className="btn-group btn-group-toggle"
+          data-toggle="buttons"
+          style={{ float: "right" }}
+        >
+          <label
+            className="btn btn-secondary active"
+            onClick={() => this.handleCohorts(-1)}
+          >
+            <input type="radio" name="options" autoComplete="off" />ALL
           </label>
-          { this.props.cohorts.map((cohort, index) =>
-            <label className="btn btn-secondary" key={index} onClick={() => this.handleCohorts(index)}>
-            <input type="radio" name="options" autoComplete="off"/>F0{index+1}
-            </label>)
-          }
+          {this.props.cohorts.map((cohort, index) => (
+            <label
+              className="btn btn-secondary"
+              key={index}
+              onClick={() => this.handleCohorts(index)}
+            >
+              <input type="radio" name="options" autoComplete="off" />F0{index +
+                1}
+            </label>
+          ))}
         </div>
+        <Modal show={show} onClose={this.hideModal} event={selectedEvent} />
         <div style={{ height: "80vh" }}>
           <DND
             events={events}
@@ -189,12 +224,60 @@ class Calendar extends PureComponent {
             min={new Date(2000, 0, 1, 8, 30)}
             max={new Date(2000, 0, 1, 18)}
             onEventDrop={this.moveSession}
+            onSelectEvent={this.showModal}
             eventPropGetter={styleEvent}
             components={{
               event: Event,
               header: affectAll && EventHeader
             }}
           />
+        </div>
+      </div>
+    );
+  }
+}
+
+class Modal extends Component {
+  render() {
+    if (!this.props.show) {
+      return null;
+    }
+
+    // The gray background
+    const backdropStyle = {
+      position: "fixed",
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: "rgba(0,0,0,0.3)",
+      zIndex: 1000,
+      padding: 50
+    };
+
+    // The modal "window"
+    const modalStyle = {
+      backgroundColor: "#fff",
+      borderRadius: 5,
+      maxWidth: 600,
+      minHeight: 300,
+      margin: "0 auto",
+      padding: 30
+    };
+
+    const { event, onClose } = this.props;
+
+    return (
+      <div className="backdrop" style={backdropStyle}>
+        <div className="modal" style={modalStyle}>
+          <div onClick={onClose} className="btn" style={{padding: 0}}>
+            <i className="fas fa-times"/>
+          </div>
+          <h1>{event.title}</h1>
+          <h2>{event.location}</h2>
+          Start: <b>{event.start_time}</b>
+          <br/>
+          End: <b>{event.end_time}</b>
         </div>
       </div>
     );
