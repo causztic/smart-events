@@ -6,14 +6,27 @@
 
 <h1>Features Implemented</h1>
 <ul>
+  <li> <b>Accounts</b>
+  <ul>
+    <li> <b>Login Page</b> for individual <b>Student, Instructor</b> or <b>Coordinator</b> accounts.</li>
+    <li> <b>Chat System</b> to allow <b>Instructors</b> to send messages to <b>Coordinators</b>. </li>
+   </ul>
+  <p>
+  <li><b>Utility / Functions</b>
+  <ul>
   <li> Added Link to <b>Subscribe</b> to <b>Calendar.</b> </li>
-  <li> Allow the creation of <b>Events</b></li>
-  <li> <b>Coordinators</b> can <b>drag and drop</b> Events to re-order them. </li>
+  <li> Allow the creation of individual <b>Events</b></li>
+  <li> <b>Automated duplicating of sessions</b> across the 13 weeks in a term. </li>
   <li> <b>Validation</b> added when dragging and dropping sessions. </li>
+  <li> Able to <b>filter timetables by Cohort Classes.</b> </li>
+    </ul></p>
+
+  <li> <b>Coordinator Privileges</b>
+  <ul>
+  <li> <b>Coordinators</b> can <b>drag and drop</b> Events to re-order them. </li> 
   <li> Coordinator is able to <b>edit calendar items via an entire week or entire term.</b> </li>
   <li> Added button for Coordinator to <b>regenerate schedule.</b> </li>
-  <li> Able to <b>filter timetables by Cohort Classes.</b> </li>
-  <li> <b>Automated duplicating of sessions</b> across the 13 weeks in a term. </li>
+    </ul>
 </ul>
 
 <h1>To be Integrated</h1>
