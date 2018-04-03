@@ -25,14 +25,15 @@ feature "Signing in" do
     expect(page).to have_http_status(401)
   end
 
-  # it "should allow students to see their respective calendar", js: true do
-  #   visit "login"
-  #   within(".landing-form") do
-  #     fill_in "Email", with: @student.email
-  #     fill_in "Password", with: "password"
-  #   end
-  #   click_button "Log in"
-  #   visit student_schedule_path
-  #   click_link "Subscribe to Calendar"
-  # end
+  it "should allow students to see their respective calendar" do
+    visit "login"
+    within(".landing-form") do
+      fill_in "Email", with: @student.email
+      fill_in "Password", with: "password"
+    end
+    click_button "Log in"
+    visit student_schedule_path
+    click_link "Subscribe to Calendar"
+    expect(page).to have_http_status(200)
+  end
 end
