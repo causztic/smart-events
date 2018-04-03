@@ -43,7 +43,7 @@ class Subject < ApplicationRecord
   def facility_hours_should_have_arrays
     facility_hours.each_value do |value|
       return errors.add(:facility_hours, "invalid hours! must be an array") unless value.is_a? Array
-    end
+    end if facility_hours.present?
   end
 
   # to use code as the params

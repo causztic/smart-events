@@ -16,7 +16,7 @@ RSpec.describe Subject, type: :model do
   describe "invalid subjects" do
     let(:subject) { build(:subject_with_invalid_hours) }
     it "should not have excessive hours per week" do
-      expect(subject).to_not be_valid
+      expect(subject).to be_invalid
     end
   end
 end
