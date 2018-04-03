@@ -3,6 +3,8 @@ FactoryBot.define do
     location
     instructor
     subject
+    start_time { Time.now }
+    end_time { Time.now + 1.hour }
 
     factory :session_with_students do
       transient do

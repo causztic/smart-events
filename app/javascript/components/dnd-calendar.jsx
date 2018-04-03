@@ -215,15 +215,11 @@ class Calendar extends PureComponent {
               : "Modify Sessions Across Weeks"}
           </div>
         )}
-        <div
-          className="btn-group btn-group-toggle"
-          data-toggle="buttons"
-          style={{ float: "right" }}
-        >
+        { this.props.cohorts &&
+        <div className="btn-group btn-group-toggle" data-toggle="buttons" style={{ float: "right" }}>
           <label
             className="btn btn-secondary active"
-            onClick={() => this.handleCohorts(-1)}
-          >
+            onClick={() => this.handleCohorts(-1)}>
             <input type="radio" name="options" autoComplete="off" />ALL
           </label>
           {this.props.cohorts.map((cohort, index) => (
@@ -237,7 +233,8 @@ class Calendar extends PureComponent {
             </label>
           ))}
         </div>
-        { show &&
+        }
+        { show && this.props.dnd &&
           <Modal show={show} onClose={this.hideModal} updateEvent={this.updateEvent} url={this.props.url} event={selectedEvent} instance={this.instance} locationUrl={this.props.available_url}/>
         }
         <div style={{ height: "80vh" }}>
