@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
   # post   '/users' => 'users#create'
 
-  resources :locations, only: [:index]
+  resources :locations, only: [:index] do
+    get :available, on: :collection
+  end
+
   resources :subjects, only: %i[index show], constraints: { id: %r{[^/]+} }
   resources :messages
   resources :chat_rooms, only: [] do
