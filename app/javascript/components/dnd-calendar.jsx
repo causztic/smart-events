@@ -42,6 +42,8 @@ class Calendar extends PureComponent {
     BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
     this.state = {
       events: [],
+      originalEvents: [],
+      cohort: -1,
       affectAll: false
     };
     this.moveSession = this.moveSession.bind(this);
@@ -64,7 +66,8 @@ class Calendar extends PureComponent {
 
   componentDidMount() {
     this.setState({
-      events: this.getEventsFromProps()
+      events: this.getEventsFromProps(),
+      originalEvents: this.getEventsFromProps()
     });
   }
 
@@ -74,29 +77,32 @@ class Calendar extends PureComponent {
     });
   }
 
-  handleErrors(error, events) {
+  handleErrors(error, originalEvents) {
     this.setState({
       errors: error.response.data.status,
-      events: events
+      originalEvents: originalEvents
     });
+    handleCohort(this.state.cohort);
   }
 
   handleCohorts(index) {
-    let events = this.getEventsFromProps();
+    let events = [...this.state.originalEvents];
     if (index !== -1) {
-      events = events.filter((event) => this.props.cohorts[index].includes(event.id))
+      events = events.filter((event) => this.props.cohorts[index].includes(event.id));
     }
+
     this.setState({
-      events: events
+      events: events,
+      cohort: index,
     })
   }
 
   moveSession({ event, start, end }) {
     if (this.props.dnd) {
-      const { events } = this.state;
+      const { events, originalEvents } = this.state;
       if (this.state.affectAll && event.type === 'session') {
         const timeDifference = event.start - start;
-        const eventsToMove = [...events].map(e => {
+        const eventsToMove = [...originalEvents].map(e => {
           // don't mutate previous state.
           if (e.group === event.group) {
             return {
@@ -109,7 +115,7 @@ class Calendar extends PureComponent {
         });
 
         this.setState({
-          events: eventsToMove,
+          originalEvents: eventsToMove,
           errors: null
         });
 
@@ -118,19 +124,21 @@ class Calendar extends PureComponent {
             group: event.group,
             difference: timeDifference
           })
-          .then()
+          .then(success => {
+            this.handleCohorts(this.state.cohort)
+          })
           .catch(error => {
-            this.handleErrors(error, events)
+            this.handleErrors(error, originalEvents)
           });
       } else {
-        const idx = events.indexOf(event);
+        const idx = originalEvents.indexOf(event);
         const updatedEvent = { ...event, start, end };
 
-        const nextEvents = [...events];
+        const nextEvents = [...originalEvents];
         nextEvents.splice(idx, 1, updatedEvent);
 
         this.setState({
-          events: nextEvents,
+          originalEvents: nextEvents,
           errors: null
         });
         this.instance
@@ -140,9 +148,11 @@ class Calendar extends PureComponent {
             end_time: end,
             type: event.type
           })
-          .then()
+          .then(success => {
+            this.handleCohorts(this.state.cohort)
+          })
           .catch(error => {
-            this.handleErrors(error, events)
+            this.handleErrors(error, originalEvents)
           });
       }
     }
