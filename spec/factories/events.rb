@@ -4,8 +4,8 @@ FactoryBot.define do
     description "Description"
     speaker_name "Speaker Name"
     date 20180315
-    start_time { Time.now }
-    end_time { Time.now + 1.hour }
+    start_time '19:00'
+    end_time '20:00'
     pillar 0
     location
   end
