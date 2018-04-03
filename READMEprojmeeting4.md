@@ -9,7 +9,7 @@
   <li> <b>Accounts</b>
   <ul>
   <li> <b>Login Page</b> for individual <b>Student, Instructor</b> or <b>Coordinator</b> accounts.</li>
-  <li> <b>Chat System</b> to allow <b>Instructors</b> to send messages to <b>Coordinators</b>. </li>
+  <li> <b>Chat System</b> to allow <b>Instructors</b> to send messages to <b>Coordinators</b> or vice versa. </li>
    </ul>
 &nbsp;
   <li><b>Utility / Functions</b>
@@ -21,11 +21,26 @@
   <li> Able to <b>filter timetables by Cohort Classes.</b> </li>
     </ul>
 &nbsp;
-  <li> <b>Coordinator Privileges</b></li>
+
+  <li> <b>Student Features</b></li>
   <ul>
+  <li> Allows subscription to calendar. </li>
+  <li> <b>View timetable</b> belonging to individual <b>Student</b> account. </li> 
+  </ul>
+
+  <li> <b>Instructor Features</b></li>
+  <ul>
+  <li> Allows subscription to calendar. </li>
+  <li> Has access to <b>Chat System</b> to contact <b>Coordinator</b> on proposed changes.</li>
+  <li> <b>Suggest changes</b> of specific events to <b>Coordinator</b>.</li>   
+ 
+  <li> <b>Coordinator Features</b></li>
+  <ul>
+  <li> Allows subscription to calendar. </li>
   <li> <b>Coordinators</b> can <b>drag and drop</b> Events to re-order them. </li> 
   <li> <b>Coordinator</b> is able to <b>edit calendar items via an entire week or entire term.</b> </li>
   <li> Added button for <b>Coordinator</b> to <b>regenerate schedule.</b> </li>
+  <li> <b> Creation of individual events</b>
   <li> <b>Coordinator</b> can have <b>many chatrooms simultaneously</b> while Instructors can only have one.</li>
     </ul>
 </ul>
