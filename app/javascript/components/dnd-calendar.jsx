@@ -19,9 +19,9 @@ const DAYS = [
 function Event({ event }) {
   return (
     <span>
-      {`${event.title} (${event.location})`}
+      {`${event.title} (${event.location.name})`}
       <br />
-      {event.instructor && event.instructor}
+      {event.instructor && event.instructor.name}
     </span>
   );
 }
@@ -238,6 +238,13 @@ class Calendar extends PureComponent {
 }
 
 class Modal extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      errors: null
+    }
+  }
   render() {
     if (!this.props.show) {
       return null;
@@ -273,10 +280,13 @@ class Modal extends Component {
           <div onClick={onClose} className="btn" style={{padding: 0}}>
             <i className="fas fa-times"/>
           </div>
+          {this.state.errors && (
+          <div className="alert alert-danger">{Object.values(this.state.errors)}</div>
+          )}
           <h2>{event.title}</h2>
-          <b>{event.location}</b>
+          <b>{event.location.name}</b>
           <br/>
-          <b>{event.instructor}</b>
+          <b>{event.instructor.name}</b>
           <br/>
           Start: <b>{event.start_time}</b>
           <br/>

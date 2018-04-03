@@ -4,4 +4,8 @@ class LocationsController < ApplicationController
   def index
     @locations = Location.all.pluck(:name)
   end
+
+  def available
+    @locations = Location.available_in(params[:start], params[:end])
+  end
 end
