@@ -6,6 +6,7 @@ class LocationsController < ApplicationController
   end
 
   def available
-    @locations = Location.available_in(params[:start], params[:end])
+    @locations = Location.available_in(params[:start].to_datetime, params[:end].to_datetime)
+    render json: @locations
   end
 end

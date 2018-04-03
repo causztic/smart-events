@@ -1,3 +1,3 @@
-= react_component "DNDCalendar", events: @events, cohorts: @cohorts, dnd: true, url: schedules_update_path, batch_url: batch_update_schedules_path
+= react_component "DNDCalendar", events: @events, cohorts: @cohorts, dnd: true, available_url: available_locations_path, url: schedules_update_path, batch_url: batch_update_schedules_path
 br
 = button_to "Regenerate Schedule", regenerate_schedules_path, method: :put, class: "btn btn-danger disable-on-click"

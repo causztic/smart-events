@@ -213,7 +213,9 @@ class Calendar extends PureComponent {
             </label>
           ))}
         </div>
-        <Modal show={show} onClose={this.hideModal} event={selectedEvent} />
+        { show &&
+          <Modal show={show} onClose={this.hideModal} event={selectedEvent} instance={this.instance} locationUrl={this.props.available_url}/>
+        }
         <div style={{ height: "80vh" }}>
           <DND
             events={events}
@@ -242,9 +244,34 @@ class Modal extends Component {
   constructor(props){
     super(props);
     this.state = {
-      errors: null
+      errors: null,
+      locations: [],
+      event: this.props.event,
     }
   }
+
+  componentDidMount(){
+    this.props.instance.get(this.props.locationUrl, {
+      params: {
+        start: this.props.event.start,
+        end: this.props.event.end,
+      }
+    }).then((response) => {
+      this.setState({
+        locations: response.data
+      })
+    })
+  }
+
+  updateLocation(e){
+    this.setState({
+      event: {
+        ...this.state.event,
+        location: this.state.locations.find((location) => location.id == e.target.value)
+      }
+    })
+  }
+
   render() {
     if (!this.props.show) {
       return null;
@@ -272,7 +299,8 @@ class Modal extends Component {
       padding: 30
     };
 
-    const { event, onClose } = this.props;
+    const { onClose } = this.props;
+    const { event } = this.state;
 
     return (
       <div className="backdrop" style={backdropStyle}>
@@ -284,7 +312,11 @@ class Modal extends Component {
           <div className="alert alert-danger">{Object.values(this.state.errors)}</div>
           )}
           <h2>{event.title}</h2>
-          <b>{event.location.name}</b>
+          <select value={event.location.id} onChange={(e) => { this.updateLocation(e) }}>
+            { this.state.locations.map((location) =>
+              <option value={location.id} key={location.id}>{location.name}</option>
+            )}
+          </select>
           <br/>
           <b>{event.instructor.name}</b>
           <br/>
