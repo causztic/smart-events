@@ -3,6 +3,14 @@ Event scheduling is a big task at SUTD and in any organization. In this project,
 [![Build Status](https://travis-ci.org/causztic/smart-events.svg?branch=master)](https://travis-ci.org/causztic/smart-events)
 [![Maintainability](https://api.codeclimate.com/v1/badges/517471ecad1083fbb8b6/maintainability)](https://codeclimate.com/github/causztic/smart-events/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/517471ecad1083fbb8b6/test_coverage)](https://codeclimate.com/github/causztic/smart-events/test_coverage)
+
+
+# Features
+- Chat System
+- Schedule Calendar Subscriptions
+- Event Management
+- Semi-Automated Schedule Generation
+
 # Getting Started
 
 Install node
@@ -20,7 +28,6 @@ yarn install
 # Testing
 - Create a database **smart_events_test**
 - Update database.yml
-
 
 # Populating Data
 ```
