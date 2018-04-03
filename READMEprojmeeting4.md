@@ -5,19 +5,21 @@ Event scheduling is a big task at SUTD and in any organization. In this project,
 [![Test Coverage](https://api.codeclimate.com/v1/badges/517471ecad1083fbb8b6/test_coverage)](https://codeclimate.com/github/causztic/smart-events/test_coverage)
 
 <h1>Features Implemented</h1>
-<p> Added link to subscribe to calendar. </p>
-<p> Allow creation of events - Coordinators can drag and drop events to re-order them. </p>
-<p> Validation added when dragging and dropping sessions. </p>
-<p> Coordinator is able to edit calendar items via an entire week or entire term. </p>
-<p> Added button for Coordinator to regenerate schedule. </p>
-<p> Able to filter timetables by Cohort Classes. </p>
-<p> Automatically duplicate session across the 13 weeks in a term. </p>
+<ul>
+  <li> Added Link to <b>Subscribe</b> to <b>Calendar.</b> </li>
+<li> Allow creation of <b>Events</b></li>
+  <li> <b>Coordinators</b> can <b>drag and drop</b> Events to re-order them. </li>
+    <li> <b>Validation</b> added when dragging and dropping sessions. </li>
+  <li> Coordinator is able to <b>edit calendar items via an entire week or entire term.</b> </li>
+  <li> Added button for Coordinator to <b>regenerate schedule.</b> </li>
+  <li> Able to <b>filter timetables by Cohort Classes.</b> </li>
+  <li> <b>Automated duplicating of sessions</b> across the 13 weeks in a term. </li>
 
 
 <h1>To be Integrated</h1>
 
-<p> Allowing instructors to select their desired locations for specific events. </p>
-<p> Allowing coordinators to change locations of individual sessions. </p>
-<p> Using genetic algorithm for efficient scheduling. </p>
+<li> Allowing instructors to <b>select their desired locations for specific events.</b></li>
+<li> Allowing coordinators to <b>change locations of individual sessions.</b></li>
+<li> Implementing <b>genetic algorithm</b> into code for efficient scheduling. </li>
 
 
