@@ -273,8 +273,11 @@ class Modal extends Component {
           <div onClick={onClose} className="btn" style={{padding: 0}}>
             <i className="fas fa-times"/>
           </div>
-          <h1>{event.title}</h1>
-          <h2>{event.location}</h2>
+          <h2>{event.title}</h2>
+          <b>{event.location}</b>
+          <br/>
+          <b>{event.instructor}</b>
+          <br/>
           Start: <b>{event.start_time}</b>
           <br/>
           End: <b>{event.end_time}</b>
