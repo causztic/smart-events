@@ -21,7 +21,7 @@
   <li> Able to <b>filter timetables by Cohort Classes.</b> </li>
     </ul></p>
 
-  <li> <b>Coordinator Privileges</b>
+  <li> <b>Coordinator Privileges</b></li>
   <ul>
   <li> <b>Coordinators</b> can <b>drag and drop</b> Events to re-order them. </li> 
     <li> <b>Coordinator</b> is able to <b>edit calendar items via an entire week or entire term.</b> </li>
