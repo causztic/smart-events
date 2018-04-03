@@ -359,9 +359,9 @@ class Modal extends Component {
           <br/>
           <b>{event.instructor.name}</b>
           <br/>
-          Start: <b>{event.start_time}</b>
+          Start: <b>{new Date(event.start_time).toLocaleString("sg")}</b>
           <br/>
-          End: <b>{event.end_time}</b>
+          End: <b>{new Date(event.end_time).toLocaleString("sg")}</b>
         </div>
       </div>
     );
