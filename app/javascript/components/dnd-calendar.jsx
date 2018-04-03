@@ -107,7 +107,7 @@ class Calendar extends PureComponent {
     let events = [...this.state.originalEvents];
     if (index !== -1) {
       events = events.filter(event =>
-        this.props.cohorts[index].includes(event.id)
+        this.props.cohorts[index].includes(event.id) || event.type === 'event'
       );
     }
 
@@ -130,7 +130,7 @@ class Calendar extends PureComponent {
     })
 
     const events = this.state.cohorts === -1 ? eventsToUpdate : eventsToUpdate.filter(event =>
-      this.props.cohorts[this.state.cohort].includes(event.id)
+      this.props.cohorts[this.state.cohort].includes(event.id) || event.type === 'event'
     );
 
     this.setState({
