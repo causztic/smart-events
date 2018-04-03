@@ -6,6 +6,8 @@ Event scheduling is a big task at SUTD and in any organization. In this project,
 
 # Features Implemented
 
+#edit
+
 
 # To be Integrated
 
