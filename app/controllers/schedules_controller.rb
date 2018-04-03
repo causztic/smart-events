@@ -2,11 +2,11 @@ class SchedulesController < ApplicationController
   before_action -> { authenticate_role!(Coordinator) }, except: [:subscription]
 
   def update
-    s = find_by_type
+    @schedule, s = find_by_type
     if @schedule.update_attributes(s)
       render json: { status: "Successfully updated schedule." }, status: 200
     else
-      render json: { status: schedule.errors.to_json }, status: 400
+      render json: { status: @schedule.errors.to_json }, status: 400
     end
   end
 
@@ -47,13 +47,8 @@ class SchedulesController < ApplicationController
   end
 
   def find_by_type
-    if params[:type] === 'session'
-      @schedule = Session.find(params[:id])
-      s = update_session
-    else
-      @schedule = Event.find(params[:id])
-      s = update_event
-    end
+    return [Session.find(params[:id]), update_session] if params[:type] === 'session'
+    [Event.find(params[:id]), update_event]
   end
 
   def update_session

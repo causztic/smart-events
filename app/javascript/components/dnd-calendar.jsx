@@ -120,7 +120,7 @@ class Calendar extends PureComponent {
           })
           .then()
           .catch(error => {
-            this.handleErrors(error)
+            this.handleErrors(error, events)
           });
       } else {
         const idx = events.indexOf(event);
