@@ -26,6 +26,15 @@ class CoordinatorController < ApplicationController
       .map { |v| v[0][1..v[0].length-2].split(',').map &:to_i }
   end
 
+  def index
+      render :file => 'app\views\coordinator\uploadfile.html.erb'
+  end
+
+  def upload
+      post = DataFile.save(params[:upload])
+      render :text => "File successfully uploaded."
+  end
+
   private
   def set_chat_ids
     @chats = ChatRoom.eager_load(:users).map {|cr| { id: cr.id, name: cr.user_name }}
