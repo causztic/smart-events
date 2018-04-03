@@ -160,7 +160,7 @@ class Calendar extends PureComponent {
             : "Modify Sessions Across Weeks"}
         </div> }
         <div className="btn-group btn-group-toggle" data-toggle="buttons" style={{float: 'right'}}>
-          <label className="btn btn-secondary focus active" onClick={() => this.handleCohorts(-1)}>
+          <label className="btn btn-secondary active" onClick={() => this.handleCohorts(-1)}>
             <input type="radio" name="options" autoComplete="off"/>ALL
           </label>
           { this.props.cohorts.map((cohort, index) =>
