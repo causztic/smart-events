@@ -128,8 +128,7 @@ class Calendar extends PureComponent {
       }
       return { ...e };
     })
-
-    const events = this.state.cohorts === -1 ? eventsToUpdate : eventsToUpdate.filter(event =>
+    const events = this.state.cohort === -1 ? eventsToUpdate : eventsToUpdate.filter(event =>
       this.props.cohorts[this.state.cohort].includes(event.id) || event.type === 'event'
     );
 
