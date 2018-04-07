@@ -46,8 +46,6 @@
 </ul>
 <h1>To be Integrated</h1>
 <ul>
-<li> Allowing instructors to <b>select their desired locations for specific events.</b></li>
-<li> Allowing coordinators to <b>change locations of individual sessions.</b></li>
 <li> Implementing <b>genetic algorithm</b> into code for efficient scheduling. </li>
 </ul>
 
