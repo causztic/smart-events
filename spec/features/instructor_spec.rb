@@ -12,7 +12,7 @@ feature "Signing in" do
     end
     click_button "Log in"
     expect(page).to have_content(::NOTICE::LOG_IN_SUCCESS)
-    expect(page).to have_current_path(instructor_dashboard_path)
+    expect(page).to have_current_path(instructor_schedule_path)
   end
 
   it "should not allow me to access any student pages" do
