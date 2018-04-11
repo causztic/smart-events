@@ -29,12 +29,12 @@ class SessionsController < ApplicationController
 
   def redirect_to_path
     path = if current_user.student?
-             student_dashboard_path
+             student_schedule_path
            elsif current_user.instructor?
-             instructor_dashboard_path
+             instructor_schedule_path
            else
              # coordinator
-             coordinator_dashboard_path
+             coordinator_schedules_path
            end
 
     redirect_to path, notice: ::NOTICE::LOG_IN_SUCCESS
